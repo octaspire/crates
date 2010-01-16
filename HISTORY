@@ -1,4 +1,16 @@
-HISTORY for crates 0.0.1
+* version 0.0.3 (2010-01-16)
+-----------------------------
+  + Updated version number in source code to 0.0.3.
+  + Updated and modified HISTORY file.
+  + Removed extension1-mission from the win32 installer script.
+  + Changed OutFile-name in the win32 installer script to contain version number.
+
+
+* version 0.0.2 (2010-01-16)
+-----------------------------
+  + Removed Hall of Fame and Makefiles build with bm.pl from gitignore.
+
 
 * version 0.0.1 (2010-01-15)
+-----------------------------
   + Initial release

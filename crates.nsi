@@ -19,7 +19,7 @@
   ;Name and file
   Name "${prodname}"
   Caption "${prodname}"
-  OutFile "CratesSetup.exe"
+  OutFile "crates-0.0.3-setup.exe"
 
   CRCCheck on
   SetCompressor /SOLID lzma
@@ -97,9 +97,6 @@ Section "Crates game files" SecDummy
 
   SetOutPath $INSTDIR\resources\halloffame
   File "resources\halloffame\default"
-
-  SetOutPath $INSTDIR\resources\halloffame
-  File "resources\halloffame\extension1"
 
   SetOutPath $INSTDIR\resources\images
   File "resources\images\*.ico"
