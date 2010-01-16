@@ -1,0 +1,88 @@
+CONTENTS
+---------
+
+1. Windows
+2. GNU/Linux
+3. Other systems
+4. Customization and testing
+
+
+1. Windows
+-----------
+
+For Windows there is an installer program available in the crates
+homepage  www.octaspire.com/crates/. With it you can install  and
+uninstall a binary version of the game easily with just a  couple
+of mouse clicks.
+
+If  you  want  to compile the game in windows yourself, you could
+use the provided Dev‐Cpp project file or  the  windows‐makefiles.
+How  to  do it exactly depends on the compiler or IDE you are us‐
+ing.
+
+
+2. GNU/Linux
+-------------
+
+For GNU/Linux  there  isn’t  currently an installer  or  package‐
+files  (might  come later), so in these systems the game needs to
+be compiled from the  source  code.  Your  system should  already
+have a C compiler and make available.  If not, install those (gcc
+and make).  Then install  development  versions  of  the   latest
+stable  versions of SDL 1.2, SDL_image 1.2, SDL_mixer 1.2 and Lua
+5.1.  Then use the provided Makefile to build crates  by  issuing
+the following command:
+
+  make
+
+After  the  building  process  is done, you can start the game by
+saying:
+
+  ./crates
+
+If you want to run the unit tests in  tests‐directory,  you  will
+also  need  to  install check, a unit testing framework for C, if
+you don’t already have it.
+
+Please note that if  you  enable  sounds  and  your  systems  has
+PulseAudio,  the SDL(_mixer) + PulseAudio combination might cause
+problems at least on some  GNU/Linux‐systems.   See  for  example
+"the  pulseaudio  hack".  For  example, at the time of writing in
+Ubuntu, if your system has SDL with ALSA option (libsdl1.2debian‐
+alsa)  installed,  sounds  might  be crackling, channels will ebb
+away and game will get jammed when you try to  quit  playing.  In
+this  case  removing libsdl1.2debian‐alsa and installing SDL with
+PulseAudio options (libsdl1.2debian‐pulseaudio) instead helped.
+
+
+3. Other Systems
+-----------------
+
+Game is currently tested only in Ubuntu GNU/Linux and Windows XP.
+Mac  OS  X and UNIX versions might come later. The code should be
+quite portable, because it is written in standard C. The non‐por‐
+table  parts can be found in windows‐ and posix‐subdirectories in
+the   src‐directory.    At   least   text    "/proc/%i/exe"    in
+src/posix/odir.c  might  need  changing  for  other  systems than
+GNU/Linux.
+
+
+4. Customization and testing
+-----------------------------
+
+The top level directory of crates (source code version)  contains
+three  makefiles:  Makefile,  Makefile.windows  and Makefile.win.
+Makefile.win is generated automatically by Dev‐C++. If  you  want
+to  modify/compile  code in windows, you could use and modify the
+provided Dev‐C++ project file  crates.dev  or  the  windows‐make‐
+files.  Makefile and Makefile.windows are generated automatically
+with a Perl script bm.pl that can be found in that same directory
+also. If you modify the code so that dependencies change, for ex‐
+ample by added new files, you can run  bm.pl  to  regenerate  the
+makefiles  with  all  the  current  dependencies. Note that Make‐
+file.win and Makefile.windows are not tested at the moment.
+
+The tests‐directory of crates (source code version) contains some
+unit tests. If you want to run those unit tests, you will need to
+install check, a unit testing framework for C, if you  don’t  al‐
+ready have it.

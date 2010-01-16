@@ -1,0 +1,151 @@
+.TH CRATES 6 "2010-01-01" "Octaspire games" "Crates Manual"
+.SH NAME
+crates \- extensible 3D puzzle game
+.SH SYNOPSIS
+.BR crates
+.RB [ \-v ]
+.RB [ \-\-version ]
+.SH DESCRIPTION
+.B crates
+is a three dimensional puzzle game. It consists of missions that
+consist of levels. To pass a mission, you must move player to the
+exit by interacting with the different kinds of crates in the level.
+Before that you must also collect all the keys and toggle all the
+toggles that the level might contain. Every level has a password
+that makes it possible to continue playing from that level whenever
+you want, but if you want to get your name in the hall of fame, you
+must play the whole mission at one go. On that case, the faster you
+are, the better is your position in the hall of fame.
+.LP
+.B crates
+is controlled with a keyboard or a gamepad. Passwords can be written
+faster with the alphanumeric keys of the keyboard or a little slower
+by using the D-pad of gamepad to select the letters one at a time.
+The default buttons of the gamepad and many other settings of the
+game can be changed in a configuration file
+.I config.lua
+in the
+.IR "resources" "-directory"
+of the game. Sound effects are disabled as a default,
+and if you want to enable them you can do it by changing setting
+.B config.sounds
+from
+.B false
+into
+.B true
+in the configuration file. See the configuration file for the
+other configurable settings.
+.LP
+Player is moved around with a keyboard or a gamepad. It continues
+movement until something stops it. It can be moved only when it
+is not already moving \- you cannot change player's direction if it is
+moving. If nothing stops it, it will fly out of the level and the level
+is restarted.
+.SH OPTIONS
+.TP
+.BR \-v , " \-\-version"
+Display version information.
+.SH CONFIGURATION
+Available configuration options can be seen and modified in
+.IR resources/config.lua .
+.SH CONTROLS
+Game is controlled with a keyboard or a gamepad. The default controls are listed
+below. The default buttons of gamepad can be changed in the configuration file.
+.SS KEYBOARD
+.TS
+tab (@);
+l l.
+Esc@Exit to previous state
+Return@Accept
+R@Restart level
+Arrows@Move
+.TE
+.SS GAMEPAD
+.TS
+tab (@);
+l l.
+Button-9@Exit to previous state
+Button-1@Accept
+Button-10@Restart level
+D-pad@Move (also sticks)
+.TE
+.SH FILES
+.TP
+.I resources/
+This directory and its subdirectories contain all the different resources of the game.
+That is, it contains the configuration file, all the textures, meshes, Lua scripts for the missions
+and for the different game states.
+.TP
+.I resources/config.lua
+All the configurable settings of the game. The configuration file is a Lua script.
+.TP
+.I resources/missions
+Directory containing all the missions of the game. If you have new mission(s), you can
+drop those to this directory and (re)start the game. After that those new missions
+can be selected from the game's menu and played. Missions are Lua scripts.
+.TP
+.I resources/states
+Directory containing Lua scripts for all the different states of the game.
+New states can be dropped to this directory and those will be loaded when game is (re)started.
+.TP
+.I resources/entities
+Directory containing Lua scripts for all the different crates of the game.
+New entities can be dropped to this directory and those will be loaded when game is (re)started.
+.TP
+.I resources/textures
+Directory containing all the textures of the game. New textures can be dropped
+to this directory and those will be loaded when game is (re)started.
+.TP
+.I resources/meshes
+Directory containing Lua scripts for the 3D meshes of the game.
+New meshes can be dropped to this directory and those will be loaded when game is (re)started.
+.TP
+.I resources/sounds
+Directory containing sound effects of the game. New sound effects can be dropped
+to this directory and those will be loaded when game is (re)started.
+.TP
+.I resources/musics
+Directory containing musics of the game (might be empty if there is no musics).
+New music-files can be dropped to this directory and those will be loaded when game is (re)started.
+.TP
+.I resources/halloffame
+Directory containing the hall\-of\-fame\-files of the different missions.
+.TP
+.I resources/log.txt
+The log file for the last run of the game. This file is generated only if the
+setting
+.B config.filelog
+is set to
+.B true
+in the configuration file.
+.SH NOTES
+.B crates
+uses major.minor.build version numbering scheme as defined in
+.I http://docs.rubygems.org/read/chapter/7
+.SH BUGS
+If you find a bug, please see the crates homepage
+.I www.octaspire.com/crates/
+for up-to-date instructions on reporting bugs.
+
+Please note that if you enable sounds and your systems has PulseAudio,
+the SDL(_mixer) + PulseAudio combination might cause problems at least on some GNU/Linux-systems.
+See for example "the pulseaudio hack". For example, at the time of writing in Ubuntu, if your system
+has SDL with ALSA option (libsdl1.2debian-alsa) installed, sounds might be crackling, channels will
+ebb away and game will get jammed when you try to quit playing. In this case removing libsdl1.2debian-alsa
+and installing SDL with PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
+.SH COPYRIGHT
+Crates ‐ extensible 3D puzzle game.
+Copyright (C) 2008‐2010  Octaspire (www.octaspire.com)
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.

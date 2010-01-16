@@ -1,0 +1,185 @@
+Crates ‐ extensible 3D puzzle game.
+Copyright (C) 2008‐2010  Octaspire (www.octaspire.com)
+
+This program is free software: you  can  redistribute  it  and/or
+modify  it  under  the terms of the GNU General Public License as
+published by the Free Software Foundation, either  version  3  of
+the License, or (at your option) any later version.
+
+This  program  is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the  implied  warranty  of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+
+CONTENTS
+---------
+
+1. INTRODUCTION
+2. SYSTEM REQUIREMENTS
+3. CONTROLS
+4. FURTHER INFORMATION
+5. CREDITS
+6. SOME CRATE SYMBOLS
+7. NOTES
+8. BUGS
+
+
+1. INTRODUCTION
+----------------
+
+Crates  is  a  three dimensional puzzle game. It consists of mis‐
+sions that consist of levels. To pass a mission,  you  must  move
+player  to  the  exit  by interacting with the different kinds of
+crates in the level.  Before that you must also collect  all  the
+keys and toggle all the toggles that the level might contain. Ev‐
+ery level has a password that makes it possible to continue play‐
+ing  from  that  level  whenever you want, but if you want to get
+your name in the hall of fame, you must play the whole mission at
+one  go. On that case, the faster you are, the better is your po‐
+sition in the hall of fame.
+
+Crates is controlled with a keyboard or a gamepad. Passwords  can
+be written faster with the alphanumeric keys of the keyboard or a
+little slower by using the D‐pad of gamepad to select the letters
+one at a time.  The default buttons of the gamepad and many other
+settings of the game can be changed in a configuration file  con‐
+fig.lua in the resources‐directory of the game. Sound effects are
+disabled as a default, and if you want to enable them you can  do
+it  by changing setting config.sounds from false into true in the
+configuration file. See the configuration file for the other con‐
+figurable settings.
+
+Player is moved around with a keyboard or a gamepad. It continues
+movement until something stops it. It can be moved only  when  it
+is  not  already moving − you cannot change player’s direction if
+it is moving. If nothing stops it, it will fly out of  the  level
+and the level is restarted.
+
+
+2. SYSTEM REQUIREMENTS
+-----------------------
+
+    − GNU/Linux or Windows
+    − 3 MB free hard disk space
+    − Accelerated graphics hardware
+    − Sound card
+    − Keyboard or Gamepad
+
+Game is currently tested only in Ubuntu GNU/Linux and Windows XP.
+Mac OS X and UNIX versions might come later. For Windows there is
+an installer available that installs and uninstalls a binary ver‐
+sion of the game automatically. For GNU/Linux  there  isn’t  cur‐
+rently  such an installer (might come later), so in these systems
+game needs to be compiled  from  the  source  code.  Your  system
+should  already have a C compiler and make available. If not, in‐
+stall those (gcc and make).  Then install development versions of
+the  latest  stable versions of SDL 1.2, SDL_image 1.2, SDL_mixer
+1.2 and Lua 5.1. Then use the provided Makefile to build  crates.
+See file INSTALL for more thorough explanation.
+
+
+3. CONTROLS
+------------
+
+Game is controlled with a keyboard or a gamepad. The default con‐
+trols are listed below. The default buttons  of  gamepad  can  be
+changed in the configuration file.
+
+  Keyboard          Action          Gamepad
+  ------------------------------------------
+  Esc      Exit to previous state   Button−9
+  Return           Accept           Button−1
+  R            Restart level        Button−10
+  Arrows            Move            D−pad (also sticks)
+
+
+4. FURTHER INFORMATION
+-----------------------
+
+The man‐directory contains one or more manuals that can be useful
+for GNU/Linux users. The crates homepage www.octaspire.com/crates/
+contains also more information. You might find there new missions,
+extensions and other new content for crates also.
+
+
+5. CREDITS
+-----------
+
+Crates is written in the programming languages C and Lua.  It us‐
+es SDL, SDL_image, SDL_mixer and OpenGL.  Sound effects are  made
+using ZynAddSubFX Software Synthesizer and Audacity.  Some of the
+graphics are made with GIMP and some with Inkscape.  Textures are
+drawn/edited  with  GIMP.   The background image used in menus is
+created and rendered with Blender.  Some of the textures  contain
+(possibly  modified) parts from the public domain Blender Texture
+Disc.  The image for the font texture is generated  automatically
+with a Java program.
+
+
+6. SOME CRATE SYMBOLS
+----------------------
+
+The  listing  below contains some symbols for the different kinds
+of crates. These are used when building missions and  levels  for
+the game.
+
+  block          XX
+  bomb           BB
+  counter        ##
+  exit           @@
+  inversecounter !#
+  key            $$
+  player         &&
+  pullere        >>
+  pulleren       >^
+  pulleres       >.
+  pullern        ^^
+  pullernw       <^
+  pullers        ..
+  pullersw       <.
+  pullerw        <<
+  remotecontrol  RC
+  sensor         []
+  slopeen        |_
+  slopees        |"
+  slopewn        _|
+  slopews        "|
+  steelbomb      SB
+  trigger        !!
+  turnstilee     T>
+  turnstilen     T^
+  turnstiles     T.
+  turnstilew     T<
+  turnstilee1    1>
+  turnstilen1    1^
+  turnstiles1    1.
+  turnstilew1    1<
+
+
+7. NOTES
+---------
+
+Crates uses major.minor.build version numbering scheme as defined
+in http://docs.rubygems.org/read/chapter/7
+
+
+8. BUGS
+--------
+
+If   you   find  a  bug,   please   see   the   crates   homepage
+www.octaspire.com/crates/    for   up‐to‐date   instructions   on
+reporting bugs.
+
+Please note that if  you  enable  sounds  and  your  systems  has
+PulseAudio,  the SDL(_mixer) + PulseAudio combination might cause
+problems at least on some  GNU/Linux‐systems.   See  for  example
+"the  pulseaudio  hack".  For  example, at the time of writing in
+Ubuntu, if your system has SDL with ALSA option (libsdl1.2debian‐
+alsa)  installed,  sounds  might  be crackling, channels will ebb
+away and game will get jammed when you try to  quit  playing.  In
+this  case  removing libsdl1.2debian‐alsa and installing SDL with
+PulseAudio options (libsdl1.2debian‐pulseaudio) instead helped.
