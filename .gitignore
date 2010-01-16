@@ -1,7 +1,3 @@
 crates
-Makefile
-Makefile.windows
-Makefile.posix
 *.o
-resources/halloffame/
 
