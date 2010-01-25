@@ -15,37 +15,26 @@
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "odir.h"
-#include "ogame.h"
-#include "oversion.h"
-#include "SDL.h"
+#ifndef OPNGTOTEXTURE_H
+#define OPNGTOTEXTURE_H
 
-OGame *game = 0;
+#include "otypes.h"
 
-void cleanup(void)
-{
-  oboolean verbose = 0;
-  if (game && game->settings && osettings_isverbose(game->settings))
-    verbose = 1;
+#ifdef OUSEGLHEADERSDIRECTLY
+#include <GL/gl.h>
+#else
+#include "SDL_opengl.h"
+#endif
 
-  ogame_release(game);
-  if (verbose)
-    oerror_status();
-}
+typedef struct {
+  GLint    internalformat;
+  GLsizei  width;
+  GLsizei  height;
+  GLenum   format;
+  GLubyte *data;
+} OTexture;
 
-void checkargs(int *argcptr, char *argv[])
-{
-  oversion_checkargs(argcptr, argv);
-  if (*argcptr != 1)
-    oerror_fatal("%s", "unknown argument(s): usage: crates [-v] [--version]");
-}
+OTexture *opngtotexture_new     (const ochar *path);
+void      opngtotexture_release (OTexture *texture);
 
-int main(int argc, char *argv[])
-{
-  odir_buildexedirname();
-  checkargs(&argc, argv);
-  atexit(cleanup);
-  game = ogame_new();
-  ogame_loop(game);
-  return 0;
-}
+#endif

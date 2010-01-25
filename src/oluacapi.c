@@ -647,6 +647,17 @@ static int opengl_disable2dtexturing(lua_State *L)
 }
 
 /**
+  i>
+  textureid:integer ->
+*/
+static int opengl_bindtexture2d(lua_State *L)
+{
+  int textureid = luaL_checkint(L, 1);
+  oglapi_bindtexture2D(textureid);
+  return 0;
+}
+
+/**
   >
   ->
 */
@@ -1637,6 +1648,7 @@ void oluacapi_init(OGame *game)
   oluacapi_registerfunction("opengl_render",                    opengl_render);
   oluacapi_registerfunction("opengl_enable2dtexturing",         opengl_enable2dtexturing);
   oluacapi_registerfunction("opengl_disable2dtexturing",        opengl_disable2dtexturing);
+  oluacapi_registerfunction("opengl_bindtexture2d",             opengl_bindtexture2d);
   oluacapi_registerfunction("opengl_enablelighting",            opengl_enablelighting);
   oluacapi_registerfunction("opengl_disablelighting",           opengl_disablelighting);
   oluacapi_registerfunction("opengl_enableblend",               opengl_enableblend);

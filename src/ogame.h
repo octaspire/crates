@@ -19,7 +19,6 @@
 #define OGAME_H
 
 #include "SDL.h"
-#include "SDL_image.h"
 #include "oentity.h"
 #include "oerror.h"
 #include "oevent.h"

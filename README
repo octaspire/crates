@@ -1,5 +1,5 @@
-Crates ‐ extensible 3D puzzle game.
-Copyright (C) 2008‐2010  Octaspire (www.octaspire.com)
+Crates - extensible 3D puzzle game.
+Copyright (C) 2008-2010  Octaspire (www.octaspire.com)
 
 This program is free software: you  can  redistribute  it  and/or
 modify  it  under  the terms of the GNU General Public License as
@@ -26,36 +26,37 @@ CONTENTS
 6. SOME CRATE SYMBOLS
 7. NOTES
 8. BUGS
+9. SOURCE DIRECTORY TREE
 
 
 1. INTRODUCTION
 ----------------
 
-Crates  is  a  three dimensional puzzle game. It consists of mis‐
+Crates  is  a  three dimensional puzzle game. It consists of mis-
 sions that consist of levels. To pass a mission,  you  must  move
 player  to  the  exit  by interacting with the different kinds of
 crates in the level.  Before that you must also collect  all  the
-keys and toggle all the toggles that the level might contain. Ev‐
-ery level has a password that makes it possible to continue play‐
+keys and toggle all the toggles that the level might contain. Ev-
+ery level has a password that makes it possible to continue play-
 ing  from  that  level  whenever you want, but if you want to get
 your name in the hall of fame, you must play the whole mission at
-one  go. On that case, the faster you are, the better is your po‐
+one  go. On that case, the faster you are, the better is your po-
 sition in the hall of fame.
 
 Crates is controlled with a keyboard or a gamepad. Passwords  can
 be written faster with the alphanumeric keys of the keyboard or a
-little slower by using the D‐pad of gamepad to select the letters
+little slower by using the D-pad of gamepad to select the letters
 one at a time.  The default buttons of the gamepad and many other
-settings of the game can be changed in a configuration file  con‐
-fig.lua in the resources‐directory of the game. Sound effects are
+settings of the game can be changed in a configuration file  con-
+fig.lua in the resources-directory of the game. Sound effects are
 disabled as a default, and if you want to enable them you can  do
 it  by changing setting config.sounds from false into true in the
-configuration file. See the configuration file for the other con‐
+configuration file. See the configuration file for the other con-
 figurable settings.
 
 Player is moved around with a keyboard or a gamepad. It continues
 movement until something stops it. It can be moved only  when  it
-is  not  already moving − you cannot change player’s direction if
+is  not  already moving - you cannot change player's direction if
 it is moving. If nothing stops it, it will fly out of  the  level
 and the level is restarted.
 
@@ -63,54 +64,56 @@ and the level is restarted.
 2. SYSTEM REQUIREMENTS
 -----------------------
 
-    − GNU/Linux or Windows
-    − 3 MB free hard disk space
-    − Accelerated graphics hardware
-    − Sound card
-    − Keyboard or Gamepad
+    - GNU/Linux, Windows or Mac OS X
+    - 3  MB free hard disk space
+    - 17 MB free RAM available
+    - Accelerated graphics hardware
+    - Sound card
+    - Keyboard or Gamepad
 
-Game is currently tested only in Ubuntu GNU/Linux and Windows XP.
-Mac OS X and UNIX versions might come later. For Windows there is
-an installer available that installs and uninstalls a binary ver‐
-sion of the game automatically. For GNU/Linux  there  isn’t  cur‐
-rently  such an installer (might come later), so in these systems
-game needs to be compiled  from  the  source  code.  Your  system
-should  already have a C compiler and make available. If not, in‐
-stall those (gcc and make).  Then install development versions of
-the  latest  stable versions of SDL 1.2, SDL_image 1.2, SDL_mixer
-1.2 and Lua 5.1. Then use the provided Makefile to build  crates.
-See file INSTALL for more thorough explanation.
+Game is currently tested only in Ubuntu GNU/Linux, Windows XP and
+Mac OS X.   UNIX  versions might come later. For Windows there is
+an installer available that installs and uninstalls a binary ver-
+sion of the game automatically.  For GNU/Linux and Mac OS X there
+isn’t currently such an installer (might come later), so in these
+systems game needs to be compiled  from  the  source  code.  Your
+system  should already have a  C compiler and  make available. If
+not,  install  those  (gcc and make).  Then  install  development
+versions of the latest stable versions of SDL 1.2, SDL_mixer 1.2,
+libpng, zlib and Lua 5.1. Then use the provided Makefile to build
+crates. See file INSTALL for more thorough explanation.
 
 
 3. CONTROLS
 ------------
 
-Game is controlled with a keyboard or a gamepad. The default con‐
+Game is controlled with a keyboard or a gamepad. The default con-
 trols are listed below. The default buttons  of  gamepad  can  be
 changed in the configuration file.
 
   Keyboard          Action          Gamepad
   ------------------------------------------
-  Esc      Exit to previous state   Button−9
-  Return           Accept           Button−1
-  R            Restart level        Button−10
-  Arrows            Move            D−pad (also sticks)
+  Esc      Exit to previous state   Button-9
+  Return           Accept           Button-1
+  R            Restart level        Button-10
+  Arrows            Move            D-pad (also sticks)
 
 
 4. FURTHER INFORMATION
 -----------------------
 
-The man‐directory contains one or more manuals that can be useful
-for GNU/Linux users. The crates homepage www.octaspire.com/crates/
-contains also more information. You might find there new missions,
-extensions and other new content for crates also.
+The man-directory contains one or more manuals that can be useful
+for   GNU/Linux   and   Mac OS X  users.    The  crates  homepage
+www.octaspire.com/crates/  contains  also more  information.  You
+might find there  new missions, extensions and other  new content
+for crates also.
 
 
 5. CREDITS
 -----------
 
-Crates is written in the programming languages C and Lua.  It us‐
-es SDL, SDL_image, SDL_mixer and OpenGL.  Sound effects are  made
+Crates is written in the programming languages C and Lua. It uses
+SDL,  SDL_mixer,  libpng, zlib and OpenGL. Sound effects are made
 using ZynAddSubFX Software Synthesizer and Audacity.  Some of the
 graphics are made with GIMP and some with Inkscape.  Textures are
 drawn/edited  with  GIMP.   The background image used in menus is
@@ -171,15 +174,231 @@ in http://docs.rubygems.org/read/chapter/7
 --------
 
 If   you   find  a  bug,   please   see   the   crates   homepage
-www.octaspire.com/crates/    for   up‐to‐date   instructions   on
+www.octaspire.com/crates/    for   up-to-date   instructions   on
 reporting bugs.
 
 Please note that if  you  enable  sounds  and  your  systems  has
 PulseAudio,  the SDL(_mixer) + PulseAudio combination might cause
-problems at least on some  GNU/Linux‐systems.   See  for  example
+problems at least on some  GNU/Linux-systems.   See  for  example
 "the  pulseaudio  hack".  For  example, at the time of writing in
-Ubuntu, if your system has SDL with ALSA option (libsdl1.2debian‐
+Ubuntu, if your system has SDL with ALSA option (libsdl1.2debian-
 alsa)  installed,  sounds  might  be crackling, channels will ebb
 away and game will get jammed when you try to  quit  playing.  In
-this  case  removing libsdl1.2debian‐alsa and installing SDL with
-PulseAudio options (libsdl1.2debian‐pulseaudio) instead helped.
+this  case  removing libsdl1.2debian-alsa and installing SDL with
+PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
+
+
+9. SOURCE DIRECTORY TREE
+-------------------------
+
+.
+|-- COPYING                       => License information for crates
+|-- HISTORY                       => Listing of changes between different versions of crates
+|-- INSTALL                       => Installation instructions for all supported platforms
+|-- Makefile.linux                => GNU/Linux makefile
+|-- Makefile.macosx               => Mac OS X  makefile
+|-- Makefile.windows              => Microsoft Windows makefile, mainly for Dev-C++
+|-- README                        => This file
+|-- etc                           => Directory containing miscellaneous useful files
+|   |-- bm.pl                        => Perl script for automatic makefile building
+|   `-- crates.nsi                   => NSIS installer script for the windows installer program
+|-- man                           => Directory containing manual pages for crates
+|   |-- man5                         => Directory for manuals about "File formats and conventions"
+|   `-- man6                         => Directory for manuals about "Games"
+|       `-- crates.6                    => Manual page for the crates program
+|-- resources                     => Directory containing all the resources of the game
+|   |-- config.lua                   => Configuration file for crates
+|   |-- entities                     => Directory containing all the game objects (or crates)
+|   |   |-- automaticsteelbomb.lua
+|   |   |-- block.lua
+|   |   |-- bomb.lua
+|   |   |-- counter.lua
+|   |   |-- exit.lua
+|   |   |-- inversecounter.lua
+|   |   |-- key.lua
+|   |   |-- player.lua
+|   |   |-- pullere.lua
+|   |   |-- pulleren.lua
+|   |   |-- pulleres.lua
+|   |   |-- pullerew.lua
+|   |   |-- pullern.lua
+|   |   |-- pullerns.lua
+|   |   |-- pullernw.lua
+|   |   |-- pullers.lua
+|   |   |-- pullersw.lua
+|   |   |-- pullerw.lua
+|   |   |-- remotecontrol.lua
+|   |   |-- slopeen.lua
+|   |   |-- slopees.lua
+|   |   |-- slopewn.lua
+|   |   |-- slopews.lua
+|   |   |-- steelbomb.lua
+|   |   |-- teleport.lua
+|   |   |-- toggle.lua
+|   |   |-- trigger.lua
+|   |   |-- turnstilee.lua
+|   |   |-- turnstilee1.lua
+|   |   |-- turnstilen.lua
+|   |   |-- turnstilen1.lua
+|   |   |-- turnstiles.lua
+|   |   |-- turnstiles1.lua
+|   |   |-- turnstilew.lua
+|   |   `-- turnstilew1.lua
+|   |-- halloffame                   => Directory containing the Hall of Fame information
+|   |   `-- default                     => Hall of Fame for the default mission
+|   |-- images                       => Directory containing images for icons
+|   |   |-- crateslogo16x16x32.ico
+|   |   |-- crateslogo16x16x4.ico
+|   |   |-- crateslogo16x16x8.ico
+|   |   |-- crateslogo24x24x32.ico
+|   |   |-- crateslogo24x24x4.ico
+|   |   |-- crateslogo24x24x8.ico
+|   |   |-- crateslogo48x48x32.ico
+|   |   |-- crateslogo48x48x4.ico
+|   |   `-- crateslogo48x48x8.ico
+|   |-- meshes                       => Directory containing the 3D models for the game
+|   |   |-- cube.lua
+|   |   |-- plate.lua
+|   |   `-- player.lua
+|   |-- missions                     => Directory containing the different missions of the game
+|   |   `-- default.lua                 => The default mission. New missions can be dropped here.
+|   |-- musics                       => Directory containing musics for the game, if any
+|   |-- sounds                       => Directory containing sound effects for the game
+|   |   |-- back.wav
+|   |   |-- buzz.wav
+|   |   |-- scifi.wav
+|   |   |-- select.wav
+|   |   |-- thump.wav
+|   |   `-- tick.wav
+|   |-- states                       => Directory containing all the different game states
+|   |   |-- about.lua
+|   |   |-- game.lua
+|   |   |-- halloffame.lua
+|   |   |-- manual.lua
+|   |   |-- menu.lua
+|   |   |-- mission.lua
+|   |   |-- missionpassed.lua
+|   |   |-- missionpassedat1go.lua
+|   |   `-- password.lua
+|   `-- textures                     => Directory containing all the textures of the game
+|       |-- bg1024x1024.png
+|       |-- block.png
+|       |-- bomb.png
+|       |-- credits.png
+|       |-- exit.png
+|       |-- font.png
+|       |-- inversecounter.png
+|       |-- key.png
+|       |-- manual1024x1024.png
+|       |-- player.png
+|       |-- pullere.png
+|       |-- pulleren.png
+|       |-- pulleres.png
+|       |-- pullerew.png
+|       |-- pullern.png
+|       |-- pullerns.png
+|       |-- pullernw.png
+|       |-- pullers.png
+|       |-- pullersw.png
+|       |-- pullerw.png
+|       |-- remotecontrol.png
+|       |-- slopeen.png
+|       |-- slopees.png
+|       |-- slopewn.png
+|       |-- slopews.png
+|       |-- steelbomb.png
+|       |-- teleport.png
+|       |-- toggle.png
+|       |-- turnstilee.png
+|       |-- turnstilee1.png
+|       |-- turnstilen.png
+|       |-- turnstilen1.png
+|       |-- turnstiles.png
+|       |-- turnstiles1.png
+|       |-- turnstilew.png
+|       `-- turnstilew1.png
+|-- src                           => Directory containing C source code for the game
+|   |-- main.c
+|   |-- oaudiomanager.c
+|   |-- oaudiomanager.h
+|   |-- obits.h
+|   |-- odir.h
+|   |-- oentity.c
+|   |-- oentity.h
+|   |-- oentitymanager.c
+|   |-- oentitymanager.h
+|   |-- oerror.c
+|   |-- oerror.h
+|   |-- oevent.c
+|   |-- oevent.h
+|   |-- ofile.c
+|   |-- ofile.h
+|   |-- ogame.c
+|   |-- ogame.h
+|   |-- oglapi.c
+|   |-- oglapi.h
+|   |-- olevel.c
+|   |-- olevel.h
+|   |-- oluacapi.c
+|   |-- oluacapi.h
+|   |-- omap.c
+|   |-- omap.h
+|   |-- omeshmanager.c
+|   |-- omeshmanager.h
+|   |-- omessagestack.c
+|   |-- omessagestack.h
+|   |-- omission.c
+|   |-- omission.h
+|   |-- omissionmanager.c
+|   |-- omissionmanager.h
+|   |-- omusicmanager.c
+|   |-- omusicmanager.h
+|   |-- opngtotexture.c
+|   |-- opngtotexture.h
+|   |-- optrmap.c
+|   |-- optrmap.h
+|   |-- optrvector.c
+|   |-- optrvector.h
+|   |-- oscriptmanager.c
+|   |-- oscriptmanager.h
+|   |-- osettings.c
+|   |-- osettings.h
+|   |-- osoundmanager.c
+|   |-- osoundmanager.h
+|   |-- ostate.c
+|   |-- ostate.h
+|   |-- ostring.c
+|   |-- ostring.h
+|   |-- otextmanager.c
+|   |-- otextmanager.h
+|   |-- otexturemanager.c
+|   |-- otexturemanager.h
+|   |-- otimer.h
+|   |-- otypes.h
+|   |-- ovector.c
+|   |-- ovector.h
+|   |-- ovector3.c
+|   |-- ovector3.h
+|   |-- oversion.c
+|   |-- oversion.h
+|   |-- posix                        => Directory containing code for posix-compliant systems
+|   |   |-- linux                       => Directory containing code for GNU/Linux
+|   |   |   `-- oexedirname.c
+|   |   |-- macosx                      => Directory containing code for Mac OS X
+|   |   |   `-- oexedirname.c
+|   |   |-- odir.c
+|   |   `-- otimer.c
+|   |-- utils                        => Directory containing utility programs
+|   |   `-- MakeFont.java
+|   `-- windows                      => Directory containing code for windows-systems
+|       |-- odir.c
+|       `-- otimer.c
+|-- test                          => Directory containing unit tests for crates
+    |-- check_omap.c
+    |-- check_optrmap.c
+    |-- check_optrvector.c
+    |-- check_ostring.c
+    |-- check_ovector.c
+    `-- test.sh
+
+21 directories, 187 files

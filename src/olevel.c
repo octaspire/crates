@@ -46,7 +46,7 @@ void olevel_release(OLevel *level)
   oerror_free(level);
 }
 
-const ouint32 olevel_getnumarguments(const OLevel *level)
+ouint32 olevel_getnumarguments(const OLevel *level)
 {
   return optrvector_length(level->arguments);
 }

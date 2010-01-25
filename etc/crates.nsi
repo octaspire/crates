@@ -1,6 +1,9 @@
 ;NSIS script for crates win32 installer
 ;based on NSIS examples: "Welcome/Finish Page Example" and "Header Bitmap Example"
 ;and also "Reusable installer script"
+;This script assumes that it is run from the etc-directory of the
+;source distribution and that the necessary DLLs for SDL and SDL_mixer
+;are present in the top level source directory (parent of etc).
 
 ;--------------------------------
 ;Include Modern UI
@@ -19,7 +22,7 @@
   ;Name and file
   Name "${prodname}"
   Caption "${prodname}"
-  OutFile "crates-0.0.3-setup.exe"
+  OutFile "crates-0.1.0-setup.exe"
 
   CRCCheck on
   SetCompressor /SOLID lzma
@@ -50,7 +53,7 @@
 ;Pages
 
   !insertmacro MUI_PAGE_WELCOME
-  !insertmacro MUI_PAGE_LICENSE "COPYING"
+  !insertmacro MUI_PAGE_LICENSE "..\COPYING"
   !insertmacro MUI_PAGE_COMPONENTS
   !insertmacro MUI_PAGE_DIRECTORY
   !insertmacro MUI_PAGE_INSTFILES
@@ -75,8 +78,8 @@ Section "Crates game files" SecDummy
   SetOutPath "$INSTDIR"
 
   ;ADD YOUR OWN FILES HERE...
-  File crates.exe
-  File *.dll
+  File ..\crates.exe
+  File ..\*.dll
 
   CreateDirectory "$INSTDIR\resources\"
   CreateDirectory "$INSTDIR\resources\entities"
@@ -90,31 +93,31 @@ Section "Crates game files" SecDummy
   CreateDirectory "$INSTDIR\resources\textures"
 
   SetOutPath $INSTDIR\resources
-  File "resources\config.lua"
+  File "..\resources\config.lua"
 
   SetOutPath $INSTDIR\resources\entities
-  File "resources\entities\*.lua"
+  File "..\resources\entities\*.lua"
 
   SetOutPath $INSTDIR\resources\halloffame
-  File "resources\halloffame\default"
+  File "..\resources\halloffame\default"
 
   SetOutPath $INSTDIR\resources\images
-  File "resources\images\*.ico"
+  File "..\resources\images\*.ico"
 
   SetOutPath $INSTDIR\resources\meshes
-  File "resources\meshes\*.lua"
+  File "..\resources\meshes\*.lua"
 
   SetOutPath $INSTDIR\resources\missions
-  File "resources\missions\default.lua"
+  File "..\resources\missions\default.lua"
 
   SetOutPath $INSTDIR\resources\sounds
-  File "resources\sounds\*.wav"
+  File "..\resources\sounds\*.wav"
 
   SetOutPath $INSTDIR\resources\states
-  File "resources\states\*.lua"
+  File "..\resources\states\*.lua"
 
   SetOutPath $INSTDIR\resources\textures
-  File "resources\textures\*.png"
+  File "..\resources\textures\*.png"
 
 
   ;Store installation folder

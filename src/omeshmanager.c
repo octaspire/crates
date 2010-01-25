@@ -20,7 +20,6 @@
 #include "oerror.h"
 #include <stdlib.h>
 #include "SDL.h"
-#include "SDL_image.h"
 
 void omeshmanager_loadmesh(const ochar *path, const ochar *fileName, void *userdata)
 {

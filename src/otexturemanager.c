@@ -18,37 +18,27 @@
 #include "otexturemanager.h"
 #include "odir.h"
 #include "oerror.h"
+#include "opngtotexture.h"
 #include <stdlib.h>
 #include "SDL.h"
-#include "SDL_image.h"
 
 void otexturemanager_loadtexture(const ochar *path, const ochar *fileName, void *userdata)
 {
   GLuint textureID = 0;
-  oint32 mustlock = 0;
-  SDL_Surface *imagesurface = IMG_Load(path);
+  OTexture *texture = opngtotexture_new(path);
 
-  if (imagesurface)
+  if (texture)
   {
     glGenTextures(1, &textureID);
     omap_put(((OTextureManager*)userdata)->name2textureid, fileName, &textureID);
 
     glBindTexture(GL_TEXTURE_2D, textureID);
-    mustlock = SDL_MUSTLOCK(imagesurface);
-
-    if (mustlock != 0)
-      SDL_LockSurface(imagesurface);
-
-    glTexImage2D(GL_TEXTURE_2D, 0, 3, imagesurface->w, imagesurface->h, 0, GL_RGB, GL_UNSIGNED_BYTE, imagesurface->pixels);
-
-    if (mustlock != 0)
-      SDL_UnlockSurface(imagesurface);
-
+    glTexImage2D(GL_TEXTURE_2D, 0, texture->internalformat, texture->width, texture->height, 0, texture->format, GL_UNSIGNED_BYTE, texture->data);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-    SDL_FreeSurface(imagesurface);
-    imagesurface = 0;
+    opngtotexture_release(texture);
+    texture = 0;
   }
 }
 

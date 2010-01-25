@@ -25,10 +25,9 @@
 #include <unistd.h>
 
 ochar odir_directoryseparator = '/';
-#define ODIR_EXEDIRNAMEMAXLEN 2048
-static ochar  odir_exedirname[ODIR_EXEDIRNAMEMAXLEN];
-static ochar* odir_basename = 0;
-static oint32 odir_basenamemaxlen = 0;
+ochar  odir_exedirname[ODIR_EXEDIRNAMEMAXLEN];
+ochar* odir_basename = 0;
+oint32 odir_basenamemaxlen = 0;
 
 size_t odir_numentries(const ochar *directoryname)
 {
@@ -97,37 +96,6 @@ ochar* odir_convertpath(ochar *path)
 ochar odir_getdirectoryseparator()
 {
   return odir_directoryseparator;
-}
-
-/* The idea behind this function is based on public domain code written by Nicolai Haehnle.
-   The original code was found from http://www.flipcode.org/archives/getexename.c
-   This is not the original version, but modified one. */
-void odir_buildexedirname(void)
-{
-  ochar linkname[64];
-  oint32 ret;
-  pid_t pid = getpid();
-
-  if (snprintf(linkname, sizeof(linkname), "/proc/%i/exe", pid) < 0)
-    oerror_fatal("cannot build exedirname; building linkname for pid %d failed", pid);
-
-  ret = readlink(linkname, odir_exedirname, ODIR_EXEDIRNAMEMAXLEN);
-
-  if (ret == -1)
-    oerror_fatal("cannot build exedirname; readlink failed:");
-
-  if (ret >= ODIR_EXEDIRNAMEMAXLEN)
-    oerror_fatal("cannot build exedirname; readlink failed because buffer is too short");
-
-  odir_exedirname[ret] = '\0';
-  odir_basename = strrchr(odir_exedirname, odir_getdirectoryseparator());
-
-  if (odir_basename && odir_basename != (odir_exedirname + (ODIR_EXEDIRNAMEMAXLEN - 1)))
-  {
-    odir_basename++;
-    *odir_basename = '\0';
-    odir_basenamemaxlen = (odir_exedirname + (ODIR_EXEDIRNAMEMAXLEN - 1)) - odir_basename;
-  }
 }
 
 ochar *odir_getexedirname(void)

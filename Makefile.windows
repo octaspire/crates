@@ -1,371 +1,135 @@
 #
 # Makefile for windows-systems.
-# This Makefile was build automatically with perl-script: bm.pl.
-# There might be other Makefiles available for different systems.
+# This makefile was build automatically with perl-script "bm.pl".
+# There might be other makefiles available for different systems.
+# This makefile is intended mainly for Dev-C++. Usage: this makefile
+# assumes that Dev-C++ is installed to C:\Dev-Cpp, and that SDL, SDL_mixer,
+# lua, libpng and zlib are also in the directories named in the makefile.
+# Make sure that C:\Dev-Cpp\bin is in PATH. If not, it can be added by saying:
+# PATH=%PATH%;C:\Dev-Cpp\bin
+# Build first zlib and then libpng by using the specific makefiles for those
+# libraries in the zlib and libpng-directories. After that you can build
+# crates with this makefile.
 #
 
-CC = gcc
-OBJS = src/main.o src/oaudiomanager.o src/oentity.o src/oentitymanager.o src/oerror.o src/oevent.o src/ofile.o src/ogame.o src/oglapi.o src/olevel.o src/oluacapi.o src/omap.o src/omeshmanager.o src/omessagestack.o src/omission.o src/omissionmanager.o src/omusicmanager.o src/optrmap.o src/optrvector.o src/oscriptmanager.o src/osettings.o src/osoundmanager.o src/ostate.o src/ostring.o src/otextmanager.o src/otexturemanager.o src/ovector.o src/ovector3.o src/oversion.o src/windows/odir.o src/windows/otimer.o 
-LUAIPATH = /usr/include/lua5.1
-LUALPATH = /usr/lib/
-CFLAGS  = -g -Wall -ansi -pedantic `sdl-config --cflags` -I $(LUAIPATH)
-LFLAGS = `sdl-config --libs` -lSDL_image -lSDL_mixer -lGL -lGLU -L $(LUALPATH) -llua5.1
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  =
+OBJ  = src/main.o src/oaudiomanager.o src/oentity.o src/oentitymanager.o src/oerror.o src/oevent.o src/ofile.o src/ogame.o src/oglapi.o src/olevel.o src/oluacapi.o src/omap.o src/omeshmanager.o src/omessagestack.o src/omission.o src/omissionmanager.o src/omusicmanager.o src/opngtotexture.o src/optrmap.o src/optrvector.o src/oscriptmanager.o src/osettings.o src/osoundmanager.o src/ostate.o src/ostring.o src/otextmanager.o src/otexturemanager.o src/ovector.o src/ovector3.o src/oversion.o src/windows/odir.o src/windows/otimer.o $(RES)
+LINKOBJ  = src/main.o src/oaudiomanager.o src/oentity.o src/oentitymanager.o src/oerror.o src/oevent.o src/ofile.o src/ogame.o src/oglapi.o src/olevel.o src/oluacapi.o src/omap.o src/omeshmanager.o src/omessagestack.o src/omission.o src/omissionmanager.o src/omusicmanager.o src/opngtotexture.o src/optrmap.o src/optrvector.o src/oscriptmanager.o src/osettings.o src/osoundmanager.o src/ostate.o src/ostring.o src/otextmanager.o src/otexturemanager.o src/ovector.o src/ovector3.o src/oversion.o src/windows/odir.o src/windows/otimer.o $(RES)
+LIBS =  -L"C:/Dev-Cpp/lib" -L"C:/SDL-1.2.14/lib" -L"C:/SDL_mixer-1.2.11/lib" -L"C:/lua-5.1.4/lib" -L"C:/libpng" -L"C:/zlib" -mwindows -lmingw32 -lSDLmain -lSDL -lSDL_mixer -llua -lopengl32 -lglu32 -lpng -lz
+INCS =  -I"C:/Dev-Cpp/include"  -I"C:/SDL-1.2.14/include/SDL"  -I"C:/SDL_mixer-1.2.11/include"  -I"C:/lua-5.1.4/include"  -I"C:/libpng"  -I"C:/zlib"
+CXXINCS =  -I"C:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Dev-Cpp/include/c++/3.4.2"  -I"C:/Dev-Cpp/include"
+BIN  = crates.exe
+CXXFLAGS = $(CXXINCS)   -w
+CFLAGS = $(INCS)   -w
+RM = rm -f
 
-crates: $(OBJS)
-	$(CC) -o crates $(OBJS) $(LFLAGS)
+.PHONY: all all-before all-after clean clean-custom
 
-main.o: src/main.c src/odir.h src/otypes.h src/ogame.h \
- /usr/include/SDL/SDL.h /usr/include/SDL/SDL_main.h \
- /usr/include/SDL/SDL_stdinc.h /usr/include/SDL/SDL_config.h \
- /usr/include/SDL/SDL_platform.h /usr/include/SDL/begin_code.h \
- /usr/include/SDL/close_code.h /usr/include/SDL/SDL_audio.h \
- /usr/include/SDL/SDL_error.h /usr/include/SDL/SDL_endian.h \
- /usr/include/SDL/SDL_mutex.h /usr/include/SDL/SDL_thread.h \
- /usr/include/SDL/SDL_rwops.h /usr/include/SDL/SDL_cdrom.h \
- /usr/include/SDL/SDL_cpuinfo.h /usr/include/SDL/SDL_events.h \
- /usr/include/SDL/SDL_active.h /usr/include/SDL/SDL_keyboard.h \
- /usr/include/SDL/SDL_keysym.h /usr/include/SDL/SDL_mouse.h \
- /usr/include/SDL/SDL_video.h /usr/include/SDL/SDL_joystick.h \
- /usr/include/SDL/SDL_quit.h /usr/include/SDL/SDL_loadso.h \
- /usr/include/SDL/SDL_timer.h /usr/include/SDL/SDL_version.h \
- /usr/include/SDL/SDL_image.h /usr/include/SDL/SDL.h src/oentity.h \
- src/ovector3.h src/oscriptmanager.h /usr/include/lua5.1/lua.h \
- /usr/include/lua5.1/luaconf.h /usr/include/lua5.1/lauxlib.h \
- /usr/include/lua5.1/lua.h /usr/include/lua5.1/lualib.h src/optrvector.h \
- src/ostring.h src/ovector.h src/oevent.h /usr/include/SDL/SDL_opengl.h \
- src/oerror.h src/otimer.h src/ostate.h src/omessagestack.h \
- src/otextmanager.h src/otexturemanager.h src/omap.h src/omeshmanager.h \
- src/omissionmanager.h src/omission.h src/olevel.h src/osettings.h \
- src/oaudiomanager.h src/osoundmanager.h src/optrmap.h \
- /usr/include/SDL/SDL_mixer.h /usr/include/SDL/SDL_types.h \
- src/omusicmanager.h src/oentitymanager.h src/oversion.h
-	$(CC) -c -o $@ $(CFLAGS) $<
+all: all-before crates.exe all-after
 
-oaudiomanager.o: src/oaudiomanager.c src/oaudiomanager.h \
- src/osoundmanager.h src/osettings.h src/oscriptmanager.h \
- /usr/include/lua5.1/lua.h /usr/include/lua5.1/luaconf.h \
- /usr/include/lua5.1/lauxlib.h /usr/include/lua5.1/lua.h \
- /usr/include/lua5.1/lualib.h src/otypes.h src/optrvector.h src/ostring.h \
- src/ovector.h src/optrmap.h /usr/include/SDL/SDL_mixer.h \
- /usr/include/SDL/SDL_types.h /usr/include/SDL/SDL_stdinc.h \
- /usr/include/SDL/SDL_config.h /usr/include/SDL/SDL_platform.h \
- /usr/include/SDL/begin_code.h /usr/include/SDL/close_code.h \
- /usr/include/SDL/SDL_rwops.h /usr/include/SDL/SDL_error.h \
- /usr/include/SDL/SDL_audio.h /usr/include/SDL/SDL_endian.h \
- /usr/include/SDL/SDL_mutex.h /usr/include/SDL/SDL_thread.h \
- /usr/include/SDL/SDL_version.h src/omusicmanager.h src/oerror.h
-	$(CC) -c -o $@ $(CFLAGS) $<
 
-oentity.o: src/oentity.c src/obits.h src/oentity.h src/ovector3.h \
- src/otypes.h src/oscriptmanager.h /usr/include/lua5.1/lua.h \
- /usr/include/lua5.1/luaconf.h /usr/include/lua5.1/lauxlib.h \
- /usr/include/lua5.1/lua.h /usr/include/lua5.1/lualib.h src/optrvector.h \
- src/ostring.h src/ovector.h src/oevent.h /usr/include/SDL/SDL_opengl.h \
- /usr/include/SDL/SDL_config.h /usr/include/SDL/SDL_platform.h \
- src/oerror.h src/odir.h src/ostate.h src/omessagestack.h \
- src/otextmanager.h src/otexturemanager.h src/omap.h
-	$(CC) -c -o $@ $(CFLAGS) $<
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
 
-oentitymanager.o: src/oentitymanager.c src/oentitymanager.h src/oentity.h \
- src/ovector3.h src/otypes.h src/oscriptmanager.h \
- /usr/include/lua5.1/lua.h /usr/include/lua5.1/luaconf.h \
- /usr/include/lua5.1/lauxlib.h /usr/include/lua5.1/lua.h \
- /usr/include/lua5.1/lualib.h src/optrvector.h src/ostring.h \
- src/ovector.h src/oevent.h /usr/include/SDL/SDL_opengl.h \
- /usr/include/SDL/SDL_config.h /usr/include/SDL/SDL_platform.h \
- src/optrmap.h src/oerror.h src/odir.h src/ofile.h
-	$(CC) -c -o $@ $(CFLAGS) $<
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o "crates.exe" $(LIBS)
 
-oerror.o: src/oerror.c src/oerror.h src/otypes.h
-	$(CC) -c -o $@ $(CFLAGS) $<
+src/main.o: src/main.c
+	$(CC) -c src/main.c -o src/main.o $(CFLAGS)
 
-oevent.o: src/oevent.c src/oevent.h src/otypes.h
-	$(CC) -c -o $@ $(CFLAGS) $<
+src/oaudiomanager.o: src/oaudiomanager.c
+	$(CC) -c src/oaudiomanager.c -o src/oaudiomanager.o $(CFLAGS)
 
-ofile.o: src/ofile.c src/ofile.h src/otypes.h src/ostring.h src/ovector.h
-	$(CC) -c -o $@ $(CFLAGS) $<
+src/oentity.o: src/oentity.c
+	$(CC) -c src/oentity.c -o src/oentity.o $(CFLAGS)
 
-ogame.o: src/ogame.c src/ogame.h /usr/include/SDL/SDL.h \
- /usr/include/SDL/SDL_main.h /usr/include/SDL/SDL_stdinc.h \
- /usr/include/SDL/SDL_config.h /usr/include/SDL/SDL_platform.h \
- /usr/include/SDL/begin_code.h /usr/include/SDL/close_code.h \
- /usr/include/SDL/SDL_audio.h /usr/include/SDL/SDL_error.h \
- /usr/include/SDL/SDL_endian.h /usr/include/SDL/SDL_mutex.h \
- /usr/include/SDL/SDL_thread.h /usr/include/SDL/SDL_rwops.h \
- /usr/include/SDL/SDL_cdrom.h /usr/include/SDL/SDL_cpuinfo.h \
- /usr/include/SDL/SDL_events.h /usr/include/SDL/SDL_active.h \
- /usr/include/SDL/SDL_keyboard.h /usr/include/SDL/SDL_keysym.h \
- /usr/include/SDL/SDL_mouse.h /usr/include/SDL/SDL_video.h \
- /usr/include/SDL/SDL_joystick.h /usr/include/SDL/SDL_quit.h \
- /usr/include/SDL/SDL_loadso.h /usr/include/SDL/SDL_timer.h \
- /usr/include/SDL/SDL_version.h /usr/include/SDL/SDL_image.h \
- /usr/include/SDL/SDL.h src/oentity.h src/ovector3.h src/otypes.h \
- src/oscriptmanager.h /usr/include/lua5.1/lua.h \
- /usr/include/lua5.1/luaconf.h /usr/include/lua5.1/lauxlib.h \
- /usr/include/lua5.1/lua.h /usr/include/lua5.1/lualib.h src/optrvector.h \
- src/ostring.h src/ovector.h src/oevent.h /usr/include/SDL/SDL_opengl.h \
- src/oerror.h src/otimer.h src/ostate.h src/omessagestack.h \
- src/otextmanager.h src/otexturemanager.h src/omap.h src/omeshmanager.h \
- src/omissionmanager.h src/omission.h src/olevel.h src/osettings.h \
- src/oaudiomanager.h src/osoundmanager.h src/optrmap.h \
- /usr/include/SDL/SDL_mixer.h /usr/include/SDL/SDL_types.h \
- src/omusicmanager.h src/oentitymanager.h src/odir.h src/oluacapi.h \
- src/oglapi.h src/oversion.h
-	$(CC) -c -o $@ $(CFLAGS) $<
+src/oentitymanager.o: src/oentitymanager.c
+	$(CC) -c src/oentitymanager.c -o src/oentitymanager.o $(CFLAGS)
 
-oglapi.o: src/oglapi.c src/oglapi.h src/ogame.h /usr/include/SDL/SDL.h \
- /usr/include/SDL/SDL_main.h /usr/include/SDL/SDL_stdinc.h \
- /usr/include/SDL/SDL_config.h /usr/include/SDL/SDL_platform.h \
- /usr/include/SDL/begin_code.h /usr/include/SDL/close_code.h \
- /usr/include/SDL/SDL_audio.h /usr/include/SDL/SDL_error.h \
- /usr/include/SDL/SDL_endian.h /usr/include/SDL/SDL_mutex.h \
- /usr/include/SDL/SDL_thread.h /usr/include/SDL/SDL_rwops.h \
- /usr/include/SDL/SDL_cdrom.h /usr/include/SDL/SDL_cpuinfo.h \
- /usr/include/SDL/SDL_events.h /usr/include/SDL/SDL_active.h \
- /usr/include/SDL/SDL_keyboard.h /usr/include/SDL/SDL_keysym.h \
- /usr/include/SDL/SDL_mouse.h /usr/include/SDL/SDL_video.h \
- /usr/include/SDL/SDL_joystick.h /usr/include/SDL/SDL_quit.h \
- /usr/include/SDL/SDL_loadso.h /usr/include/SDL/SDL_timer.h \
- /usr/include/SDL/SDL_version.h /usr/include/SDL/SDL_image.h \
- /usr/include/SDL/SDL.h src/oentity.h src/ovector3.h src/otypes.h \
- src/oscriptmanager.h /usr/include/lua5.1/lua.h \
- /usr/include/lua5.1/luaconf.h /usr/include/lua5.1/lauxlib.h \
- /usr/include/lua5.1/lua.h /usr/include/lua5.1/lualib.h src/optrvector.h \
- src/ostring.h src/ovector.h src/oevent.h /usr/include/SDL/SDL_opengl.h \
- src/oerror.h src/otimer.h src/ostate.h src/omessagestack.h \
- src/otextmanager.h src/otexturemanager.h src/omap.h src/omeshmanager.h \
- src/omissionmanager.h src/omission.h src/olevel.h src/osettings.h \
- src/oaudiomanager.h src/osoundmanager.h src/optrmap.h \
- /usr/include/SDL/SDL_mixer.h /usr/include/SDL/SDL_types.h \
- src/omusicmanager.h src/oentitymanager.h
-	$(CC) -c -o $@ $(CFLAGS) $<
+src/oerror.o: src/oerror.c
+	$(CC) -c src/oerror.c -o src/oerror.o $(CFLAGS)
 
-olevel.o: src/olevel.c src/olevel.h src/optrvector.h src/otypes.h \
- src/ostring.h src/ovector.h src/oerror.h
-	$(CC) -c -o $@ $(CFLAGS) $<
+src/oevent.o: src/oevent.c
+	$(CC) -c src/oevent.c -o src/oevent.o $(CFLAGS)
 
-oluacapi.o: src/oluacapi.c src/oluacapi.h /usr/include/lua5.1/lua.h \
- /usr/include/lua5.1/luaconf.h src/ogame.h /usr/include/SDL/SDL.h \
- /usr/include/SDL/SDL_main.h /usr/include/SDL/SDL_stdinc.h \
- /usr/include/SDL/SDL_config.h /usr/include/SDL/SDL_platform.h \
- /usr/include/SDL/begin_code.h /usr/include/SDL/close_code.h \
- /usr/include/SDL/SDL_audio.h /usr/include/SDL/SDL_error.h \
- /usr/include/SDL/SDL_endian.h /usr/include/SDL/SDL_mutex.h \
- /usr/include/SDL/SDL_thread.h /usr/include/SDL/SDL_rwops.h \
- /usr/include/SDL/SDL_cdrom.h /usr/include/SDL/SDL_cpuinfo.h \
- /usr/include/SDL/SDL_events.h /usr/include/SDL/SDL_active.h \
- /usr/include/SDL/SDL_keyboard.h /usr/include/SDL/SDL_keysym.h \
- /usr/include/SDL/SDL_mouse.h /usr/include/SDL/SDL_video.h \
- /usr/include/SDL/SDL_joystick.h /usr/include/SDL/SDL_quit.h \
- /usr/include/SDL/SDL_loadso.h /usr/include/SDL/SDL_timer.h \
- /usr/include/SDL/SDL_version.h /usr/include/SDL/SDL_image.h \
- /usr/include/SDL/SDL.h src/oentity.h src/ovector3.h src/otypes.h \
- src/oscriptmanager.h /usr/include/lua5.1/lauxlib.h \
- /usr/include/lua5.1/lua.h /usr/include/lua5.1/lualib.h src/optrvector.h \
- src/ostring.h src/ovector.h src/oevent.h /usr/include/SDL/SDL_opengl.h \
- src/oerror.h src/otimer.h src/ostate.h src/omessagestack.h \
- src/otextmanager.h src/otexturemanager.h src/omap.h src/omeshmanager.h \
- src/omissionmanager.h src/omission.h src/olevel.h src/osettings.h \
- src/oaudiomanager.h src/osoundmanager.h src/optrmap.h \
- /usr/include/SDL/SDL_mixer.h /usr/include/SDL/SDL_types.h \
- src/omusicmanager.h src/oentitymanager.h src/odir.h src/oglapi.h \
- src/oversion.h
-	$(CC) -c -o $@ $(CFLAGS) $<
+src/ofile.o: src/ofile.c
+	$(CC) -c src/ofile.c -o src/ofile.o $(CFLAGS)
 
-omap.o: src/omap.c src/omap.h src/otypes.h src/optrvector.h src/ovector.h \
- src/oerror.h src/ostring.h
-	$(CC) -c -o $@ $(CFLAGS) $<
+src/ogame.o: src/ogame.c
+	$(CC) -c src/ogame.c -o src/ogame.o $(CFLAGS)
 
-omeshmanager.o: src/omeshmanager.c src/omeshmanager.h \
- src/oscriptmanager.h /usr/include/lua5.1/lua.h \
- /usr/include/lua5.1/luaconf.h /usr/include/lua5.1/lauxlib.h \
- /usr/include/lua5.1/lua.h /usr/include/lua5.1/lualib.h src/otypes.h \
- src/optrvector.h src/ostring.h src/ovector.h src/omap.h \
- /usr/include/SDL/SDL_opengl.h /usr/include/SDL/SDL_config.h \
- /usr/include/SDL/SDL_platform.h src/odir.h src/oerror.h \
- /usr/include/SDL/SDL.h /usr/include/SDL/SDL_main.h \
- /usr/include/SDL/SDL_stdinc.h /usr/include/SDL/begin_code.h \
- /usr/include/SDL/close_code.h /usr/include/SDL/SDL_audio.h \
- /usr/include/SDL/SDL_error.h /usr/include/SDL/SDL_endian.h \
- /usr/include/SDL/SDL_mutex.h /usr/include/SDL/SDL_thread.h \
- /usr/include/SDL/SDL_rwops.h /usr/include/SDL/SDL_cdrom.h \
- /usr/include/SDL/SDL_cpuinfo.h /usr/include/SDL/SDL_events.h \
- /usr/include/SDL/SDL_active.h /usr/include/SDL/SDL_keyboard.h \
- /usr/include/SDL/SDL_keysym.h /usr/include/SDL/SDL_mouse.h \
- /usr/include/SDL/SDL_video.h /usr/include/SDL/SDL_joystick.h \
- /usr/include/SDL/SDL_quit.h /usr/include/SDL/SDL_loadso.h \
- /usr/include/SDL/SDL_timer.h /usr/include/SDL/SDL_version.h \
- /usr/include/SDL/SDL_image.h /usr/include/SDL/SDL.h
-	$(CC) -c -o $@ $(CFLAGS) $<
+src/oglapi.o: src/oglapi.c
+	$(CC) -c src/oglapi.c -o src/oglapi.o $(CFLAGS)
 
-omessagestack.o: src/omessagestack.c src/omessagestack.h \
- src/otextmanager.h src/ostring.h src/otypes.h src/ovector.h \
- src/otexturemanager.h src/omap.h src/optrvector.h \
- /usr/include/SDL/SDL_opengl.h /usr/include/SDL/SDL_config.h \
- /usr/include/SDL/SDL_platform.h src/oerror.h
-	$(CC) -c -o $@ $(CFLAGS) $<
+src/olevel.o: src/olevel.c
+	$(CC) -c src/olevel.c -o src/olevel.o $(CFLAGS)
 
-omission.o: src/omission.c src/omission.h src/olevel.h src/optrvector.h \
- src/otypes.h src/ostring.h src/ovector.h src/oerror.h src/ofile.h \
- src/ogame.h /usr/include/SDL/SDL.h /usr/include/SDL/SDL_main.h \
- /usr/include/SDL/SDL_stdinc.h /usr/include/SDL/SDL_config.h \
- /usr/include/SDL/SDL_platform.h /usr/include/SDL/begin_code.h \
- /usr/include/SDL/close_code.h /usr/include/SDL/SDL_audio.h \
- /usr/include/SDL/SDL_error.h /usr/include/SDL/SDL_endian.h \
- /usr/include/SDL/SDL_mutex.h /usr/include/SDL/SDL_thread.h \
- /usr/include/SDL/SDL_rwops.h /usr/include/SDL/SDL_cdrom.h \
- /usr/include/SDL/SDL_cpuinfo.h /usr/include/SDL/SDL_events.h \
- /usr/include/SDL/SDL_active.h /usr/include/SDL/SDL_keyboard.h \
- /usr/include/SDL/SDL_keysym.h /usr/include/SDL/SDL_mouse.h \
- /usr/include/SDL/SDL_video.h /usr/include/SDL/SDL_joystick.h \
- /usr/include/SDL/SDL_quit.h /usr/include/SDL/SDL_loadso.h \
- /usr/include/SDL/SDL_timer.h /usr/include/SDL/SDL_version.h \
- /usr/include/SDL/SDL_image.h /usr/include/SDL/SDL.h src/oentity.h \
- src/ovector3.h src/oscriptmanager.h /usr/include/lua5.1/lua.h \
- /usr/include/lua5.1/luaconf.h /usr/include/lua5.1/lauxlib.h \
- /usr/include/lua5.1/lua.h /usr/include/lua5.1/lualib.h src/oevent.h \
- /usr/include/SDL/SDL_opengl.h src/otimer.h src/ostate.h \
- src/omessagestack.h src/otextmanager.h src/otexturemanager.h src/omap.h \
- src/omeshmanager.h src/omissionmanager.h src/osettings.h \
- src/oaudiomanager.h src/osoundmanager.h src/optrmap.h \
- /usr/include/SDL/SDL_mixer.h /usr/include/SDL/SDL_types.h \
- src/omusicmanager.h src/oentitymanager.h
-	$(CC) -c -o $@ $(CFLAGS) $<
+src/oluacapi.o: src/oluacapi.c
+	$(CC) -c src/oluacapi.c -o src/oluacapi.o $(CFLAGS)
 
-omissionmanager.o: src/omissionmanager.c src/omissionmanager.h \
- src/omission.h src/olevel.h src/optrvector.h src/otypes.h src/ostring.h \
- src/ovector.h src/oerror.h src/odir.h
-	$(CC) -c -o $@ $(CFLAGS) $<
+src/omap.o: src/omap.c
+	$(CC) -c src/omap.c -o src/omap.o $(CFLAGS)
 
-omusicmanager.o: src/omusicmanager.c src/omusicmanager.h src/osettings.h \
- src/oscriptmanager.h /usr/include/lua5.1/lua.h \
- /usr/include/lua5.1/luaconf.h /usr/include/lua5.1/lauxlib.h \
- /usr/include/lua5.1/lua.h /usr/include/lua5.1/lualib.h src/otypes.h \
- src/optrvector.h src/ostring.h src/ovector.h src/optrmap.h \
- /usr/include/SDL/SDL_mixer.h /usr/include/SDL/SDL_types.h \
- /usr/include/SDL/SDL_stdinc.h /usr/include/SDL/SDL_config.h \
- /usr/include/SDL/SDL_platform.h /usr/include/SDL/begin_code.h \
- /usr/include/SDL/close_code.h /usr/include/SDL/SDL_rwops.h \
- /usr/include/SDL/SDL_error.h /usr/include/SDL/SDL_audio.h \
- /usr/include/SDL/SDL_endian.h /usr/include/SDL/SDL_mutex.h \
- /usr/include/SDL/SDL_thread.h /usr/include/SDL/SDL_version.h src/odir.h \
- src/oerror.h
-	$(CC) -c -o $@ $(CFLAGS) $<
+src/omeshmanager.o: src/omeshmanager.c
+	$(CC) -c src/omeshmanager.c -o src/omeshmanager.o $(CFLAGS)
 
-optrmap.o: src/optrmap.c src/optrmap.h src/otypes.h src/optrvector.h \
- src/oerror.h src/ostring.h src/ovector.h
-	$(CC) -c -o $@ $(CFLAGS) $<
+src/omessagestack.o: src/omessagestack.c
+	$(CC) -c src/omessagestack.c -o src/omessagestack.o $(CFLAGS)
 
-optrvector.o: src/optrvector.c src/optrvector.h src/otypes.h src/oerror.h
-	$(CC) -c -o $@ $(CFLAGS) $<
+src/omission.o: src/omission.c
+	$(CC) -c src/omission.c -o src/omission.o $(CFLAGS)
 
-oscriptmanager.o: src/oscriptmanager.c src/oscriptmanager.h \
- /usr/include/lua5.1/lua.h /usr/include/lua5.1/luaconf.h \
- /usr/include/lua5.1/lauxlib.h /usr/include/lua5.1/lua.h \
- /usr/include/lua5.1/lualib.h src/otypes.h src/optrvector.h src/oerror.h \
- src/ostring.h src/ovector.h
-	$(CC) -c -o $@ $(CFLAGS) $<
+src/omissionmanager.o: src/omissionmanager.c
+	$(CC) -c src/omissionmanager.c -o src/omissionmanager.o $(CFLAGS)
 
-osettings.o: src/osettings.c src/osettings.h src/oscriptmanager.h \
- /usr/include/lua5.1/lua.h /usr/include/lua5.1/luaconf.h \
- /usr/include/lua5.1/lauxlib.h /usr/include/lua5.1/lua.h \
- /usr/include/lua5.1/lualib.h src/otypes.h src/optrvector.h src/oerror.h \
- src/odir.h
-	$(CC) -c -o $@ $(CFLAGS) $<
+src/omusicmanager.o: src/omusicmanager.c
+	$(CC) -c src/omusicmanager.c -o src/omusicmanager.o $(CFLAGS)
 
-osoundmanager.o: src/osoundmanager.c src/osoundmanager.h src/osettings.h \
- src/oscriptmanager.h /usr/include/lua5.1/lua.h \
- /usr/include/lua5.1/luaconf.h /usr/include/lua5.1/lauxlib.h \
- /usr/include/lua5.1/lua.h /usr/include/lua5.1/lualib.h src/otypes.h \
- src/optrvector.h src/ostring.h src/ovector.h src/optrmap.h \
- /usr/include/SDL/SDL_mixer.h /usr/include/SDL/SDL_types.h \
- /usr/include/SDL/SDL_stdinc.h /usr/include/SDL/SDL_config.h \
- /usr/include/SDL/SDL_platform.h /usr/include/SDL/begin_code.h \
- /usr/include/SDL/close_code.h /usr/include/SDL/SDL_rwops.h \
- /usr/include/SDL/SDL_error.h /usr/include/SDL/SDL_audio.h \
- /usr/include/SDL/SDL_endian.h /usr/include/SDL/SDL_mutex.h \
- /usr/include/SDL/SDL_thread.h /usr/include/SDL/SDL_version.h src/odir.h \
- src/oerror.h
-	$(CC) -c -o $@ $(CFLAGS) $<
+src/opngtotexture.o: src/opngtotexture.c
+	$(CC) -c src/opngtotexture.c -o src/opngtotexture.o $(CFLAGS)
 
-ostate.o: src/ostate.c src/ostate.h src/oentity.h src/ovector3.h \
- src/otypes.h src/oscriptmanager.h /usr/include/lua5.1/lua.h \
- /usr/include/lua5.1/luaconf.h /usr/include/lua5.1/lauxlib.h \
- /usr/include/lua5.1/lua.h /usr/include/lua5.1/lualib.h src/optrvector.h \
- src/ostring.h src/ovector.h src/oevent.h /usr/include/SDL/SDL_opengl.h \
- /usr/include/SDL/SDL_config.h /usr/include/SDL/SDL_platform.h \
- src/omessagestack.h src/otextmanager.h src/otexturemanager.h src/omap.h \
- src/oerror.h src/odir.h
-	$(CC) -c -o $@ $(CFLAGS) $<
+src/optrmap.o: src/optrmap.c
+	$(CC) -c src/optrmap.c -o src/optrmap.o $(CFLAGS)
 
-ostring.o: src/ostring.c src/ostring.h src/otypes.h src/ovector.h \
- src/oerror.h
-	$(CC) -c -o $@ $(CFLAGS) $<
+src/optrvector.o: src/optrvector.c
+	$(CC) -c src/optrvector.c -o src/optrvector.o $(CFLAGS)
 
-otextmanager.o: src/otextmanager.c src/otextmanager.h src/ostring.h \
- src/otypes.h src/ovector.h src/otexturemanager.h src/omap.h \
- src/optrvector.h /usr/include/SDL/SDL_opengl.h \
- /usr/include/SDL/SDL_config.h /usr/include/SDL/SDL_platform.h \
- src/oglapi.h src/ogame.h /usr/include/SDL/SDL.h \
- /usr/include/SDL/SDL_main.h /usr/include/SDL/SDL_stdinc.h \
- /usr/include/SDL/begin_code.h /usr/include/SDL/close_code.h \
- /usr/include/SDL/SDL_audio.h /usr/include/SDL/SDL_error.h \
- /usr/include/SDL/SDL_endian.h /usr/include/SDL/SDL_mutex.h \
- /usr/include/SDL/SDL_thread.h /usr/include/SDL/SDL_rwops.h \
- /usr/include/SDL/SDL_cdrom.h /usr/include/SDL/SDL_cpuinfo.h \
- /usr/include/SDL/SDL_events.h /usr/include/SDL/SDL_active.h \
- /usr/include/SDL/SDL_keyboard.h /usr/include/SDL/SDL_keysym.h \
- /usr/include/SDL/SDL_mouse.h /usr/include/SDL/SDL_video.h \
- /usr/include/SDL/SDL_joystick.h /usr/include/SDL/SDL_quit.h \
- /usr/include/SDL/SDL_loadso.h /usr/include/SDL/SDL_timer.h \
- /usr/include/SDL/SDL_version.h /usr/include/SDL/SDL_image.h \
- /usr/include/SDL/SDL.h src/oentity.h src/ovector3.h src/oscriptmanager.h \
- /usr/include/lua5.1/lua.h /usr/include/lua5.1/luaconf.h \
- /usr/include/lua5.1/lauxlib.h /usr/include/lua5.1/lua.h \
- /usr/include/lua5.1/lualib.h src/oevent.h src/oerror.h src/otimer.h \
- src/ostate.h src/omessagestack.h src/omeshmanager.h \
- src/omissionmanager.h src/omission.h src/olevel.h src/osettings.h \
- src/oaudiomanager.h src/osoundmanager.h src/optrmap.h \
- /usr/include/SDL/SDL_mixer.h /usr/include/SDL/SDL_types.h \
- src/omusicmanager.h src/oentitymanager.h
-	$(CC) -c -o $@ $(CFLAGS) $<
+src/oscriptmanager.o: src/oscriptmanager.c
+	$(CC) -c src/oscriptmanager.c -o src/oscriptmanager.o $(CFLAGS)
 
-otexturemanager.o: src/otexturemanager.c src/otexturemanager.h \
- src/otypes.h src/ostring.h src/ovector.h src/omap.h src/optrvector.h \
- /usr/include/SDL/SDL_opengl.h /usr/include/SDL/SDL_config.h \
- /usr/include/SDL/SDL_platform.h src/odir.h src/oerror.h \
- /usr/include/SDL/SDL.h /usr/include/SDL/SDL_main.h \
- /usr/include/SDL/SDL_stdinc.h /usr/include/SDL/begin_code.h \
- /usr/include/SDL/close_code.h /usr/include/SDL/SDL_audio.h \
- /usr/include/SDL/SDL_error.h /usr/include/SDL/SDL_endian.h \
- /usr/include/SDL/SDL_mutex.h /usr/include/SDL/SDL_thread.h \
- /usr/include/SDL/SDL_rwops.h /usr/include/SDL/SDL_cdrom.h \
- /usr/include/SDL/SDL_cpuinfo.h /usr/include/SDL/SDL_events.h \
- /usr/include/SDL/SDL_active.h /usr/include/SDL/SDL_keyboard.h \
- /usr/include/SDL/SDL_keysym.h /usr/include/SDL/SDL_mouse.h \
- /usr/include/SDL/SDL_video.h /usr/include/SDL/SDL_joystick.h \
- /usr/include/SDL/SDL_quit.h /usr/include/SDL/SDL_loadso.h \
- /usr/include/SDL/SDL_timer.h /usr/include/SDL/SDL_version.h \
- /usr/include/SDL/SDL_image.h /usr/include/SDL/SDL.h
-	$(CC) -c -o $@ $(CFLAGS) $<
+src/osettings.o: src/osettings.c
+	$(CC) -c src/osettings.c -o src/osettings.o $(CFLAGS)
 
-ovector.o: src/ovector.c src/ovector.h src/otypes.h src/oerror.h
-	$(CC) -c -o $@ $(CFLAGS) $<
+src/osoundmanager.o: src/osoundmanager.c
+	$(CC) -c src/osoundmanager.c -o src/osoundmanager.o $(CFLAGS)
 
-ovector3.o: src/ovector3.c src/ovector3.h src/otypes.h src/oerror.h
-	$(CC) -c -o $@ $(CFLAGS) $<
+src/ostate.o: src/ostate.c
+	$(CC) -c src/ostate.c -o src/ostate.o $(CFLAGS)
 
-oversion.o: src/oversion.c src/otypes.h src/oerror.h
-	$(CC) -c -o $@ $(CFLAGS) $<
+src/ostring.o: src/ostring.c
+	$(CC) -c src/ostring.c -o src/ostring.o $(CFLAGS)
 
-odir.o: src/windows/odir.c src/windows/../odir.h src/windows/../otypes.h \
- src/windows/../ostring.h src/windows/../ovector.h
-	$(CC) -c -o $@ $(CFLAGS) $<
+src/otextmanager.o: src/otextmanager.c
+	$(CC) -c src/otextmanager.c -o src/otextmanager.o $(CFLAGS)
 
-otimer.o: src/windows/otimer.c src/windows/../otimer.h \
- src/windows/../otypes.h src/windows/../otypes.h src/windows/../oerror.h
-	$(CC) -c -o $@ $(CFLAGS) $<
+src/otexturemanager.o: src/otexturemanager.c
+	$(CC) -c src/otexturemanager.c -o src/otexturemanager.o $(CFLAGS)
 
-clean:
-	rm -f src/*.o src/windows/*.o
-	rm -f crates
+src/ovector.o: src/ovector.c
+	$(CC) -c src/ovector.c -o src/ovector.o $(CFLAGS)
+
+src/ovector3.o: src/ovector3.c
+	$(CC) -c src/ovector3.c -o src/ovector3.o $(CFLAGS)
+
+src/oversion.o: src/oversion.c
+	$(CC) -c src/oversion.c -o src/oversion.o $(CFLAGS)
+
+src/windows/odir.o: src/windows/odir.c
+	$(CC) -c src/windows/odir.c -o src/windows/odir.o $(CFLAGS)
+
+src/windows/otimer.o: src/windows/otimer.c
+	$(CC) -c src/windows/otimer.c -o src/windows/otimer.o $(CFLAGS)
+

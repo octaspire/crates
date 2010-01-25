@@ -1,3 +1,21 @@
+* version 0.1.0 (2010-01-25)
+-----------------------------
+  + Compiles and runs now also in Mac OS X
+  + Added some Mac OS X specific code
+  + Refactored some code from posix-directory into linux-directory
+  + Replaced Dev-C++ project-file with makefile
+  + Makefiles for GNU/Linux, Windows and Mac OS X
+  + Added etc-directory and moved bm.pl and crates.nsi to it
+  + Modified bm.pl and crates.nsi
+  + Renamed tests-directory to test
+  + Modified INSTALL, README and HISTORY
+  + Updated version number in oversion.c and crates.nsi
+  + Deleted Makefile and Makefile.win
+  + Dropped SDL_image from the dependencies
+  + Added opngtotexture.[ch] that loads textures directly using libpng and zlib
+  + Added function opengl_bindtexture2d to oluacapi.c
+  + Some small modifications to make code compile also in Mac OS X without any warnings
+
 * version 0.0.3 (2010-01-16)
 -----------------------------
   + Updated version number in source code to 0.0.3.

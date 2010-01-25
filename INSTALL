@@ -3,8 +3,9 @@ CONTENTS
 
 1. Windows
 2. GNU/Linux
-3. Other systems
-4. Customization and testing
+3. Mac OS X
+4. Other systems
+5. Customization and testing
 
 
 1. Windows
@@ -16,73 +17,90 @@ uninstall a binary version of the game easily with just a  couple
 of mouse clicks.
 
 If  you  want  to compile the game in windows yourself, you could
-use the provided Dev‐Cpp project file or  the  windows‐makefiles.
-How  to  do it exactly depends on the compiler or IDE you are us‐
+use the provided windows-makefile and Dev-C++ or some other tools.
+How  to  do it exactly depends on the compiler or IDE you are us-
 ing.
 
 
 2. GNU/Linux
 -------------
 
-For GNU/Linux  there  isn’t  currently an installer  or  package‐
+For GNU/Linux  there  isn't  currently an installer  or  package-
 files  (might  come later), so in these systems the game needs to
 be compiled from the  source  code.  Your  system should  already
 have a C compiler and make available.  If not, install those (gcc
-and make).  Then install  development  versions  of  the   latest
-stable  versions of SDL 1.2, SDL_image 1.2, SDL_mixer 1.2 and Lua
-5.1.  Then use the provided Makefile to build crates  by  issuing
+and make). Then install development versions of the latest stable
+versions of  SDL 1.2,  SDL_mixer 1.2,  libpng,  zlib and Lua 5.1.
+Then  use the  provided  Makefile  to  build  crates  by  issuing
 the following command:
 
-  make
+  make -f Makefile.linux
 
 After  the  building  process  is done, you can start the game by
 saying:
 
   ./crates
 
-If you want to run the unit tests in  tests‐directory,  you  will
+If you want to run the unit tests in  tests-directory,  you  will
 also  need  to  install check, a unit testing framework for C, if
-you don’t already have it.
+you don't already have it.
 
 Please note that if  you  enable  sounds  and  your  systems  has
 PulseAudio,  the SDL(_mixer) + PulseAudio combination might cause
-problems at least on some  GNU/Linux‐systems.   See  for  example
+problems at least on some  GNU/Linux-systems.   See  for  example
 "the  pulseaudio  hack".  For  example, at the time of writing in
-Ubuntu, if your system has SDL with ALSA option (libsdl1.2debian‐
+Ubuntu, if your system has SDL with ALSA option (libsdl1.2debian-
 alsa)  installed,  sounds  might  be crackling, channels will ebb
 away and game will get jammed when you try to  quit  playing.  In
-this  case  removing libsdl1.2debian‐alsa and installing SDL with
-PulseAudio options (libsdl1.2debian‐pulseaudio) instead helped.
+this  case  removing libsdl1.2debian-alsa and installing SDL with
+PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 
 
-3. Other Systems
+3. Mac OS X
+------------
+
+For  Mac OS X  the  building  process is quite similar to that of
+GNU/Linux.  After  you  have  installed  SDL 1.2,  SDL_mixer 1.2,
+(libpng, zlib) and  Lua 5.1  you can use the provided makefile to
+build crates by issuing the following command:
+
+  make -f Makefile.macosx
+
+After  the  building  process is done, you can start  the game by
+saying:
+
+  ./crates
+
+There   isn't   currently   an installer  program  available  for
+Mac OS X, but it might be added later.
+
+
+4. Other Systems
 -----------------
 
-Game is currently tested only in Ubuntu GNU/Linux and Windows XP.
-Mac  OS  X and UNIX versions might come later. The code should be
-quite portable, because it is written in standard C. The non‐por‐
-table  parts can be found in windows‐ and posix‐subdirectories in
-the   src‐directory.    At   least   text    "/proc/%i/exe"    in
-src/posix/odir.c  might  need  changing  for  other  systems than
-GNU/Linux.
+Game is currently tested only in Ubuntu GNU/Linux, Windows XP and
+Mac  OS  X.   UNIX  versions might come later. The code should be
+quite portable, because it is written in standard C. The non-por-
+table  parts can be found in windows- and posix-subdirectories in
+the   src-directory.    At    least    "/proc/%i/exe"          in
+src/posix/linux/oexedirname.c,   "GetModuleFileName"           in
+src/windows/odir.c and "_NSGetExecutablePath" in
+src/posix/macosx/oexedirname.c  might  need  changing   for  other
+systems.
 
 
-4. Customization and testing
+5. Customization and testing
 -----------------------------
 
 The top level directory of crates (source code version)  contains
-three  makefiles:  Makefile,  Makefile.windows  and Makefile.win.
-Makefile.win is generated automatically by Dev‐C++. If  you  want
-to  modify/compile  code in windows, you could use and modify the
-provided Dev‐C++ project file  crates.dev  or  the  windows‐make‐
-files.  Makefile and Makefile.windows are generated automatically
+three   makefiles:    Makefile.linux,    Makefile.macosx      and
+Makefile.windows. All three makefiles are generated automatically
 with a Perl script bm.pl that can be found in that same directory
-also. If you modify the code so that dependencies change, for ex‐
-ample by added new files, you can run  bm.pl  to  regenerate  the
-makefiles  with  all  the  current  dependencies. Note that Make‐
-file.win and Makefile.windows are not tested at the moment.
+also. If you modify the code  so  that dependencies  change,  for
+example by adding new files, you can run bm.pl to  regenerate the
+makefiles with all the current dependencies.
 
-The tests‐directory of crates (source code version) contains some
+The tests-directory of crates (source code version) contains some
 unit tests. If you want to run those unit tests, you will need to
-install check, a unit testing framework for C, if you  don’t  al‐
+install check, a unit testing framework for C, if you  don't  al-
 ready have it.

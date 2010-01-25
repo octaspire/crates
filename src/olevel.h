@@ -34,7 +34,7 @@ typedef struct {
 
 OLevel       *olevel_new              (void);
 void          olevel_release          (OLevel *level);
-const ouint32 olevel_getnumarguments  (const OLevel *level);
+ouint32       olevel_getnumarguments  (const OLevel *level);
 const ochar  *olevel_getargumentat    (const OLevel *level, const ouint32 index);
 void          olevel_fprintf          (OLevel *level, FILE *out);
 void          olevel_setname          (OLevel *level, const ochar *name);

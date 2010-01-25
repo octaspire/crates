@@ -21,6 +21,12 @@
 #include "otypes.h"
 #include <stdio.h>
 
+#ifndef NAME_MAX
+#define NAME_MAX 1024 /* TODO */
+#endif
+
+#define ODIR_EXEDIRNAMEMAXLEN 2048
+
 typedef void (*ODirEntryCallback)(const ochar *path, const ochar *filename, void *userdata);
 
 size_t  odir_numentries            (const ochar *directoryname);
