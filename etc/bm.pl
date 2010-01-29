@@ -31,11 +31,14 @@ $LUAIPATH         = "/usr/include/" . $LUAVERSION;
 $LUALPATH         = "/usr/lib/";
 $LUAIPATHMACOSX   = "/usr/local/include/" . $LUAVERSION;
 $LUALPATHMACOSX   = "/usr/local/lib";
+$LUAIPATHFREEBSD  = "/usr/local/include/lua51";
+$LUALPATHFREEBSD  = "/usr/local/lib/lua51";
 chomp($SDLCFLAGS  = `sdl-config --cflags`);
 
 &writemakefile_windows("windows", ".windows");
 &writemakefile_linux("linux", ".linux");
 &writemakefile_macosx("macosx", ".macosx");
+&writemakefile_freebsd("freebsd", ".freebsd");
 
 sub writemakefile_windows
 {
@@ -286,3 +289,79 @@ sub writemakefile_macosx
   print OUTFILE "\trm -f crates\n";
   close(OUTFILE);
 }
+
+sub writemakefile_freebsd
+{
+  $path2 = "src/posix";
+  $path3 = "src/posix/$_[0]";
+  open(OUTFILE, ">Makefile$_[1]");
+
+  print OUTFILE "\#\n";
+  print OUTFILE "\# Makefile for $_[0]-systems.\n";
+  print OUTFILE "\# This makefile was build automatically with perl-script \"bm.pl\".\n";
+  print OUTFILE "\# There might be other makefiles available for different systems.\n";
+  print OUTFILE "\#\n\n";
+
+  print OUTFILE "CC = gcc\n";
+  print OUTFILE "OBJS = ";
+
+  my @files = <src/*.c>;
+  foreach $f (@files)
+  {
+    $f =~ s/\.c/\.o/;
+    print OUTFILE "$f ";
+  }
+
+  my @files2 = <$path2/*.c>;
+  foreach $f (@files2)
+  {
+    $f =~ s/\.c/\.o/;
+    print OUTFILE "$f ";
+  }
+
+  my @files3 = <$path3/*.c>;
+  foreach $f (@files3)
+  {
+    $f =~ s/\.c/\.o/;
+    print OUTFILE "$f ";
+  }
+
+  $LUAIPATH = $LUAIPATHFREEBSD;
+  $LUALPATH = $LUALPATHFREEBSD;
+
+  print OUTFILE "\n";
+  print OUTFILE "LUAIPATH = $LUAIPATHFREEBSD\n";
+  print OUTFILE "LUALPATH = $LUALPATHFREEBSD\n";
+  print OUTFILE "CFLAGS  = -g -Wall -ansi -pedantic `sdl-config --cflags` `libpng-config --cflags` -I \$(LUAIPATH)\n";
+  print OUTFILE "LFLAGS = `sdl-config --libs` -lSDL_mixer `libpng-config --ldflags` -lGL -lGLU -L \$(LUALPATH) -llua\n\n";
+
+  print OUTFILE "crates: \$(OBJS)\n";
+  print OUTFILE "\t\$(CC) -o crates \$(OBJS) \$(LFLAGS)\n\n";
+
+  my @files = <src/*.c>;
+  foreach $f (@files)
+  {
+    print OUTFILE `gcc $SDLCFLAGS -I $LUAIPATH -MM $f`;
+    print OUTFILE "\t\$(CC) -c -o \$\@ \$(CFLAGS) \$\<\n\n";
+  }
+
+  my @files2 = <$path2/*.c>;
+  foreach $f (@files2)
+  {
+    print OUTFILE `gcc $SDLCFLAGS -I $LUAIPATH -MM $f`;
+    print OUTFILE "\t\$(CC) -c -o \$\@ \$(CFLAGS) \$\<\n\n";
+  }
+
+  my @files3 = <$path3/*.c>;
+  foreach $f (@files3)
+  {
+    print OUTFILE `gcc $SDLCFLAGS -I $LUAIPATH -MM $f`;
+    print OUTFILE "\t\$(CC) -c -o \$\@ \$(CFLAGS) \$\<\n\n";
+  }
+
+  print OUTFILE "clean:\n";
+  print OUTFILE "\trm -f src/*.o src/posix/*.o src/posix/$_[0]/*.o\n";
+  print OUTFILE "\trm -f crates\n";
+  close(OUTFILE);
+}
+

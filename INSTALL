@@ -4,8 +4,9 @@ CONTENTS
 1. Windows
 2. GNU/Linux
 3. Mac OS X
-4. Other systems
-5. Customization and testing
+4. FreeBSD
+5. Other systems
+6. Customization and testing
 
 
 1. Windows
@@ -75,30 +76,49 @@ There   isn't   currently   an installer  program  available  for
 Mac OS X, but it might be added later.
 
 
-4. Other Systems
+4. FreeBSD
+-----------
+
+For  FreeBSD  the  building  process  is quite similar to that of
+GNU/Linux.  After  you  have  installed  SDL 1.2,  SDL_mixer 1.2,
+(libpng, zlib),  Lua 5.1  and  gmake  (from the Ports collection)
+you can use the provided makefile to build crates by  issuing the
+following command:
+
+  gmake -f Makefile.freebsd
+
+After  the  building  process is done, you can start  the game by
+saying:
+
+  ./crates
+
+
+5. Other Systems
 -----------------
 
-Game is currently tested only in Ubuntu GNU/Linux, Windows XP and
-Mac  OS  X.   UNIX  versions might come later. The code should be
-quite portable, because it is written in standard C. The non-por-
-table  parts can be found in windows- and posix-subdirectories in
-the   src-directory.    At    least    "/proc/%i/exe"          in
+Game is currently tested only in  Ubuntu  GNU/Linux,  Windows XP,
+Mac  OS  X and FreeBSD. Other versions might come later. The code
+should  be  quite portable,  because it is written in standard C.
+The  non-portable parts can be found in windows- and posix-subdi-
+rectories in the src-directory.  At least "/proc/%i/exe"       in
 src/posix/linux/oexedirname.c,   "GetModuleFileName"           in
-src/windows/odir.c and "_NSGetExecutablePath" in
-src/posix/macosx/oexedirname.c  might  need  changing   for  other
+src/windows/odir.c,    "_NSGetExecutablePath"                  in
+src/posix/macosx/oexedirname.c  and    "sysctl"                in
+src/posix/freebsd/oexedirname.c might  need  changing  for  other
 systems.
 
 
-5. Customization and testing
+6. Customization and testing
 -----------------------------
 
 The top level directory of crates (source code version)  contains
-three   makefiles:    Makefile.linux,    Makefile.macosx      and
-Makefile.windows. All three makefiles are generated automatically
-with a Perl script bm.pl that can be found in that same directory
-also. If you modify the code  so  that dependencies  change,  for
-example by adding new files, you can run bm.pl to  regenerate the
-makefiles with all the current dependencies.
+four makefiles: Makefile.linux, Makefile.macosx, Makefile.windows
+and  Makefile.freebsd.   All   four   makefiles   are   generated
+automatically with  a Perl script bm.pl that can be found in etc-
+directory.  If you  modify the code so  that dependencies change,
+for  example  by  adding  new files, you can run bm.pl  from  the
+source directory by giving command "etc/bm.pl" to regenerate  the
+makefile(s) with all the current dependencies.
 
 The tests-directory of crates (source code version) contains some
 unit tests. If you want to run those unit tests, you will need to

@@ -64,24 +64,27 @@ and the level is restarted.
 2. SYSTEM REQUIREMENTS
 -----------------------
 
-    - GNU/Linux, Windows or Mac OS X
+    - GNU/Linux, Microsoft Windows, Mac OS X or FreeBSD
     - 3  MB free hard disk space
     - 17 MB free RAM available
     - Accelerated graphics hardware
     - Sound card
     - Keyboard or Gamepad
 
-Game is currently tested only in Ubuntu GNU/Linux, Windows XP and
-Mac OS X.   UNIX  versions might come later. For Windows there is
-an installer available that installs and uninstalls a binary ver-
-sion of the game automatically.  For GNU/Linux and Mac OS X there
-isn’t currently such an installer (might come later), so in these
-systems game needs to be compiled  from  the  source  code.  Your
-system  should already have a  C compiler and  make available. If
-not,  install  those  (gcc and make).  Then  install  development
-versions of the latest stable versions of SDL 1.2, SDL_mixer 1.2,
-libpng, zlib and Lua 5.1. Then use the provided Makefile to build
-crates. See file INSTALL for more thorough explanation.
+Game is currently tested  only in  Ubuntu GNU/Linux,  Windows XP,
+Mac OS X and FreeBSD.   Other  versions  might  come later.   For
+Windows  there  is  an  installer  available  that  installs  and
+uninstalls  a binary version  of  the game  automatically.    For
+GNU/Linux,  Mac OS X  and  FreeBSD  there isn’t currently such an
+installer (might come later),  so in these systems game needs  to
+be compiled  from  the  source  code. Your system  should already
+have a   C compiler  and  make  available. If not, install  those
+(gcc and make).  Then  install development versions of the latest
+stable versions of  SDL 1.2,  SDL_mixer 1.2,  libpng,  zlib   and
+Lua 5.1. Then use the provided  Makefile.X,  where  X  is    your
+platform, to build crates.  Note  that  in FreeBSD you should use
+gmake (write "gmake" instead of "make").  See  file  INSTALL  for
+more thorough explanation.
 
 
 3. CONTROLS
@@ -103,7 +106,7 @@ changed in the configuration file.
 -----------------------
 
 The man-directory contains one or more manuals that can be useful
-for   GNU/Linux   and   Mac OS X  users.    The  crates  homepage
+for  GNU/Linux, Mac OS X  and FreeBSD users. The crates  homepage
 www.octaspire.com/crates/  contains  also more  information.  You
 might find there  new missions, extensions and other  new content
 for crates also.
@@ -193,22 +196,23 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 
 .
 |-- COPYING                       => License information for crates
-|-- HISTORY                       => Listing of changes between different versions of crates
-|-- INSTALL                       => Installation instructions for all supported platforms
+|-- HISTORY                       => Listing of changes between versions
+|-- INSTALL                       => Installation instructions for all platforms
+|-- Makefile.freebsd              => FreeBSD makefile (use gmake)
 |-- Makefile.linux                => GNU/Linux makefile
 |-- Makefile.macosx               => Mac OS X  makefile
-|-- Makefile.windows              => Microsoft Windows makefile, mainly for Dev-C++
+|-- Makefile.windows              => Windows makefile, mainly for Dev-C++
 |-- README                        => This file
-|-- etc                           => Directory containing miscellaneous useful files
-|   |-- bm.pl                        => Perl script for automatic makefile building
-|   `-- crates.nsi                   => NSIS installer script for the windows installer program
+|-- etc                           => Directory containing misc. useful files
+|   |-- bm.pl                        => Perl script for makefile building
+|   `-- crates.nsi                   => NSIS installer script for windows
 |-- man                           => Directory containing manual pages for crates
-|   |-- man5                         => Directory for manuals about "File formats and conventions"
+|   |-- man5                         => "File formats and conventions"
 |   `-- man6                         => Directory for manuals about "Games"
 |       `-- crates.6                    => Manual page for the crates program
-|-- resources                     => Directory containing all the resources of the game
+|-- resources                     => All the resources of the game
 |   |-- config.lua                   => Configuration file for crates
-|   |-- entities                     => Directory containing all the game objects (or crates)
+|   |-- entities                     => All the game objects (or crates)
 |   |   |-- automaticsteelbomb.lua
 |   |   |-- block.lua
 |   |   |-- bomb.lua
@@ -244,7 +248,7 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |   |   |-- turnstiles1.lua
 |   |   |-- turnstilew.lua
 |   |   `-- turnstilew1.lua
-|   |-- halloffame                   => Directory containing the Hall of Fame information
+|   |-- halloffame                   => Directory containing the Hall of Fame
 |   |   `-- default                     => Hall of Fame for the default mission
 |   |-- images                       => Directory containing images for icons
 |   |   |-- crateslogo16x16x32.ico
@@ -256,21 +260,21 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |   |   |-- crateslogo48x48x32.ico
 |   |   |-- crateslogo48x48x4.ico
 |   |   `-- crateslogo48x48x8.ico
-|   |-- meshes                       => Directory containing the 3D models for the game
+|   |-- meshes                       => Directory containing the 3D models
 |   |   |-- cube.lua
 |   |   |-- plate.lua
 |   |   `-- player.lua
-|   |-- missions                     => Directory containing the different missions of the game
-|   |   `-- default.lua                 => The default mission. New missions can be dropped here.
-|   |-- musics                       => Directory containing musics for the game, if any
-|   |-- sounds                       => Directory containing sound effects for the game
+|   |-- missions                     => New missions can be dropped here.
+|   |   `-- default.lua                 => The default mission.
+|   |-- musics                       => Musics for the game, if any
+|   |-- sounds                       => Sound effects for the game
 |   |   |-- back.wav
 |   |   |-- buzz.wav
 |   |   |-- scifi.wav
 |   |   |-- select.wav
 |   |   |-- thump.wav
 |   |   `-- tick.wav
-|   |-- states                       => Directory containing all the different game states
+|   |-- states                       => All the game states.
 |   |   |-- about.lua
 |   |   |-- game.lua
 |   |   |-- halloffame.lua
@@ -280,7 +284,7 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |   |   |-- missionpassed.lua
 |   |   |-- missionpassedat1go.lua
 |   |   `-- password.lua
-|   `-- textures                     => Directory containing all the textures of the game
+|   `-- textures                     => Textures for the game
 |       |-- bg1024x1024.png
 |       |-- block.png
 |       |-- bomb.png
@@ -317,7 +321,7 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |       |-- turnstiles1.png
 |       |-- turnstilew.png
 |       `-- turnstilew1.png
-|-- src                           => Directory containing C source code for the game
+|-- src                           => C source code for the game
 |   |-- main.c
 |   |-- oaudiomanager.c
 |   |-- oaudiomanager.h
@@ -381,16 +385,18 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |   |-- ovector3.h
 |   |-- oversion.c
 |   |-- oversion.h
-|   |-- posix                        => Directory containing code for posix-compliant systems
-|   |   |-- linux                       => Directory containing code for GNU/Linux
+|   |-- posix                        => Code for posix-compliant systems
+|   |   |-- freebsd
 |   |   |   `-- oexedirname.c
-|   |   |-- macosx                      => Directory containing code for Mac OS X
+|   |   |-- linux                       => Code for GNU/Linux
+|   |   |   `-- oexedirname.c
+|   |   |-- macosx                      => Code for Mac OS X
 |   |   |   `-- oexedirname.c
 |   |   |-- odir.c
 |   |   `-- otimer.c
 |   |-- utils                        => Directory containing utility programs
 |   |   `-- MakeFont.java
-|   `-- windows                      => Directory containing code for windows-systems
+|   `-- windows                      => Code for windows
 |       |-- odir.c
 |       `-- otimer.c
 |-- test                          => Directory containing unit tests for crates
@@ -401,4 +407,4 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
     |-- check_ovector.c
     `-- test.sh
 
-21 directories, 187 files
+22 directories, 189 files

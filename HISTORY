@@ -1,3 +1,13 @@
+* version 0.2.0 (2010-01-29)
+-----------------------------
+  + Compiles and runs now also in FreeBSD
+  + Added some FreeBSD specific code
+  + Added Makefile for FreeBSD
+  + Modified bm.pl for FreeBSD
+  + Updated INSTALL, README and HISTORY
+  + Added newlines in the end of omission.c and optrvector.h
+  + Updated version numbers in oversion.c and crates.nsi
+
 * version 0.1.0 (2010-01-25)
 -----------------------------
   + Compiles and runs now also in Mac OS X
