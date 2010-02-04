@@ -260,7 +260,7 @@ void oscriptmanager_gettablefieldva(OScriptManager *scriptmanager, const ochar *
       break;
 
     case 's':
-      if (!lua_isstring(L, -1))
+      if (lua_isstring(L, -1))
         *((const ochar**)value) = lua_tostring(L, -1);
       else if (warnings)
         oerror_warning("Field \"%s\" in table \"%s\" is not string", fieldname, namespacetable);

@@ -19,6 +19,7 @@
 #define OSETTINGS_H
 
 #include "oscriptmanager.h"
+#include "ostring.h"
 #include "otypes.h"
 
 typedef struct {
@@ -59,6 +60,7 @@ typedef struct {
   oboolean backfaceculling;
   oboolean lighting;
   oboolean verticalsynchronization;
+  OString  *skin;
 } OSettings;
 
 OSettings *osettings_new                       (OScriptManager *scriptmanager);
@@ -81,5 +83,6 @@ onumber    osettings_getsoundvolume            (const OSettings *settings);
 ouint32    osettings_getcontrollerexit         (const OSettings *settings);
 ouint32    osettings_getcontrollerrestart      (const OSettings *settings);
 oboolean   osettings_isverticalsynchronization (const OSettings *settings);
+OString   *osettings_getskin                   (const OSettings *settings);
 
 #endif

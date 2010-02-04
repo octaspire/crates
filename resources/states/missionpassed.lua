@@ -21,7 +21,9 @@ missionpassed.initial = {}
 function missionpassed.initial.init(arg)
   missionpassed.text = "Congrulations! Mission \"" .. arg .. "\" Passed!"
   missionpassed.underline = string.rep("\127", #missionpassed.text)
-  missionpassed.bgid = texture_nametoid("bg1024x1024.png")
+  missionpassed.bw = 1024
+  missionpassed.bh = 512
+  missionpassed.bgid = texture_nametoid("bg" .. tostring(mission.bw) .. "x" .. tostring(mission.bh) .. ".png")
 
   state_seteventable(true)
   state_setrenderable(true)
@@ -36,7 +38,7 @@ end
 
 function missionpassed.initial.render()
   opengl_color3(1, 1, 1)
-  background_render(missionpassed.bgid)
+  background_renderwithsizehints(missionpassed.bgid, missionpassed.bw, missionpassed.bh)
   opengl_color3(1, 1, 0)
   local w, h, d = settings_getscreendimensions()
   local x = 10

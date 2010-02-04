@@ -27,7 +27,7 @@ function mission.initial.init(arg)
   mission.selectsound = sound_nametoid("select.wav")
   mission.backsound = sound_nametoid("back.wav")
   mission.bw = 1024
-  mission.bh = 1024
+  mission.bh = 512
   mission.bgid = texture_nametoid("bg" .. tostring(mission.bw) .. "x" .. tostring(mission.bh) .. ".png")
   local dsep = dir_getdirectoryseparator()
   mission.helptext = "New Missions Can Be Dropped Into \"resources" .. dsep .. "missions" .. dsep .. "\"";

@@ -31,7 +31,7 @@ function menu.initial.init(arg)
   menu.crvel = -0.08
   menu.arg = tostring(arg)
   menu.bw = 1024
-  menu.bh = 1024
+  menu.bh = 512
   menu.bgid = texture_nametoid("bg" .. tostring(menu.bw) .. "x" .. tostring(menu.bh) .. ".png")
 
   state_seteventable(true)

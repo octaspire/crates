@@ -39,6 +39,7 @@ function automaticsteelbomb.initial.init(id, attr)
   if bomb.ticksound == nil then  bomb.ticksound = sound_nametoid("tick.wav") end
   if bomb.explosionsound == nil then  bomb.explosionsound = sound_nametoid("thump.wav") end
   if steelbomb.quadid == nil then steelbomb.quadid = opengl_newquadric() end
+  if steelbomb.explosionid == nil then steelbomb.explosionid = texture_nametoid("explosion.png") end
   entity_setstate(id, "countdown")
   entity_setupdatable(id, true)
 end
@@ -120,6 +121,7 @@ function automaticsteelbomb.explosion.render(id)
   opengl_pushmatrix()
   opengl_rotate(90, 1, 0, 0)
   --opengl_disk(steelbomb.quadid, diameter-0.5, diameter, 32, 32)
+  opengl_bindtexture2d(steelbomb.explosionid)
   opengl_disk(steelbomb.quadid, 2, diameter, 32, 32)
   opengl_popmatrix()
   attribute_set(id, "diameter", diameter)

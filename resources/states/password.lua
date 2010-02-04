@@ -28,7 +28,7 @@ function password.initial.init(arg)
   password.crvel = -0.08
   password.arg = tostring(arg)
   password.bw = 1024
-  password.bh = 1024
+  password.bh = 512
   password.bgid = texture_nametoid("bg" .. tostring(password.bw) .. "x" .. tostring(password.bh) .. ".png")
   password.maxpwdlen = 50
   if mission.movesound == nil then mission.movesound = sound_nametoid("tick.wav") end

@@ -22,7 +22,7 @@ function about.initial.init(arg)
   about.lines = {}
   about.arg = tostring(arg)
   about.bw = 1024
-  about.bh = 1024
+  about.bh = 512
   about.bgid = texture_nametoid("bg" .. tostring(about.bw) .. "x" .. tostring(about.bh) .. ".png")
 
   state_seteventable(true)

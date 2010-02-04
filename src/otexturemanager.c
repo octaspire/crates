@@ -22,6 +22,8 @@
 #include <stdlib.h>
 #include "SDL.h"
 
+#define OTEXTUREMANAGER_MAXSKINNAMELEN 128
+
 void otexturemanager_loadtexture(const ochar *path, const ochar *fileName, void *userdata)
 {
   GLuint textureID = 0;
@@ -42,12 +44,34 @@ void otexturemanager_loadtexture(const ochar *path, const ochar *fileName, void 
   }
 }
 
-OTextureManager *otexturemanager_new(void)
+OTextureManager *otexturemanager_new(const OSettings *settings)
 {
-  ochar path[] = "resources/textures";
+  OString *path = ostring_newstr("resources/textures/");
+  OString *skinname = 0;
   OTextureManager *texturemanager = (OTextureManager*)oerror_malloc(sizeof(OTextureManager));
+  texturemanager->settings = settings;
   texturemanager->name2textureid = omap_new(sizeof(GLuint), 0);
-  odir_foreachentry(odir_convertpath(path), otexturemanager_loadtexture, texturemanager);
+  skinname = osettings_getskin(texturemanager->settings);
+
+  if (skinname == 0)
+    oerror_fatal("otexturemanager: this should not have happened: skinname is NULL");
+
+  if (ostring_length(skinname) > OTEXTUREMANAGER_MAXSKINNAMELEN)
+    oerror_fatal("otexturemanager: skinname is too long (%d characters). Maximum length is %d", ostring_length(skinname), OTEXTUREMANAGER_MAXSKINNAMELEN);
+
+  if (path == 0)
+    oerror_fatal("otexturemanager: this should not have happened: path is NULL");
+
+  ostring_concat(path, skinname);
+
+  if (path->characters == 0 || path->characters->elements == 0)
+    oerror_fatal("otexturemanager: this should not have happened: path->characters->elements is not available");
+
+  /* TODO direct access to path->characters and path->characters->elements is ugly */
+  /* TODO check that directory exists and use default value otherwise */
+  odir_foreachentry(odir_convertpath(path->characters->elements), otexturemanager_loadtexture, texturemanager);
+  ostring_release(path);
+  path = 0;
   return texturemanager;
 }
 

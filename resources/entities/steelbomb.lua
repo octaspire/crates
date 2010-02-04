@@ -21,6 +21,7 @@ function steelbomb.register()
   game_entityregistersymbolforname("SB", "steelbomb")
   steelbomb.dangerdiameter = 4
   steelbomb.dangerdiametersquared = steelbomb.dangerdiameter ^ 2
+  steelbomb.explosionid = texture_nametoid("explosion.png")
 end
 
 -------------------------------------------------------------------------------
@@ -118,6 +119,7 @@ function steelbomb.explosion.render(id)
   opengl_pushmatrix()
   opengl_rotate(-90, 1, 0, 0)
   --opengl_disk(steelbomb.quadid, diameter-0.5, diameter, 32, 32)
+  opengl_bindtexture2d(steelbomb.explosionid)
   opengl_disk(steelbomb.quadid, 2, diameter, 32, 32)
   opengl_popmatrix()
   attribute_set(id, "diameter", diameter)

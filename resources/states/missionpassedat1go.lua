@@ -25,7 +25,7 @@ function missionpassedat1go.initial.init(arg)
   missionpassedat1go.text2 = "Enter Your Name For The Hall Of Fame:"
   missionpassedat1go.underline = string.rep("\127", #missionpassedat1go.text)
   missionpassedat1go.bw = 1024
-  missionpassedat1go.bh = 1024
+  missionpassedat1go.bh = 512
   missionpassedat1go.bgid = texture_nametoid("bg" .. tostring(missionpassedat1go.bw) .. "x" .. tostring(missionpassedat1go.bh) .. ".png")
   missionpassedat1go.sindex = 1
   missionpassedat1go.heroname = {"|"}

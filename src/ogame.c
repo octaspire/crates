@@ -218,7 +218,7 @@ OGame *ogame_new(void)
   }
 
   if (game->settings->verbose) oerror_info("otexturemanager_new");
-  game->texturemanager = otexturemanager_new();                                       if (game->settings->verbose) oerror_info("otexturemanager_new done");
+  game->texturemanager = otexturemanager_new(game->settings);                         if (game->settings->verbose) oerror_info("otexturemanager_new done");
   game->meshmanager = omeshmanager_new(game->scriptmanager);                          if (game->settings->verbose) oerror_info("omeshmanager_new    done");
   game->entitymanager = oentitymanager_new(game->scriptmanager);                      if (game->settings->verbose) oerror_info("oentitymanager_new  done");
   oentitymanager_init(game->entitymanager);                                           if (game->settings->verbose) oerror_info("oentitymanager_init done");

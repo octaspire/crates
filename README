@@ -123,7 +123,13 @@ drawn/edited  with  GIMP.   The background image used in menus is
 created and rendered with Blender.  Some of the textures  contain
 (possibly  modified) parts from the public domain Blender Texture
 Disc.  The image for the font texture is generated  automatically
-with a Java program.
+with  a  Java  program.     Textures   for     the   Waymark-skin
+(resources/textures/waymark)  are  based  on  free  game graphics
+(Sinistar.zip) released under the Creative Commons Attribution 3.0
+License at lostgarden.com.   Textures  in  the  Waymark-skin  are
+modified versions, not the originals. See lostgarden.com for  the
+originals:     "Iron Plague, a Sinistar clone" art by Daniel Cook
+(Lostgarden.com)
 
 
 6. SOME CRATE SYMBOLS
@@ -133,37 +139,41 @@ The  listing  below contains some symbols for the different kinds
 of crates. These are used when building missions and  levels  for
 the game.
 
-  block          XX
-  bomb           BB
-  counter        ##
-  exit           @@
-  inversecounter !#
-  key            $$
-  player         &&
-  pullere        >>
-  pulleren       >^
-  pulleres       >.
-  pullern        ^^
-  pullernw       <^
-  pullers        ..
-  pullersw       <.
-  pullerw        <<
-  remotecontrol  RC
-  sensor         []
-  slopeen        |_
-  slopees        |"
-  slopewn        _|
-  slopews        "|
-  steelbomb      SB
-  trigger        !!
-  turnstilee     T>
-  turnstilen     T^
-  turnstiles     T.
-  turnstilew     T<
-  turnstilee1    1>
-  turnstilen1    1^
-  turnstiles1    1.
-  turnstilew1    1<
+  automaticsteelbomb AB
+  block              XX
+  bomb               BB
+  counter            ##
+  exit               @@
+  inversecounter     !#
+  key                $$
+  player             &&
+  pullere            >>
+  pulleren           >^
+  pulleres           >.
+  pullerew           <>
+  pullern            ^^
+  pullerns           ^.
+  pullernw           <^
+  pullers            ..
+  pullersw           <.
+  pullerw            <<
+  remotecontrol      RC
+  slopeen            |_
+  slopees            |"
+  slopewn            _|
+  slopews            "|
+  steelbomb          SB
+  teleport           TP
+  toggle             []
+  trigger            !!
+  turnstilee         T>
+  turnstilen         T^
+  turnstiles         T.
+  turnstilew         T<
+  turnstilee1        1>
+  turnstilen1        1^
+  turnstiles1        1.
+  turnstilew1        1<
 
 
 7. NOTES

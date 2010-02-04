@@ -1,3 +1,18 @@
+* version 0.3.0 (2010-02-04)
+-----------------------------
+  + Made textures skinnable and added new setting for the skin
+  + Added textures for Waymark-skin and moved old textures to cartoon-skin
+  + Made background images smaller
+  + Added texture for explosion and some bindings for it
+  + otexturemanager_new takes now pointer to osettings
+  + Corrected a bug in oscriptmanager_gettablefieldva's string reading
+  + Added accessor for skin-setting
+  + Added function to get string-settings.
+  + Changed path building in otexturemanager_new
+  + Updated README and added some crate symbols that were forgotten earlier
+  + Modified credits.png
+  + Updated HISTORY and version numbers in oversion.c and crates.nsi
+
 * version 0.2.0 (2010-01-29)
 -----------------------------
   + Compiles and runs now also in FreeBSD

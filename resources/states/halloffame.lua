@@ -32,7 +32,7 @@ function halloffame.initial.init(arg)
   halloffame.statistics = {}
   if arg ~= nil then halloffame.arg = tostring(arg) else halloffame.arg = nil end
   halloffame.bw = 1024
-  halloffame.bh = 1024
+  halloffame.bh = 512
   halloffame.bgid = texture_nametoid("bg" .. tostring(halloffame.bw) .. "x" .. tostring(halloffame.bh) .. ".png")
   halloffame.helptext = "Fastest Players Who Have Passed Mission At One Go";
   halloffame.underline = string.rep("\127", #halloffame.helptext)

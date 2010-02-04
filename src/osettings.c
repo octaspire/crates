@@ -63,6 +63,22 @@ static void getsettingd(OScriptManager *scriptmanager, const ochar *fieldname, o
     oerror_warning("Setting \"%s\" has incorrect value \"%f\". Allowed are values %f-%f", fieldname, tmp, minval, maxval);
 }
 
+static OString *getsettings(OScriptManager *scriptmanager, const ochar *fieldname, oboolean warnings, const ochar *defaultvalue)
+{
+  OString *str = 0;
+  const ochar *tmp = 0;
+  oscriptmanager_gettablefieldva(scriptmanager, "config", fieldname, 's', &tmp, warnings);
+  if (tmp != 0 && strlen(tmp) > 0)
+    str = ostring_newstr(tmp);
+  else if (warnings)
+  {
+    oerror_warning("Setting \"%s\" is not available or is empty. Using default value \"%s\"", fieldname, defaultvalue);
+    str = ostring_newstr(defaultvalue);
+  }
+
+  return str;
+}
+
 OSettings *osettings_new(OScriptManager *scriptmanager)
 {
   ochar path[] = "resources/config.lua";
@@ -105,6 +121,7 @@ OSettings *osettings_new(OScriptManager *scriptmanager)
   settings->backfaceculling                   = 1;
   settings->lighting                          = 1;
   settings->verticalsynchronization           = 1;
+  settings->skin                              = 0;
   oscriptmanager_loadscript(scriptmanager, odir_convertpath(path));
 
   getsettingb(scriptmanager,  "filelog",                                &settings->filelog,                           1);
@@ -149,6 +166,8 @@ OSettings *osettings_new(OScriptManager *scriptmanager)
   getsettingb(scriptmanager,  "lighting",                               &settings->lighting,                          1);
   getsettingb(scriptmanager,  "vertical_synchronization",               &settings->verticalsynchronization,           1);
 
+  settings->skin = getsettings(scriptmanager, "skin", 1, "waymark");
+
   return settings;
 }
 
@@ -157,6 +176,7 @@ void osettings_release(OSettings *settings)
   if (!settings)
     return;
 
+  ostring_release(settings->skin);
   memset(settings, 0, sizeof(OSettings));
   oerror_free(settings);
 }
@@ -249,4 +269,9 @@ INLINE ouint32 osettings_getcontrollerrestart (const OSettings *settings)
 INLINE oboolean osettings_isverticalsynchronization(const OSettings *settings)
 {
   return settings->verticalsynchronization;
+}
+
+INLINE OString *osettings_getskin(const OSettings *settings)
+{
+  return settings->skin;
 }

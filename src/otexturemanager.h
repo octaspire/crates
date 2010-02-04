@@ -19,6 +19,7 @@
 #define OTEXTUREMANAGER_H
 
 #include "otypes.h"
+#include "osettings.h"
 #include "ostring.h"
 #include "omap.h"
 
@@ -29,10 +30,11 @@
 #endif
 
 typedef struct {
-  OMap      *name2textureid;
+  OMap            *name2textureid;
+  const OSettings *settings;
 } OTextureManager;
 
-OTextureManager *otexturemanager_new          (void);
+OTextureManager *otexturemanager_new          (const OSettings *settings);
 void             otexturemanager_release      (OTextureManager *texturemanager);
 GLuint           otexturemanager_getidforname (OTextureManager *texturemanager, const ochar *name);
 
