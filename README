@@ -33,7 +33,7 @@ CONTENTS
 ----------------
 
 Crates  is  a  three dimensional puzzle game. It consists of mis-
-sions that consist of levels. To pass a mission,  you  must  move
+sions that consist of levels. To  pass  a level,  you  must  move
 player  to  the  exit  by interacting with the different kinds of
 crates in the level.  Before that you must also collect  all  the
 keys and toggle all the toggles that the level might contain. Ev-
@@ -239,41 +239,41 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |-- resources                     => All the resources of the game
 |   |-- config.lua                   => Configuration file for crates
 |   |-- entities                     => All the game objects (or crates)
-|   |   |-- automaticsteelbomb.lua
-|   |   |-- block.lua
-|   |   |-- bomb.lua
-|   |   |-- counter.lua
-|   |   |-- exit.lua
-|   |   |-- inversecounter.lua
-|   |   |-- key.lua
-|   |   |-- player.lua
-|   |   |-- pullere.lua
-|   |   |-- pulleren.lua
-|   |   |-- pulleres.lua
-|   |   |-- pullerew.lua
-|   |   |-- pullern.lua
-|   |   |-- pullerns.lua
-|   |   |-- pullernw.lua
-|   |   |-- pullers.lua
-|   |   |-- pullersw.lua
-|   |   |-- pullerw.lua
-|   |   |-- remotecontrol.lua
-|   |   |-- slopeen.lua
-|   |   |-- slopees.lua
-|   |   |-- slopewn.lua
-|   |   |-- slopews.lua
-|   |   |-- steelbomb.lua
-|   |   |-- teleport.lua
-|   |   |-- toggle.lua
-|   |   |-- trigger.lua
-|   |   |-- turnstilee.lua
-|   |   |-- turnstilee1.lua
-|   |   |-- turnstilen.lua
-|   |   |-- turnstilen1.lua
-|   |   |-- turnstiles.lua
-|   |   |-- turnstiles1.lua
-|   |   |-- turnstilew.lua
-|   |   `-- turnstilew1.lua
+|   |   |-- automaticsteelbomb.lua      => Steelbomb that starts countdown automatically
+|   |   |-- block.lua                   => Stops player
+|   |   |-- bomb.lua                    => Stops player (max 2 times) and starts countdown
+|   |   |-- counter.lua                 => Stops player "count" times
+|   |   |-- exit.lua                    => Moves player to the next level or restarts current one
+|   |   |-- inversecounter.lua          => Lets player pass "count" times
+|   |   |-- key.lua                     => All keys must be picked up
+|   |   |-- player.lua                  => Player is moved with keyboard or gamepad
+|   |   |-- pullere.lua                 => Can be pulled to east            (e)
+|   |   |-- pulleren.lua                => Can be pulled to east and north  (en)
+|   |   |-- pulleres.lua                => Can be pulled to east and south  (es)
+|   |   |-- pullerew.lua                => Can be pulled to east and west   (ew)
+|   |   |-- pullern.lua                 => Can be pulled to north           (n)
+|   |   |-- pullerns.lua                => Can be pulled to north and south (ns)
+|   |   |-- pullernw.lua                => Can be pulled to north and west  (nw)
+|   |   |-- pullers.lua                 => Can be pulled to south           (s)
+|   |   |-- pullersw.lua                => Can be pulled to south and west  (sw)
+|   |   |-- pullerw.lua                 => Can be pulled to west            (w)
+|   |   |-- remotecontrol.lua           => Allows you to move some other crate(s) than player
+|   |   |-- slopeen.lua                 => Turns player between east <-> north or stops it
+|   |   |-- slopees.lua                 => Turns player between east <-> south or stops it
+|   |   |-- slopewn.lua                 => Turns player between west <-> north or stops it
+|   |   |-- slopews.lua                 => Turns player between west <-> south or stops it
+|   |   |-- steelbomb.lua               => Can withstand unlimited number of collisions and is dangerous
+|   |   |-- teleport.lua                => Moves player instantly to some other point in space
+|   |   |-- toggle.lua                  => All toggles must be toggled (4 red sides to green)
+|   |   |-- trigger.lua                 => Is invisible and will trigger a tracking shot
+|   |   |-- turnstilee.lua              => Lets player pass only to east           (e)
+|   |   |-- turnstilee1.lua             => Lets player pass only one step to east  (e1)
+|   |   |-- turnstilen.lua              => Lets player pass only to north          (n)
+|   |   |-- turnstilen1.lua             => Lets player pass only one step to north (n1)
+|   |   |-- turnstiles.lua              => Lets player pass only to south          (s)
+|   |   |-- turnstiles1.lua             => Lets player pass only one step to south (s1)
+|   |   |-- turnstilew.lua              => Lets player pass only to west           (w)
+|   |   `-- turnstilew1.lua             => Lets player pass only one step to west  (w1)
 |   |-- halloffame                   => Directory containing the Hall of Fame
 |   |   `-- default                     => Hall of Fame for the default mission
 |   |-- images                       => Directory containing images for icons
@@ -290,8 +290,8 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |   |   |-- cube.lua
 |   |   |-- plate.lua
 |   |   `-- player.lua
-|   |-- missions                     => New missions can be dropped here.
-|   |   `-- default.lua                 => The default mission.
+|   |-- missions                     => New missions can be dropped here
+|   |   `-- default.lua                 => The default mission
 |   |-- musics                       => Musics for the game, if any
 |   |-- sounds                       => Sound effects for the game
 |   |   |-- back.wav
@@ -300,54 +300,94 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |   |   |-- select.wav
 |   |   |-- thump.wav
 |   |   `-- tick.wav
-|   |-- states                       => All the game states.
-|   |   |-- about.lua
-|   |   |-- game.lua
-|   |   |-- halloffame.lua
-|   |   |-- manual.lua
-|   |   |-- menu.lua
-|   |   |-- mission.lua
-|   |   |-- missionpassed.lua
-|   |   |-- missionpassedat1go.lua
-|   |   `-- password.lua
-|   `-- textures                     => Textures for the game
-|       |-- bg1024x1024.png
-|       |-- block.png
-|       |-- bomb.png
-|       |-- credits.png
-|       |-- exit.png
-|       |-- font.png
-|       |-- inversecounter.png
-|       |-- key.png
-|       |-- manual1024x1024.png
-|       |-- player.png
-|       |-- pullere.png
-|       |-- pulleren.png
-|       |-- pulleres.png
-|       |-- pullerew.png
-|       |-- pullern.png
-|       |-- pullerns.png
-|       |-- pullernw.png
-|       |-- pullers.png
-|       |-- pullersw.png
-|       |-- pullerw.png
-|       |-- remotecontrol.png
-|       |-- slopeen.png
-|       |-- slopees.png
-|       |-- slopewn.png
-|       |-- slopews.png
-|       |-- steelbomb.png
-|       |-- teleport.png
-|       |-- toggle.png
-|       |-- turnstilee.png
-|       |-- turnstilee1.png
-|       |-- turnstilen.png
-|       |-- turnstilen1.png
-|       |-- turnstiles.png
-|       |-- turnstiles1.png
-|       |-- turnstilew.png
-|       `-- turnstilew1.png
-|-- src                           => C source code for the game
+|   |-- states                       => All the game states
+|   |   |-- about.lua                   => Displays information about the game
+|   |   |-- game.lua                    => In game state where the actual playing happens
+|   |   |-- halloffame.lua              => Displays the Hall of Fame
+|   |   |-- manual.lua                  => Displays manual (allows x,y scrolling if needed)
+|   |   |-- menu.lua                    => Displays the main menu
+|   |   |-- mission.lua                 => Displays mission menu
+|   |   |-- missionpassed.lua           => After mission is passed
+|   |   |-- missionpassedat1go.lua      => After mission is passed in one go
+|   |   `-- password.lua                => State where level passwords can be entered
+|   `-- textures                     => Textures for the game (subdirectories contain skins)
+|       |-- cartoon                     => Textures for the "cartoon"-skin (or theme)
+|       |   |-- bg1024x512.png             => Background image for menus
+|       |   |-- block.png                  => Texture for block
+|       |   |-- bomb.png                   => Texture for bomb
+|       |   |-- credits.png                => Contains the credits
+|       |   |-- exit.png                   => Texture for exit
+|       |   |-- explosion.png              => Texture for explosion
+|       |   |-- font.png                   => Texture for the font
+|       |   |-- inversecounter.png         => Texture for inversecounter
+|       |   |-- key.png                    => Texture for key
+|       |   |-- manual1024x1024.png        => Contains the manual (in-game)
+|       |   |-- player.png                 => Texture for player
+|       |   |-- pullere.png                => Texture for east puller            (e)
+|       |   |-- pulleren.png               => Texture for east and north puller  (en)
+|       |   |-- pulleres.png               => Texture for east and south puller  (es)
+|       |   |-- pullerew.png               => Texture for east and west puller   (ew)
+|       |   |-- pullern.png                => Texture for north puller           (n)
+|       |   |-- pullerns.png               => Texture for north and south puller (ns)
+|       |   |-- pullernw.png               => Texture for north and west puller  (nw)
+|       |   |-- pullers.png                => Texture for south puller           (s)
+|       |   |-- pullersw.png               => Texture for south and west puller  (sw)
+|       |   |-- pullerw.png                => Texture for west puller            (w)
+|       |   |-- remotecontrol.png          => Texture for remote control
+|       |   |-- slopeen.png                => Texture for east and north slope   (en)
+|       |   |-- slopees.png                => Texture for east and south slope   (es)
+|       |   |-- slopewn.png                => Texture for west and north slope   (wn)
+|       |   |-- slopews.png                => Texture for west and south slope   (ws)
+|       |   |-- steelbomb.png              => Texture for steelbomb
+|       |   |-- teleport.png               => Texture for teleport
+|       |   |-- toggle.png                 => Texture for toggle
+|       |   |-- turnstilee.png             => Texture for east turnstile                  (e)
+|       |   |-- turnstilee1.png            => Texture for east 1 step turnstile           (e1)
+|       |   |-- turnstilen.png             => Texture for east and north turnstile        (en)
+|       |   |-- turnstilen1.png            => Texture for east and north 1 step turnstile (en1)
+|       |   |-- turnstiles.png             => Texture for east and south turnstile        (es)
+|       |   |-- turnstiles1.png            => Texture for east and south 1 step turnstile (es1)
+|       |   |-- turnstilew.png             => Texture for east and west turnstile         (ew)
+|       |   `-- turnstilew1.png            => Texture for east and west 1 step turnstile  (ew1)
+|       `-- waymark                     => Textures for the "Waymark"-skin (or theme)
+|           |-- bg1024x512.png
+|           |-- block.png
+|           |-- bomb.png
+|           |-- credits.png
+|           |-- exit.png
+|           |-- explosion.png
+|           |-- font.png
+|           |-- inversecounter.png
+|           |-- key.png
+|           |-- manual1024x1024.png
+|           |-- player.png
+|           |-- pullere.png
+|           |-- pulleren.png
+|           |-- pulleres.png
+|           |-- pullerew.png
+|           |-- pullern.png
+|           |-- pullerns.png
+|           |-- pullernw.png
+|           |-- pullers.png
+|           |-- pullersw.png
+|           |-- pullerw.png
+|           |-- remotecontrol.png
+|           |-- slopeen.png
+|           |-- slopees.png
+|           |-- slopewn.png
+|           |-- slopews.png
+|           |-- steelbomb.png
+|           |-- teleport.png
+|           |-- toggle.png
+|           |-- turnstilee.png
+|           |-- turnstilee1.png
+|           |-- turnstilen.png
+|           |-- turnstilen1.png
+|           |-- turnstiles.png
+|           |-- turnstiles1.png
+|           |-- turnstilew.png
+|           `-- turnstilew1.png
+|-- src                           => C source code for the game (see resources for Lua src)
 |   |-- main.c
 |   |-- oaudiomanager.c
 |   |-- oaudiomanager.h
@@ -411,8 +451,8 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |   |-- ovector3.h
 |   |-- oversion.c
 |   |-- oversion.h
-|   |-- posix                        => Code for posix-compliant systems
-|   |   |-- freebsd
+|   |-- posix                        => Code for POSIX-compliant systems
+|   |   |-- freebsd                     => Code for FreeBSD
 |   |   |   `-- oexedirname.c
 |   |   |-- linux                       => Code for GNU/Linux
 |   |   |   `-- oexedirname.c
@@ -422,15 +462,15 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |   |   `-- otimer.c
 |   |-- utils                        => Directory containing utility programs
 |   |   `-- MakeFont.java
-|   `-- windows                      => Code for windows
+|   `-- windows                      => Code for Microsoft Windows
 |       |-- odir.c
 |       `-- otimer.c
-|-- test                          => Directory containing unit tests for crates
+`-- test                          => Directory containing unit tests for crates
     |-- check_omap.c
     |-- check_optrmap.c
     |-- check_optrvector.c
     |-- check_ostring.c
     |-- check_ovector.c
-    `-- test.sh
+    `-- test.sh                      => Compiles and runs unit tests
 
-22 directories, 189 files
+24 directories, 227 files
