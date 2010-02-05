@@ -43,6 +43,22 @@ your name in the hall of fame, you must play the whole mission at
 one  go. On that case, the faster you are, the better is your po-
 sition in the hall of fame.
 
+Crates is  extensible,  meaning that  it  can  be  extended quite
+easily with new missions, levels, game entities (crates) and game
+states.  All the missions, levels, game entities, game states and
+configuration of the  game engine  are  implemented as plain text
+Lua-scripts.  So,  if you know  Lua, you can modify or write  new
+missions,  levels,  game entities  and  game states with any text
+editor, without any development tools.  Crates is also skinnable,
+meaning that you can change the look and feel of the game (or the
+theme of the game) easily in the configuration file.   New  skins
+(themes), can be created with any image editor and added  to  the
+game  just  by   dropping  them   in   new  subdirectory  to  the
+resources/textures-directory. Crates is also relocatable, meaning
+that it  (the directory containing the game and resources) can be
+moved to new location and/or used without installation;  it  will
+always know where it is and find the resources it needs.
+
 Crates is controlled with a keyboard or a gamepad. Passwords  can
 be written faster with the alphanumeric keys of the keyboard or a
 little slower by using the D-pad of gamepad to select the letters

@@ -1,3 +1,10 @@
+* version 0.3.1 (2010-02-05)
+-----------------------------
+  + Modified slope-textures in the Waymark-skin (made arrows larger)
+  + Updated manual1024x1024.png in the Waymark-skin
+  + Updated README with information about extensibility, skins and relocatability
+  + Updated HISTORY and version numbers in oversion.c and crates.nsi
+
 * version 0.3.0 (2010-02-04)
 -----------------------------
   + Made textures skinnable and added new setting for the skin
