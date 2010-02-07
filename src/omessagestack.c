@@ -63,7 +63,7 @@ void omessagestack_update(OMessageStack *messagestack, const onumber tpf)
 {
   if (messagestack->timeleft <= 0)
   {
-    if (messagestack->basey > -32)
+    if (messagestack->basey > -16)
     {
       messagestack->basey -= 1;
       return;
@@ -80,7 +80,7 @@ static void omessagestack_rendermessage(void *element, ouint32 index, void *user
 {
   oint32 len = optrvector_length(((OMessageStack*)userdata)->messages);
   const ochar *message = ostring_tocstr((const OString*)element);
-  otextmanager_printortho(((OMessageStack*)userdata)->textmanager, 0, ((OMessageStack*)userdata)->basey + ((len - index - 1)*32), message, 0);
+  otextmanager_printortho(((OMessageStack*)userdata)->textmanager, 0, ((OMessageStack*)userdata)->basey + ((len - index - 1)*16), message, 0);
 }
 
 void omessagestack_render(OMessageStack *messagestack)

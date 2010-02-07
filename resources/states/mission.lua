@@ -30,7 +30,7 @@ function mission.initial.init(arg)
   mission.bh = 256
   mission.bgid = texture_nametoid("bg" .. tostring(mission.bw) .. "x" .. tostring(mission.bh) .. ".png")
   local dsep = dir_getdirectoryseparator()
-  mission.helptext = "New Missions To \"resources" .. dsep .. "missions" .. dsep .. "\"";
+  mission.helptext = "New Missions Can Be Dropped Into \"resources" .. dsep .. "missions" .. dsep .. "\"";
   mission.underline = string.rep("\127", #mission.helptext)
 
   state_seteventable(true)
@@ -73,7 +73,7 @@ function mission.initial.render()
   opengl_color3(1, 1, 0)
   local w, h, d = settings_getscreendimensions()
   local x = 10
-  local dh = 32
+  local dh = 16
   local y = h - dh
   text_printortho(x, y, "Select Mission", 1)
   y = y - dh

@@ -41,14 +41,14 @@ OTextManager *otextmanager_new(const ochar *name, OTextureManager *texturemanage
         glTexCoord2f(cx-0.0625, cy);
         glVertex2i(0, 0);
         glTexCoord2f(cx, cy);
-        glVertex2i(32, 0 );
+        glVertex2i(16, 0 );
         glTexCoord2f(cx, cy-0.0625f);
-        glVertex2i(32, 32);
+        glVertex2i(16, 16);
         glTexCoord2f(cx-0.0625f, cy-0.0625f);
-        glVertex2i(0, 32);
+        glVertex2i(0, 16);
       glEnd( );
       /* One character forward */
-      glTranslated(16, 0, 0);
+      glTranslated(8, 0, 0);
     glEndList();
   }
 

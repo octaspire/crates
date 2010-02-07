@@ -108,7 +108,7 @@ function password.initial.render(tpf)
   opengl_color3(1, 1, 0)
   local w, h, d = settings_getscreendimensions()
   local x = 10
-  local dh = 32
+  local dh = 16
   local y = h - dh
   text_printortho(x, y, "Enter password:", 1)
   y = y - dh
@@ -124,7 +124,7 @@ function password.initial.render(tpf)
     else
       opengl_color3(1, 1, 1)
     end
-    text_printortho(x + (i*16), y, v, 0)
+    text_printortho(x + (i*8), y, v, 0)
     i = i + 1
   end
   opengl_color3(1, 1, 1)

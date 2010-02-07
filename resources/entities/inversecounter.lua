@@ -116,7 +116,7 @@ function inversecounter.initial.render(id)
   local x, y, z = entity_getlocation(id)
   opengl_rotate(-90, 1, 0, 0)
   opengl_translate(-1, -0.2, 1.03)
-  opengl_scale(0.033, 0.033, 0.033)
+  opengl_scale(0.066, 0.066, 0.066)
   text_printperspective(tostring(attribute_get(id, "count")), 0)
 end
 
@@ -157,7 +157,7 @@ function inversecounter.contact.render(id)
   local x, y, z = entity_getlocation(id)
   opengl_rotate(-90, 1, 0, 0)
   opengl_translate(-1, -0.2, 1.03)
-  opengl_scale(0.033, 0.033, 0.033)
+  opengl_scale(0.066, 0.066, 0.066)
   text_printperspective(tostring(attribute_get(id, "count")), 0)
 end
 

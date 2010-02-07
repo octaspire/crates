@@ -28,13 +28,13 @@ import javax.imageio.ImageIO;
 
 public class MakeFont {
   public static void main(String[] args) throws IOException {
-    final int iw = 512;
-    final int ih = 512;
+    final int iw = 256;
+    final int ih = 256;
     BufferedImage off_Image = new BufferedImage(iw, ih, BufferedImage.TYPE_INT_RGB);
     Graphics2D g2 = off_Image.createGraphics();
     g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, (RenderingHints.VALUE_TEXT_ANTIALIAS_ON));
-    Font plainFont = new Font("Monospaced", Font.PLAIN, 27);
-    Font boldFont  = new Font("Monospaced", Font.BOLD,  27);
+    Font plainFont = new Font("Monospaced", Font.PLAIN, 14);
+    Font boldFont  = new Font("Monospaced", Font.BOLD,  14);
     g2.setFont(plainFont);
 
     FontMetrics metrics = g2.getFontMetrics(plainFont);
@@ -42,10 +42,10 @@ public class MakeFont {
     int adv;
     String c;
     int hx, hy;
-    final int w = 32;
-    final int h = 32;
+    final int w = 16;
+    final int h = 16;
     int x = 0;
-    int y = h-7;
+    int y = h-3;
     for (int i = 32; i < (128+16); i++) {
       c = ""+(char)i;
       adv = metrics.stringWidth(c);

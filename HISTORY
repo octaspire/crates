@@ -1,3 +1,11 @@
+* version 0.3.4 (2010-02-07)
+-----------------------------
+  + Changed the size of the font-texture smaller because of the smaller default resolution
+  + Changed src/utils/MakeFont.java to build the smaller font texture
+  + Some modifications because of the smaller text size
+  + Added longer subtitle back to mission-menu
+  + Updated HISTORY and version numbers in oversion.c and crates.nsi
+
 * version 0.3.3 (2010-02-07)
 -----------------------------
   + Commented out the bottom faces of meshes because those are not visible

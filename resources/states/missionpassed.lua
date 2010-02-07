@@ -42,7 +42,7 @@ function missionpassed.initial.render()
   opengl_color3(1, 1, 0)
   local w, h, d = settings_getscreendimensions()
   local x = 10
-  local dh = 32
+  local dh = 16
   local y = h - dh
   text_printortho(x, y,  missionpassed.text, 0)
   y = y - dh

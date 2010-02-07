@@ -50,11 +50,11 @@ end
 function about.initial.render()
   opengl_color3(1, 1, 1)
   background_renderwithsizehints(about.bgid, about.bw, about.bh)
-  background_renderwithsizes(about.creditsid, 18, about.sh-540, 512, 512)
+  background_renderwithsizes(about.creditsid, 16, about.sh-530, 512, 512)
   opengl_color3(1, 1, 0)
   local w, h, d = settings_getscreendimensions()
   local x = 10
-  local dh = 32
+  local dh = 16
   local y = h - dh
   text_printortho(x, y, about.title, 1)
 end
