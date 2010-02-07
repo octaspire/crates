@@ -19,10 +19,10 @@ missionpassed = {}
 missionpassed.initial = {}
 
 function missionpassed.initial.init(arg)
-  missionpassed.text = "Congrulations! Mission \"" .. arg .. "\" Passed!"
+  missionpassed.text = "Mission \"" .. arg .. "\" Passed!"
   missionpassed.underline = string.rep("\127", #missionpassed.text)
-  missionpassed.bw = 1024
-  missionpassed.bh = 512
+  missionpassed.bw = 512
+  missionpassed.bh = 256
   missionpassed.bgid = texture_nametoid("bg" .. tostring(mission.bw) .. "x" .. tostring(mission.bh) .. ".png")
 
   state_seteventable(true)

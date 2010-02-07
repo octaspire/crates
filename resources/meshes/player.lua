@@ -16,11 +16,13 @@ opengl_texcoord2(0.5,     1.0)   opengl_vertex3(-0.995,    0.995,    0.995)
 opengl_texcoord2(0.625,   1.0)    opengl_vertex3(0.995,    0.995,    0.995)
 opengl_texcoord2(0.625,   0.0)    opengl_vertex3(0.995,    0.995,   -0.995)
 
+--[[
 opengl_normal3(0.0,    -1.0,    0.0)
 opengl_texcoord2(0.625,   1.0)   opengl_vertex3(-0.995,   -0.995,   -0.995)
 opengl_texcoord2(0.75,    1.0)    opengl_vertex3(0.995,   -0.995,   -0.995)
 opengl_texcoord2(0.75,    0.0)    opengl_vertex3(0.995,   -0.995,    0.995)
 opengl_texcoord2(0.625,   0.0)   opengl_vertex3(-0.995,   -0.995,    0.995)
+--]]
 
 opengl_normal3(1.0,     0.0,    0.0)
 opengl_texcoord2(0.25,    1.0)    opengl_vertex3(0.995,   -0.995,   -0.995)

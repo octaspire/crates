@@ -110,6 +110,6 @@ function counter.initial.render(id)
   local x, y, z = entity_getlocation(id)
   opengl_rotate(-90, 1, 0, 0)
   opengl_translate(-1, -0.2, 1.03)
-  opengl_scale(0.0375, 0.0375, 0.0375)
+  opengl_scale(0.033, 0.033, 0.033)
   text_printperspective(tostring(attribute_get(id, "count")), 0)
 end

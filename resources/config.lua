@@ -49,6 +49,6 @@ config.vertical_synchronization                = true
 
 config.skin                                    = "waymark" -- Texture theme to be used: "waymark" or "cartoon"
 
---config.screen_width                          = 1280
---config.screen_height                         = 1024
---config.screen_bpp                            = 0
+config.screen_width                          = 640
+config.screen_height                         = 480
+--config.screen_bpp                          = 0

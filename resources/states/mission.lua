@@ -26,11 +26,11 @@ function mission.initial.init(arg)
   mission.movesound = sound_nametoid("tick.wav")
   mission.selectsound = sound_nametoid("select.wav")
   mission.backsound = sound_nametoid("back.wav")
-  mission.bw = 1024
-  mission.bh = 512
+  mission.bw = 512
+  mission.bh = 256
   mission.bgid = texture_nametoid("bg" .. tostring(mission.bw) .. "x" .. tostring(mission.bh) .. ".png")
   local dsep = dir_getdirectoryseparator()
-  mission.helptext = "New Missions Can Be Dropped Into \"resources" .. dsep .. "missions" .. dsep .. "\"";
+  mission.helptext = "New Missions To \"resources" .. dsep .. "missions" .. dsep .. "\"";
   mission.underline = string.rep("\127", #mission.helptext)
 
   state_seteventable(true)

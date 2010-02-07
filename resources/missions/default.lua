@@ -2,7 +2,7 @@ level{
 name     = "Level 1/30",
 password = "ice",
 lookAt   = "9, 30, 20,     9, 0, 10,      0, 1, 0",
-postinit = "state_messagestackpush('Collect all green keys and go to the exit')",
+postinit = "state_messagestackpush('Collect all keys and go to the exit')",
 lines    = {
 '---- ---- ---- ---- ---- XX-- ---- ##01 ---- ---- ----',
 '---- ##01 ---- ---- ---- ---- ---- ---- ---- ##01 ----',
@@ -210,7 +210,7 @@ level{
 name     = "Level 9/30",
 password = "pike",
 lookAt   = "9, 30, 20,     9, 0, 10,      0, 1, 0",
-postinit = 'state_messagestackpush("Introducing steelbomb. Don\'t be close when it goes off!")',
+postinit = 'state_messagestackpush("Introducing steelbomb. Beware it!")',
 lines    = {
 '---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----',
 '---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----',
@@ -262,7 +262,7 @@ level{
 name     = "Level 11/30",
 password = "book",
 lookAt   = "9, 30, 20,     9, 0, 10,      0, 1, 0",
-postinit = "state_messagestackpush('Push all four red sides of the toggle green before exit')",
+postinit = "state_messagestackpush('Push all four red sides of the toggle')",
 lines    = {
 --10   9    8    7    6    5    4    3    2    1    0
 '|"-- ---- ---- ---- ---- ---- ---- !#02 ---- ---- XX--', -- 10

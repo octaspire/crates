@@ -104,7 +104,6 @@ function toggle.initial.render(id)
   if attribute_get(id, "north") then opengl_color3(0, 1, 0) else opengl_color3(1, 0, 0) end
   opengl_pushmatrix()
   opengl_translate(0, 0, -0.9)
-  opengl_rotate(180, 1, 0, 0)
   opengl_render(toggle.platemeshid);
   opengl_popmatrix()
 

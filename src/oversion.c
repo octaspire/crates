@@ -19,7 +19,7 @@
 #include "oerror.h"
 #include <stdlib.h>
 
-static const ochar *oversion_releasestr = "crates 0.3.2";
+static const ochar *oversion_releasestr = "crates 0.3.3";
 
 void oversion_printinfo()
 {

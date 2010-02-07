@@ -21,11 +21,11 @@ missionpassedat1go.items = {"|", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J
 "S", "T", "U", "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"}
 
 function missionpassedat1go.initial.init(arg)
-  missionpassedat1go.text  = "Congrulations! Mission \"" .. arg .. "\" Passed At One Go!"
+  missionpassedat1go.text  = "Mission \"" .. arg .. "\" Passed At 1 Go!"
   missionpassedat1go.text2 = "Enter Your Name For The Hall Of Fame:"
   missionpassedat1go.underline = string.rep("\127", #missionpassedat1go.text)
-  missionpassedat1go.bw = 1024
-  missionpassedat1go.bh = 512
+  missionpassedat1go.bw = 512
+  missionpassedat1go.bh = 256
   missionpassedat1go.bgid = texture_nametoid("bg" .. tostring(missionpassedat1go.bw) .. "x" .. tostring(missionpassedat1go.bh) .. ".png")
   missionpassedat1go.sindex = 1
   missionpassedat1go.heroname = {"|"}
@@ -33,7 +33,7 @@ function missionpassedat1go.initial.init(arg)
   missionpassedat1go.cr = 1
   missionpassedat1go.crvel = -0.08
   missionpassedat1go.arg = tostring(arg)
-  missionpassedat1go.maxheronamelen = 40
+  missionpassedat1go.maxheronamelen = 11
   if mission.movesound == nil then mission.movesound = sound_nametoid("tick.wav") end
   state_seteventable(true)
   state_setrenderable(true)
