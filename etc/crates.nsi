@@ -22,7 +22,7 @@
   ;Name and file
   Name "${prodname}"
   Caption "${prodname}"
-  OutFile "crates-0.3.4-setup.exe"
+  OutFile "crates-0.3.5-setup.exe"
 
   CRCCheck on
   SetCompressor /SOLID lzma
@@ -91,6 +91,8 @@ Section "Crates game files" SecDummy
   CreateDirectory "$INSTDIR\resources\sounds"
   CreateDirectory "$INSTDIR\resources\states"
   CreateDirectory "$INSTDIR\resources\textures"
+  CreateDirectory "$INSTDIR\resources\textures\cartoon"
+  CreateDirectory "$INSTDIR\resources\textures\waymark"
 
   SetOutPath $INSTDIR\resources
   File "..\resources\config.lua"
@@ -116,8 +118,11 @@ Section "Crates game files" SecDummy
   SetOutPath $INSTDIR\resources\states
   File "..\resources\states\*.lua"
 
-  SetOutPath $INSTDIR\resources\textures
-  File "..\resources\textures\*.png"
+  SetOutPath $INSTDIR\resources\textures\cartoon
+  File "..\resources\textures\cartoon\*.png"
+
+  SetOutPath $INSTDIR\resources\textures\waymark
+  File "..\resources\textures\waymark\*.png"
 
 
   ;Store installation folder
@@ -171,17 +176,6 @@ Section "Uninstall"
   Delete $INSTDIR\crates.exe"
   Delete $INSTDIR\*.dll"
 
-  CreateDirectory "$INSTDIR\resources\"
-  CreateDirectory "$INSTDIR\resources\entities"
-  CreateDirectory "$INSTDIR\resources\halloffame"
-  CreateDirectory "$INSTDIR\resources\images"
-  CreateDirectory "$INSTDIR\resources\meshes"
-  CreateDirectory "$INSTDIR\resources\missions"
-  CreateDirectory "$INSTDIR\resources\musics"
-  CreateDirectory "$INSTDIR\resources\sounds"
-  CreateDirectory "$INSTDIR\resources\states"
-  CreateDirectory "$INSTDIR\resources\textures"
-
   Delete "$INSTDIR\resources\*.*"
   Delete "$INSTDIR\resources\entities\*.*"
   Delete "$INSTDIR\resources\halloffame\*"
@@ -190,6 +184,8 @@ Section "Uninstall"
   Delete "$INSTDIR\resources\missions\*.*"
   Delete "$INSTDIR\resources\sounds\*.*"
   Delete "$INSTDIR\resources\states\*.*"
+  Delete "$INSTDIR\resources\textures\cartoon\*.*"
+  Delete "$INSTDIR\resources\textures\waymark\*.*"
   Delete "$INSTDIR\resources\textures\*.*"
 
   RMDir "$INSTDIR\resources\entities"
@@ -199,6 +195,8 @@ Section "Uninstall"
   RMDir "$INSTDIR\resources\missions"
   RMDir "$INSTDIR\resources\sounds"
   RMDir "$INSTDIR\resources\states"
+  RMDir "$INSTDIR\resources\textures\cartoon"
+  RMDir "$INSTDIR\resources\textures\waymark"
   RMDir "$INSTDIR\resources\textures"
 
   Delete "$INSTDIR\Uninstall.exe"
