@@ -36,7 +36,7 @@ function slopews.initial.update(id, tpf)
 end
 
 function slopews.initial.collision(id, oid)
-  if entity_isname(oid, "player") then
+  if entity_gettypeof(oid) == "moving" then
     local side = entity_onwhichsideisother(id, oid)
     local x, y, z = entity_getlocation(id)
     local vx, vy, vz = entity_getvelocity(oid)
@@ -50,6 +50,7 @@ function slopews.initial.collision(id, oid)
           sound_play(slopews.activesound)
           entity_setstate(id, "slidingsw")
           entity_setupdatable(id, true)
+          attribute_set(id, "oid", oid)
         else
           block.initial.collision(id, oid)
         end
@@ -65,6 +66,7 @@ function slopews.initial.collision(id, oid)
           sound_play(slopews.activesound)
           entity_setstate(id, "slidingws")
           entity_setupdatable(id, true)
+          attribute_set(id, "oid", oid)
         else
           block.initial.collision(id, oid)
         end
@@ -84,13 +86,14 @@ end
 slopews.slidingsw = {}
 
 function slopews.slidingsw.update(id, tpf)
-  local px, py, pz = entity_getlocation(player.id)
+  local oid = attribute_get(id, "oid")
+  local px, py, pz = entity_getlocation(oid)
   local tx, ty, tz = entity_getlocation(id)
-  local vx, vy, vz = entity_getvelocity(player.id)
+  local vx, vy, vz = entity_getvelocity(oid)
   if (pz + vz*tpf) <= tz then
-    entity_setlocation(player.id, tx, ty, tz)
-    player.releasefollowers()
-    player.west()
+    entity_setlocation(oid, tx, ty, tz)
+    if (oid == player.id) then player.releasefollowers() end
+    entity_west(oid)
     entity_setstate(id, "lastphase")
   end
 end
@@ -108,13 +111,14 @@ end
 slopews.slidingws = {}
 
 function slopews.slidingws.update(id, tpf)
-  local px, py, pz = entity_getlocation(player.id)
+  local oid = attribute_get(id, "oid")
+  local px, py, pz = entity_getlocation(oid)
   local tx, ty, tz = entity_getlocation(id)
-  local vx, vy, vz = entity_getvelocity(player.id)
+  local vx, vy, vz = entity_getvelocity(oid)
   if (px + vx*tpf) >= tx then
-    entity_setlocation(player.id, tx, ty, tz)
-    player.releasefollowers()
-    player.south()
+    entity_setlocation(oid, tx, ty, tz)
+    if (oid == player.id) then player.releasefollowers() end
+    entity_south(oid)
     entity_setstate(id, "lastphase")
   end
 end
@@ -132,7 +136,8 @@ end
 slopews.lastphase = {}
 
 function slopews.lastphase.update(id, tpf)
-  if not entity_hascollision(id, player.id) or (entity_isstopped(player.id)) then
+  local oid = attribute_get(id, "oid")
+  if not entity_hascollision(id, oid) or (entity_isstopped(oid)) then
     entity_setstate(id, "initial")
     entity_setupdatable(id, false)
   end

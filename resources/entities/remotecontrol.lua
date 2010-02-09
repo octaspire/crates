@@ -108,6 +108,8 @@ function remotecontrol.initial.collision(id, oid)
         remotecontrol.startrc(id, oid)
       end
     end
+  elseif entity_gettypeof(oid) == "moving" then
+    block.initial.collision(id, oid)
   end
 end
 

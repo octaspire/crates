@@ -36,7 +36,7 @@ function turnstilen.initial.update(id, tpf)
 end
 
 function turnstilen.initial.collision(id, oid)
-  if entity_isname(oid, "player") then
+  if entity_gettypeof(oid) == "moving" then
     local side = entity_onwhichsideisother(id, oid)
     local x, y, z = entity_getlocation(id)
     local vx, vy, vz = entity_getvelocity(oid)
@@ -47,11 +47,11 @@ function turnstilen.initial.collision(id, oid)
     elseif side == "south" then
       if vz < 0 then
         if entity_iswalkable(level_getentityidat(x, y, z-2)) then
-          entity_setlocation(player.id, x, y, z+2)
-          player.releasefollowers()
+          entity_setlocation(oid, x, y, z+2)
+          if oid == player.id then player.releasefollowers() end
           sound_play(turnstilee.activesound)
           z = z - 2
-          entity_setlocation(player.id, x, y, z)
+          entity_setlocation(oid, x, y, z)
         else
           block.initial.collision(id, oid)
         end

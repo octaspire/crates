@@ -49,7 +49,7 @@ function game.initial.init(arg)
   game.levelmaxy = 0
 
   for k, v in ipairs(leveltable.lines) do
-    for w in string.gmatch(v, "[%[%]%w%#%@%!%$%&%<%>%^%.%|%_\"T%-]+") do
+    for w in string.gmatch(v, "[%[%]%w%#%@%!%$%&%<%>%^%.%|%_\"T%+%-]+") do
       w = string.gsub(w, "%-", "")
       if string.len(w) > 1 then
         symbol   = string.sub(w, 1, 2)
@@ -177,6 +177,7 @@ function attribute_toggle(id, name)
 end
 
 function attribute_get(id, name)
+  if attributes[tonumber(id)] == nil then return nil end
   return attributes[tonumber(id)][tostring(name)]
 end
 
@@ -188,4 +189,26 @@ function entity_iswalkable(id)
   if name == "key" then return true end
   if ((name == "inversecounter") and (entity_getstate(id) ~= "final")) then return true end
   return false
+end
+
+function entity_gettypeof(id)
+  local typeof = attribute_get(id, "typeof");
+  if typeof == nil then typeof = "unknown" end
+  return typeof
+end
+
+function entity_north(id)
+  entity_setvelocity(id, 0, 0, -player.speed)
+end
+
+function entity_south(id)
+  entity_setvelocity(id, 0, 0, player.speed)
+end
+
+function entity_west(id)
+  entity_setvelocity(id, -player.speed, 0, 0)
+end
+
+function entity_east(id)
+  entity_setvelocity(id, player.speed, 0, 0)
 end

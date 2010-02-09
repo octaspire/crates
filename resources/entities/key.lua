@@ -72,6 +72,8 @@ function key.initial.collision(id, oid)
         entity_setalive(id, false)
       end
     end
+  elseif entity_gettypeof(oid) == "moving" then
+    block.initial.collision(id, oid)
   end
 end
 

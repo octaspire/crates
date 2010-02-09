@@ -71,6 +71,8 @@ function pullerew.initial.collision(id, oid)
         entity_setupdatable(id, true)
       end
     end
+  elseif entity_gettypeof(oid) == "moving" then
+    block.initial.collision(id, oid)
   end
 end
 

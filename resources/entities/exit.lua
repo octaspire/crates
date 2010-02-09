@@ -72,6 +72,10 @@ function exit.initial.collision(id, oid)
         exit.initial.nextlevel(id, oid, x, y, z)
       end
     end
+  elseif entity_gettypeof(oid) == "moving" then
+    sound_play(exit.errorsound)
+    block.initial.collision(id, oid)
+    game.restartlevel()
   end
 end
 

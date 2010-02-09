@@ -66,7 +66,7 @@ function automaticsteelbomb.countdown.update(id, tpf)
 end
 
 function automaticsteelbomb.countdown.collision(id, oid)
-  if entity_isname(oid, "player") then
+  if entity_gettypeof(oid) == "moving" then
     local side = entity_onwhichsideisother(id, oid)
     local x, y, z = entity_getlocation(id)
     local vx, vy, vz = entity_getvelocity(oid)

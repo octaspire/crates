@@ -43,6 +43,7 @@ function player.initial.init(id, attr)
   entity_seteventable(id, true)
   entity_setmesh(id, "player.lua")
   entity_settexture(id, "player.png")
+  attribute_set(id, "typeof", "moving")
 end
 
 function player.initial.update(id, tpf)
@@ -68,17 +69,17 @@ function player.initial.render(id)
 end
 
 function player.north()
-  entity_setvelocity(player.id, 0, 0, -player.speed)
+  entity_north(player.id)
 end
 
 function player.south()
-  entity_setvelocity(player.id, 0, 0, player.speed)
+  entity_south(player.id)
 end
 
 function player.west()
-  entity_setvelocity(player.id, -player.speed, 0, 0)
+  entity_west(player.id)
 end
 
 function player.east()
-  entity_setvelocity(player.id, player.speed, 0, 0)
+  entity_east(player.id)
 end

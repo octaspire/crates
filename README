@@ -173,6 +173,7 @@ the game.
   pullers            ..
   pullersw           <.
   pullerw            <<
+  pusherensw         P+
   remotecontrol      RC
   slopeen            |_
   slopees            |"
@@ -257,6 +258,7 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |   |   |-- pullers.lua                 => Can be pulled to south           (s)
 |   |   |-- pullersw.lua                => Can be pulled to south and west  (sw)
 |   |   |-- pullerw.lua                 => Can be pulled to west            (w)
+|   |   |-- pusherensw.lua              => Can be pushed to all directions  (ensw)
 |   |   |-- remotecontrol.lua           => Allows you to move some other crate(s) than player
 |   |   |-- slopeen.lua                 => Turns player between east <-> north or stops it
 |   |   |-- slopees.lua                 => Turns player between east <-> south or stops it
@@ -312,7 +314,7 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |   |   `-- password.lua                => State where level passwords can be entered
 |   `-- textures                     => Textures for the game (subdirectories contain skins)
 |       |-- cartoon                     => Textures for the "cartoon"-skin (or theme)
-|       |   |-- bg1024x512.png             => Background image for menus
+|       |   |-- bg512x256.png              => Background image for menus
 |       |   |-- block.png                  => Texture for block
 |       |   |-- bomb.png                   => Texture for bomb
 |       |   |-- credits.png                => Contains the credits
@@ -321,7 +323,9 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |       |   |-- font.png                   => Texture for the font
 |       |   |-- inversecounter.png         => Texture for inversecounter
 |       |   |-- key.png                    => Texture for key
-|       |   |-- manual1024x1024.png        => Contains the manual (in-game)
+|       |   |-- manual1.png                => Contains the manual (in-game) page 1
+|       |   |-- manual2.png                => Contains the manual (in-game) page 2
+|       |   |-- manual3.png                => Contains the manual (in-game) page 3
 |       |   |-- player.png                 => Texture for player
 |       |   |-- pullere.png                => Texture for east puller            (e)
 |       |   |-- pulleren.png               => Texture for east and north puller  (en)
@@ -333,6 +337,7 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |       |   |-- pullers.png                => Texture for south puller           (s)
 |       |   |-- pullersw.png               => Texture for south and west puller  (sw)
 |       |   |-- pullerw.png                => Texture for west puller            (w)
+|       |   |-- pusherensw.png             => Texture for all directions pusher  (ensw)
 |       |   |-- remotecontrol.png          => Texture for remote control
 |       |   |-- slopeen.png                => Texture for east and north slope   (en)
 |       |   |-- slopees.png                => Texture for east and south slope   (es)
@@ -350,7 +355,7 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |       |   |-- turnstilew.png             => Texture for east and west turnstile         (ew)
 |       |   `-- turnstilew1.png            => Texture for east and west 1 step turnstile  (ew1)
 |       `-- waymark                     => Textures for the "Waymark"-skin (or theme)
-|           |-- bg1024x512.png
+|           |-- bg512x256.png
 |           |-- block.png
 |           |-- bomb.png
 |           |-- credits.png
@@ -359,7 +364,9 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |           |-- font.png
 |           |-- inversecounter.png
 |           |-- key.png
-|           |-- manual1024x1024.png
+|           |-- manual1.png
+|           |-- manual2.png
+|           |-- manual3.png
 |           |-- player.png
 |           |-- pullere.png
 |           |-- pulleren.png
@@ -371,6 +378,7 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |           |-- pullers.png
 |           |-- pullersw.png
 |           |-- pullerw.png
+|           |-- pusherensw.png
 |           |-- remotecontrol.png
 |           |-- slopeen.png
 |           |-- slopees.png
@@ -473,4 +481,4 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
     |-- check_ovector.c
     `-- test.sh                      => Compiles and runs unit tests
 
-24 directories, 227 files
+24 directories, 234 files

@@ -1,3 +1,15 @@
+* version 0.4.0 (2010-02-09)
+-----------------------------
+  + Added new game entity (or crate): pusherensw.lua that can be pushed to all directions  (ensw)
+  + Added two new textures for pusherensw: one to waymark-skin and other to cartoon-skin
+  + Added entry for pusherensw to the in-game manuals for both skins
+  + Added new level (level 31) to the default mission. This level introduces pushers
+  + Updated README
+  + Modifications to some other game entities because of the new pusherensw
+  + Small modifications/additions to some game entities and the in game state to make those scripts a bit more general
+  + Updated Hall of Fame for the default mission (time needed updating because of the one new level added)
+  + Updated HISTORY and version numbers in oversion.c and crates.nsi
+
 * version 0.3.5 (2010-02-08)
 -----------------------------
   + Modified NSIS installer script for windows because of the skin-directories
