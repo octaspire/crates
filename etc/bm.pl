@@ -19,8 +19,10 @@
 #
 #  Perl script that builds automatically makefiles for different kinds
 #  of systems with all the current dependencies.
-#  Posix-makefile   (Makefile)         is for posix-compliant systems like GNU/Linux, UNIX and MacOS X.
-#  Windows-makefile (Makefile.windows) is for Microsoft Windows.
+#  Makefile.freebsd  is for FreeBSD
+#  Makefile.linux    is for GNU/Linux
+#  Makefile.macosx   is for Mac OS X
+#  Makefile.windows  is for Microsoft Windows (mainly for Dev-C++)
 #  GCC is used for the automatic generation of dependencies.
 #  Usage: etc/bm.pl (start this script from the top level directory of the source distribution,
 #  not from etc-directory.)
@@ -182,11 +184,13 @@ sub writemakefile_linux
     print OUTFILE "$f ";
   }
 
+  chomp($LUAIFLAGS = `pkg-config lua5.1 --cflags`);
+
   print OUTFILE "\n";
-  print OUTFILE "LUAIPATH = $LUAIPATH\n";
-  print OUTFILE "LUALPATH = $LUALPATH\n";
-  print OUTFILE "CFLAGS  = -g -Wall -ansi -pedantic `sdl-config --cflags` `libpng-config --cflags` -I \$(LUAIPATH)\n";
-  print OUTFILE "LFLAGS = `sdl-config --libs` -lSDL_mixer `libpng-config --ldflags` -lGL -lGLU -L \$(LUALPATH) -l" . $LUAVERSION . "\n\n";
+  print OUTFILE "LUAIFLAGS = `pkg-config lua5.1 --cflags`\n";
+  print OUTFILE "LUALFLAGS = `pkg-config lua5.1 --libs`\n";
+  print OUTFILE "CFLAGS  = -g -Wall -ansi -pedantic `sdl-config --cflags` `libpng-config --cflags` \$(LUAIFLAGS)\n";
+  print OUTFILE "LFLAGS = `sdl-config --libs` -lSDL_mixer `libpng-config --ldflags` -lGL -lGLU \$(LUALFLAGS)\n\n";
 
   print OUTFILE "crates: \$(OBJS)\n";
   print OUTFILE "\t\$(CC) -o crates \$(OBJS) \$(LFLAGS)\n\n";
@@ -194,21 +198,21 @@ sub writemakefile_linux
   my @files = <src/*.c>;
   foreach $f (@files)
   {
-    print OUTFILE `gcc $SDLCFLAGS -I $LUAIPATH -MM $f`;
+    print OUTFILE `gcc $SDLCFLAGS $LUAIFLAGS -MM $f`;
     print OUTFILE "\t\$(CC) -c -o \$\@ \$(CFLAGS) \$\<\n\n";
   }
 
   my @files2 = <$path2/*.c>;
   foreach $f (@files2)
   {
-    print OUTFILE `gcc $SDLCFLAGS -I $LUAIPATH -MM $f`;
+    print OUTFILE `gcc $SDLCFLAGS $LUAIFLAGS -MM $f`;
     print OUTFILE "\t\$(CC) -c -o \$\@ \$(CFLAGS) \$\<\n\n";
   }
 
   my @files3 = <$path3/*.c>;
   foreach $f (@files3)
   {
-    print OUTFILE `gcc $SDLCFLAGS -I $LUAIPATH -MM $f`;
+    print OUTFILE `gcc $SDLCFLAGS $LUAIFLAGS -MM $f`;
     print OUTFILE "\t\$(CC) -c -o \$\@ \$(CFLAGS) \$\<\n\n";
   }
 

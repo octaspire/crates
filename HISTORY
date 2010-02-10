@@ -1,3 +1,9 @@
+* version 0.4.1 (2010-02-10)
+-----------------------------
+  + Modified etc/bm.pl and Makefile.linux because of issue 1 at http://github.com/octaspire/crates/issues (Build error: /usr/bin/ld: cannot find -llua5.1)
+  + GNU/Linux makefile uses now pkg-config to find Lua
+  + Updated HISTORY and version numbers in oversion.c and crates.nsi
+
 * version 0.4.0 (2010-02-09)
 -----------------------------
   + Added new game entity (or crate): pusherensw.lua that can be pushed to all directions  (ensw)
