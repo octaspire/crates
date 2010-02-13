@@ -87,20 +87,22 @@ and the level is restarted.
     - Sound card
     - Keyboard or Gamepad
 
-Game is currently tested  only in  Ubuntu GNU/Linux,  Windows XP,
-Mac OS X and FreeBSD.   Other  versions  might  come later.   For
-Windows  there  is  an  installer  available  that  installs  and
+Game is currently tested only in Ubuntu GNU/Linux, Arch GNU/Linux,
+Windows XP, Mac OS X and FreeBSD. Other versions might come later.
+For Windows there is an installer  available  that  installs  and
 uninstalls  a binary version  of  the game  automatically.    For
 GNU/Linux,  Mac OS X  and  FreeBSD  there isn’t currently such an
 installer (might come later),  so in these systems game needs  to
-be compiled  from  the  source  code. Your system  should already
-have a   C compiler  and  make  available. If not, install  those
-(gcc and make).  Then  install development versions of the latest
-stable versions of  SDL 1.2,  SDL_mixer 1.2,  libpng,  zlib   and
-Lua 5.1. Then use the provided  Makefile.X,  where  X  is    your
-platform, to build crates.  Note  that  in FreeBSD you should use
-gmake (write "gmake" instead of "make").  See  file  INSTALL  for
-more thorough explanation.
+be compiled  from  the  source  code using CMake (cross-platform,
+open-source build system). Install it first, if you don't already
+have it. It can probably be installed with your  system's package
+manager,  or you can get  a binary version  or  source code  from
+http://www.cmake.org/cmake/resources/software.html.  Then install
+development versions of the latest  stable versions  of   SDL 1.2,
+SDL_mixer 1.2,  libpng,  zlib  and Lua 5.1. Then use CMake and the
+provided CMakeListst.txt to build crates.  Note  that   in-source
+builds are not allowed.   See  file  INSTALL  for  more  thorough
+explanation.
 
 
 3. CONTROLS
@@ -225,13 +227,9 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |-- COPYING                       => License information for crates
 |-- HISTORY                       => Listing of changes between versions
 |-- INSTALL                       => Installation instructions for all platforms
-|-- Makefile.freebsd              => FreeBSD makefile (use gmake)
-|-- Makefile.linux                => GNU/Linux makefile
-|-- Makefile.macosx               => Mac OS X  makefile
-|-- Makefile.windows              => Windows makefile, mainly for Dev-C++
+|-- CMakeLists.txt                => CMake build configuration file for all supported systems
 |-- README                        => This file
-|-- etc                           => Directory containing misc. useful files
-|   |-- bm.pl                        => Perl script for makefile building
+|-- etc                           => Directory containing misc. more or less useful files
 |   `-- crates.nsi                   => NSIS installer script for windows
 |-- man                           => Directory containing manual pages for crates
 |   |-- man5                         => "File formats and conventions"
@@ -400,6 +398,8 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |   |-- oaudiomanager.c
 |   |-- oaudiomanager.h
 |   |-- obits.h
+|   |-- oconfig.h
+|   |-- oconfig.h.in
 |   |-- odir.h
 |   |-- oentity.c
 |   |-- oentity.h
@@ -481,4 +481,4 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
     |-- check_ovector.c
     `-- test.sh                      => Compiles and runs unit tests
 
-24 directories, 234 files
+24 directories, 232 files

@@ -2,11 +2,8 @@ CONTENTS
 ---------
 
 1. Windows
-2. GNU/Linux
-3. Mac OS X
-4. FreeBSD
-5. Other systems
-6. Customization and testing
+2. GNU/Linux, Mac OS X and FreeBSD
+3. Other systems, customization and testing
 
 
 1. Windows
@@ -17,30 +14,31 @@ homepage  www.octaspire.com/crates/. With it you can install  and
 uninstall a binary version of the game easily with just a  couple
 of mouse clicks.
 
-If  you  want  to compile the game in windows yourself, you could
-use the provided windows-makefile and Dev-C++ or some other tools.
-How  to  do it exactly depends on the compiler or IDE you are us-
-ing.
 
+2. GNU/Linux, Mac OS X and FreeBSD
+-----------------------------------
 
-2. GNU/Linux
--------------
+For  GNU/Linux,  Mac OS X and  FreeBSD  there isn't currently  an
+installer  or  package  files  (might come later),  so  in  these
+systems  the game needs to be compiled from the source code using
+CMake  (cross-platform,  open-source  build system).  Install  it
+first, if you don't already have it. It can probably be installed
+with your  system's package manager  (apt-get,  pacman,  pkg_add,
+Synaptic Package Manager, emerge, ...),  or you can get  binaries
+or  source  code  archives  from  CMake's  download-section  from
+http://www.cmake.org/cmake/resources/software.html.  Then install
+development versions of the latest  stable  versions of  SDL 1.2,
+SDL_mixer 1.2, libpng, zlib and Lua 5.1.  Then  use CMake and the
+provided CMakeListst.txt to build crates.  Note  that   in-source
+builds are not allowed. For example, to extract,  build  and  run
+you could issue the following commands:
 
-For GNU/Linux  there  isn't  currently an installer  or  package-
-files  (might  come later), so in these systems the game needs to
-be compiled from the  source  code.  Your  system should  already
-have a C compiler and make available.  If not, install those (gcc
-and make). Then install development versions of the latest stable
-versions of  SDL 1.2,  SDL_mixer 1.2,  libpng,  zlib and Lua 5.1.
-Then  use the  provided  Makefile  to  build  crates  by  issuing
-the following command:
-
-  make -f Makefile.linux
-
-After  the  building  process  is done, you can start the game by
-saying:
-
-  ./crates
+  tar -xzf crates-0.4.2.tar.gz
+  mkdir crates-0.4.2-build
+  cd crates-0.4.2-build
+  cmake ../crates-0.4.2
+  make
+  ../crates-0.4.2/crates
 
 If you want to run the unit tests in  tests-directory,  you  will
 also  need  to  install check, a unit testing framework for C, if
@@ -57,68 +55,25 @@ this  case  removing libsdl1.2debian-alsa and installing SDL with
 PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 
 
-3. Mac OS X
-------------
+3. Other systems, customization and testing
+--------------------------------------------
 
-For  Mac OS X  the  building  process is quite similar to that of
-GNU/Linux.  After  you  have  installed  SDL 1.2,  SDL_mixer 1.2,
-(libpng, zlib) and  Lua 5.1  you can use the provided makefile to
-build crates by issuing the following command:
-
-  make -f Makefile.macosx
-
-After  the  building  process is done, you can start  the game by
-saying:
-
-  ./crates
-
-There   isn't   currently   an installer  program  available  for
-Mac OS X, but it might be added later.
-
-
-4. FreeBSD
------------
-
-For  FreeBSD  the  building  process  is quite similar to that of
-GNU/Linux.  After  you  have  installed  SDL 1.2,  SDL_mixer 1.2,
-(libpng, zlib),  Lua 5.1  and  gmake  (from the Ports collection)
-you can use the provided makefile to build crates by  issuing the
-following command:
-
-  gmake -f Makefile.freebsd
-
-After  the  building  process is done, you can start  the game by
-saying:
-
-  ./crates
-
-
-5. Other Systems
------------------
-
-Game is currently tested only in  Ubuntu  GNU/Linux,  Windows XP,
-Mac  OS  X and FreeBSD. Other versions might come later. The code
-should  be  quite portable,  because it is written in standard C.
-The  non-portable parts can be found in windows- and posix-subdi-
-rectories in the src-directory.  At least "/proc/%i/exe"       in
-src/posix/linux/oexedirname.c,   "GetModuleFileName"           in
+Game is currently tested only in Ubuntu GNU/Linux, Arch GNU/Linux,
+Windows XP, Mac OS X and FreeBSD. Other versions might come later.
+The  code  should  be  quite portable,  because  it is written in
+standard C.  The non-portable parts can be found in windows-  and
+posix-subdirectories in the src-directory. At least "/proc/%i/exe"
+in src/posix/linux/oexedirname.c,   "GetModuleFileName"        in
 src/windows/odir.c,    "_NSGetExecutablePath"                  in
 src/posix/macosx/oexedirname.c  and    "sysctl"                in
 src/posix/freebsd/oexedirname.c might  need  changing  for  other
 systems.
 
-
-6. Customization and testing
------------------------------
-
 The top level directory of crates (source code version)  contains
-four makefiles: Makefile.linux, Makefile.macosx, Makefile.windows
-and  Makefile.freebsd.   All   four   makefiles   are   generated
-automatically with  a Perl script bm.pl that can be found in etc-
-directory.  If you  modify the code so  that dependencies change,
-for  example  by  adding  new files, you can run bm.pl  from  the
-source directory by giving command "etc/bm.pl" to regenerate  the
-makefile(s) with all the current dependencies.
+CMakeLists.txt,  a  CMake  build  configuration  file for all the
+supported systems. If you are working with a new system you might
+want to add detection of that system and configuration for it  in
+the CMakeLists.txt.
 
 The tests-directory of crates (source code version) contains some
 unit tests. If you want to run those unit tests, you will need to

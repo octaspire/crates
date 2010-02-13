@@ -108,6 +108,14 @@ static int entity_getname(lua_State *L)
   return 1;
 }
 
+INLINE static onumber oluacapi_trunc(onumber x)
+{
+  if (x < 0)
+    return ceil(x);
+
+  return floor(x);
+}
+
 /**
   i>
   id:integer ->
@@ -117,9 +125,9 @@ static int entity_trunclocation(lua_State *L)
   OEntity *e;
   int id = luaL_checkint(L, 1);
   e = ostate_getentityptrwithiderror(oluacapi_game->state, id);
-  e->location->x = trunc(e->location->x);
-  e->location->y = trunc(e->location->y);
-  e->location->z = trunc(e->location->z);
+  e->location->x = oluacapi_trunc(e->location->x);
+  e->location->y = oluacapi_trunc(e->location->y);
+  e->location->z = oluacapi_trunc(e->location->z);
   return 0;
 }
 

@@ -15,11 +15,12 @@
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "otypes.h"
+#include "oconfig.h"
 #include "oerror.h"
+#include "otypes.h"
 #include <stdlib.h>
 
-static const ochar *oversion_releasestr = "crates 0.4.1";
+static const ochar *oversion_releasestr = CRATES_VERSION_STRING;
 
 void oversion_printinfo()
 {

@@ -23,9 +23,7 @@
 static onumber otimer_getseconds()
 {
   static struct timeval tm;
-  static struct timezone tz;
-  gettimeofday(&tm, &tz);
-
+  gettimeofday(&tm, 0);
   return ((onumber)(tm.tv_sec) + ((onumber)(tm.tv_usec) * 0.000001));
 }
 

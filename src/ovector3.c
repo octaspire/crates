@@ -108,7 +108,7 @@ void ovector3_cross(const OVector3 *vector3, const OVector3 *other, OVector3 *re
 
 onumber ovector3_length(const OVector3 *vector3)
 {
-  return sqrtf(ovector3_lengthsquared(vector3));
+  return sqrt(ovector3_lengthsquared(vector3));
 }
 
 onumber ovector3_lengthsquared(const OVector3 *vector3)
@@ -133,13 +133,13 @@ INLINE onumber ovector3_distancesquared(const OVector3 *vector3, const OVector3 
 
 INLINE onumber ovector3_distance(const OVector3 *vector3, const OVector3 *other)
 {
-  return sqrtf(ovector3_distancesquared(vector3, other));
+  return sqrt(ovector3_distancesquared(vector3, other));
 }
 
 onumber ovector3_radanglebetween(const OVector3 *vector3, const OVector3 *other)
 {
   onumber dot = ovector3_dot(vector3, other);
-  return acosf(dot);
+  return acos(dot);
 }
 
 void ovector3_negate(OVector3 *vector3)

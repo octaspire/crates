@@ -36,7 +36,8 @@ static void opngtotexture_load(OTexture *texture, const ochar *path)
     oerror_fatal("opngtotexture_load: \"%s\" cannot be opened", path);
   }
 
-  fread(sig, 1, sizeof(sig), fp);
+  if (fread(sig, 1, sizeof(sig), fp) != sizeof(sig))
+    oerror_warning("opngtotexture_load: number of items read for the signature was not %d", sizeof(sig));
 
   if (png_sig_cmp(sig, 0, sizeof(sig)) != 0)
   {

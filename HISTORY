@@ -1,3 +1,17 @@
+* version 0.4.2 (2010-02-13)
+-----------------------------
+  + CMake is now used for building
+  + Removed etc/bm.pl and all the Makefiles.
+  + Added CMakeLists.txt (CMake build configuration file for all supported systems)
+  + Use of CMake also fixes issue 1 at github.com/octaspire/crates/issues (Build error: /usr/bin/ld: cannot find -llua5.1)
+  + Added src/oconfig.h and src/oconfig.h.in
+  + Updated HISTORY, INSTALL, README and version number in crates.nsi
+  + Replaced function trunc with function oluacapi_trunc conforming to C89
+  + Added missing check for the return value of fread in src/opngtotexture.c
+  + Changed calls to function sqrtf into sqrt and call to function acosf into acos in src/ovector3.c
+  + The oversion_releasestr in src/oversion.c is now set automatically from the CMakeLists.txt
+  + Changed &tz into 0 in posix/otimer.c
+
 * version 0.4.1 (2010-02-10)
 -----------------------------
   + Modified etc/bm.pl and Makefile.linux because of issue 1 at http://github.com/octaspire/crates/issues (Build error: /usr/bin/ld: cannot find -llua5.1)
