@@ -1,3 +1,8 @@
+* version 0.4.4 (2010-02-15)
+-----------------------------
+  + Updated version numbers in the building example in INSTALL
+  + Updated HISTORY and version numbers in CMakeLists.txt, INSTALL and etc/crates.nsi (and src/oconfig.h)
+
 * version 0.4.3 (2010-02-15)
 -----------------------------
   + Changed perspective correction hint and texture filters to get higher fps in slower systems
