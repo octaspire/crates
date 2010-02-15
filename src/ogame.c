@@ -171,7 +171,7 @@ static oboolean ogame_sdlinit(OGame *game)
     glEnable(GL_LIGHT1);
   }
 
-  glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+  glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE);
   resizeWindow(osettings_getscreenwidth(game->settings), osettings_getscreenheight(game->settings));
   SDL_WM_SetCaption("Crates!", NULL);
