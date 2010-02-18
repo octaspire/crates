@@ -79,7 +79,7 @@ void omessagestack_update(OMessageStack *messagestack, const onumber tpf)
 static void omessagestack_rendermessage(void *element, ouint32 index, void *userdata)
 {
   oint32 len = optrvector_length(((OMessageStack*)userdata)->messages);
-  const ochar *message = ostring_tocstr((const OString*)element);
+  const ouchar *message = (const ouchar*)ostring_tocstr((const OString*)element);
   otextmanager_printortho(((OMessageStack*)userdata)->textmanager, 0, ((OMessageStack*)userdata)->basey + ((len - index - 1)*16), message, 0);
 }
 

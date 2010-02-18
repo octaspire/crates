@@ -37,6 +37,7 @@ function mission.initial.init(arg)
   state_setrenderable(true)
 
   mission.names = game_getmissionnames()
+  music_playrandom()
 end
 
 function mission.initial.update(tpf)

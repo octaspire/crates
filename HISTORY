@@ -1,3 +1,21 @@
+* version 0.5.0 (2010-02-18)
+-----------------------------
+  + Added new game entity (or crate): automaton.lua that can be programmed to perform multiple different tasks
+  + Added two new textures for automaton: one to waymark-skin and other to cartoon-skin
+  + Added entry for automaton to the in-game manuals for both skins
+  + Added new level (level 32) to the default mission. This level introduces automatons
+  + Modified font textures by adding new symbols for the automatons (codes 128, 129, 130, 131, 132 and 133)
+  + Some changes to text rendering so that characters with codes larger than 127 are rendered correctly
+  + Added one music file: CambodianOdyssey.ogg, song from incompetech.com (downsampled and converted to Ogg)
+  + Modified the starting and stopping of music in the Lua scripts a bit
+  + Changed music and sound effect volumes to the maximum (1) in the configuration file config.lua to prevent
+    crackling sounds that appeared at least on one GNU/Linux system after the music file was starting its
+    second loop.
+  + Moved setting config.fps to the bottom of the configuration file
+  + Updated README
+  + Updated Hall of Fame for the default mission (time needed updating because of the one new level added)
+  + Updated HISTORY and version numbers in CMakeLists.txt, INSTALL and etc/crates.nsi (and src/oconfig.h)
+
 * version 0.4.4 (2010-02-15)
 -----------------------------
   + Updated version numbers in the building example in INSTALL

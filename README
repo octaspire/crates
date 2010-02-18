@@ -147,7 +147,11 @@ with  a  Java  program.     Textures   for     the   Waymark-skin
 License at lostgarden.com.   Textures  in  the  Waymark-skin  are
 modified versions, not the originals. See lostgarden.com for  the
 originals:     "Iron Plague, a Sinistar clone" art by Daniel Cook
-(Lostgarden.com)
+(Lostgarden.com).  Music  is  by  Kevin MacLeod (incompetech.com)
+Licensed      under      Creative    Commons    "Attribution 3.0"
+http://creativecommons.org/licenses/by/3.0/  and  was modified by
+downsampling it and converting it to Ogg Vorbis file format using
+Audacity.
 
 
 6. SOME CRATE SYMBOLS
@@ -158,6 +162,7 @@ of crates. These are used when building missions and  levels  for
 the game.
 
   automaticsteelbomb AB
+  automaton          AU
   block              XX
   bomb               BB
   counter            ##
@@ -239,6 +244,7 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |   |-- config.lua                   => Configuration file for crates
 |   |-- entities                     => All the game objects (or crates)
 |   |   |-- automaticsteelbomb.lua      => Steelbomb that starts countdown automatically
+|   |   |-- automaton.lua               => can be programmed to perform multiple different tasks
 |   |   |-- block.lua                   => Stops player
 |   |   |-- bomb.lua                    => Stops player (max 2 times) and starts countdown
 |   |   |-- counter.lua                 => Stops player "count" times
@@ -293,6 +299,7 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |   |-- missions                     => New missions can be dropped here
 |   |   `-- default.lua                 => The default mission
 |   |-- musics                       => Musics for the game, if any
+|   |   `-- CambodianOdyssey.ogg        => Song from incompetech.com (downsampled and converted to Ogg)
 |   |-- sounds                       => Sound effects for the game
 |   |   |-- back.wav
 |   |   |-- buzz.wav
@@ -312,6 +319,7 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |   |   `-- password.lua                => State where level passwords can be entered
 |   `-- textures                     => Textures for the game (subdirectories contain skins)
 |       |-- cartoon                     => Textures for the "cartoon"-skin (or theme)
+|       |   |-- automaton.png              => Texture for automaton
 |       |   |-- bg512x256.png              => Background image for menus
 |       |   |-- block.png                  => Texture for block
 |       |   |-- bomb.png                   => Texture for bomb
@@ -353,6 +361,7 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |       |   |-- turnstilew.png             => Texture for east and west turnstile         (ew)
 |       |   `-- turnstilew1.png            => Texture for east and west 1 step turnstile  (ew1)
 |       `-- waymark                     => Textures for the "Waymark"-skin (or theme)
+|           |-- automaton.png
 |           |-- bg512x256.png
 |           |-- block.png
 |           |-- bomb.png
@@ -481,4 +490,4 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
     |-- check_ovector.c
     `-- test.sh                      => Compiles and runs unit tests
 
-24 directories, 232 files
+24 directories, 236 files

@@ -66,7 +66,7 @@ void otextmanager_release(OTextManager *textmanager)
   oerror_free(textmanager);
 }
 
-INLINE void otextmanager_printortho(OTextManager *textmanager, oint32 x, oint32 y, const ochar *characters, ouint32 set)
+INLINE void otextmanager_printortho(OTextManager *textmanager, oint32 x, oint32 y, const ouchar *characters, ouint32 set)
 {
   if (set > 1)
     set = 1;
@@ -75,12 +75,12 @@ INLINE void otextmanager_printortho(OTextManager *textmanager, oint32 x, oint32 
 
   oglapi_enterortho();
     glTranslated(x, y, 0);
-    glListBase(textmanager->list - 32 + ((128 * set)-(16*set)));
-    glCallLists(strlen(characters), GL_BYTE, characters);
+    glListBase(textmanager->list - 32 + ((128 * set) - (16*set)));
+    glCallLists(strlen((const char*)characters), GL_UNSIGNED_BYTE, characters);
   oglapi_leaveortho();
 }
 
-void otextmanager_printperspective(OTextManager *textmanager, const ochar *characters, ouint32 set)
+void otextmanager_printperspective(OTextManager *textmanager, const ouchar *characters, ouint32 set)
 {
   if (set > 1)
     set = 1;
@@ -88,8 +88,9 @@ void otextmanager_printperspective(OTextManager *textmanager, const ochar *chara
   glPushAttrib(GL_DEPTH_BUFFER_BIT | GL_ENABLE_BIT);
   glEnable(GL_BLEND);
   glDisable(GL_LIGHTING);
+  glDisable(GL_DEPTH_TEST);
   glBindTexture(GL_TEXTURE_2D, textmanager->textureid);
-  glListBase(textmanager->list - 32 + ((128 * set)-(16*set)));
-  glCallLists(strlen(characters), GL_BYTE, characters);
+  glListBase(textmanager->list - 32 + ((128 * set) - (16*set)));
+  glCallLists(strlen((const char*)characters), GL_UNSIGNED_BYTE, characters);
   glPopAttrib();
 }

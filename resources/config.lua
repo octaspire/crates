@@ -1,7 +1,6 @@
 config = {}
 config.verbose                                 = 0       -- [0..2]
 config.filelog                                 = false
-config.fps                                     = 25
 config.fullscreen                              = true
 
 --[[
@@ -19,8 +18,13 @@ config.sounds                                  = false
 config.music                                   = false
 
 config.mix_channels                            = 16
-config.music_volume                            = 0.5     -- [0..1]
-config.sound_volume                            = 0.5     -- [0..1]
+
+--[[
+Volumes smaller than 1 can cause crackling sounds at least
+on some GNU/Linux-systems.
+--]]
+config.music_volume                            = 1     -- [0..1]
+config.sound_volume                            = 1     -- [0..1]
 config.sound_stereo                            = false
 config.sound_chunksize                         = 256
 config.controllers                             = true
@@ -49,6 +53,8 @@ config.vertical_synchronization                = true
 
 config.skin                                    = "waymark" -- Texture theme to be used: "waymark" or "cartoon"
 
-config.screen_width                          = 640
-config.screen_height                         = 480
---config.screen_bpp                          = 0
+config.screen_width                            = 640
+config.screen_height                           = 480
+--config.screen_bpp                            = 0
+
+config.fps                                     = 25

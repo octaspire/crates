@@ -22,7 +22,7 @@
   ;Name and file
   Name "${prodname}"
   Caption "${prodname}"
-  OutFile "crates-0.4.4-setup.exe"
+  OutFile "crates-0.5.0-setup.exe"
 
   CRCCheck on
   SetCompressor /SOLID lzma

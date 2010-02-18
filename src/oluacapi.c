@@ -796,7 +796,7 @@ static int text_printortho(lua_State *L)
 {
   int x = luaL_checkint(L, 1);
   int y = luaL_checkint(L, 2);
-  const char *characters = luaL_checkstring(L, 3);
+  const ouchar *characters = (const ouchar*)luaL_checkstring(L, 3);
   int set = luaL_checkint(L, 4);
   otextmanager_printortho(oluacapi_game->textmanager, x, y, characters, set);
   return 0;
@@ -808,7 +808,7 @@ static int text_printortho(lua_State *L)
 */
 static int text_printperspective(lua_State *L)
 {
-  const char *characters = luaL_checkstring(L, 1);
+  const ouchar *characters = (const ouchar*)luaL_checkstring(L, 1);
   int set = luaL_checkint(L, 2);
   otextmanager_printperspective(oluacapi_game->textmanager, characters, set);
   return 0;

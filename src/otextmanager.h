@@ -37,7 +37,7 @@ typedef struct {
 
 OTextManager *otextmanager_new              (const ochar *name, OTextureManager *texturemanager);
 void          otextmanager_release          (OTextManager *textmanager);
-void          otextmanager_printortho       (OTextManager *textmanager, oint32 x, oint32 y, const char *characters, ouint32 set);
-void          otextmanager_printperspective (OTextManager *textmanager, const ochar *characters, ouint32 set);
+void          otextmanager_printortho       (OTextManager *textmanager, oint32 x, oint32 y, const ouchar *characters, ouint32 set);
+void          otextmanager_printperspective (OTextManager *textmanager, const ouchar *characters, ouint32 set);
 
 #endif

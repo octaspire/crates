@@ -37,7 +37,7 @@ function game.initial.init(arg)
   game.numtoggles = 0
   game.isrestartlevel = false
   local leveltable = game_getcurrentlevel()
-  music_stop()
+  --music_stop()
   local x = 0
   local y = 0
   local z = 0
@@ -93,7 +93,7 @@ function game.initial.init(arg)
   state_messagestackpush("Password: " .. leveltable.password)
 
   if game.errorsound == nil then game.errorsound = sound_nametoid("back.wav") end
-  music_playrandom()
+  --music_playrandom()
 
   if leveltable.postinit then
     game_dostring(leveltable.postinit)

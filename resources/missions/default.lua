@@ -1,5 +1,5 @@
 level{
-name     = "Level 1/31",
+name     = "Level 1/32",
 password = "ice",
 lookAt   = "9, 30, 20,     9, 0, 10,      0, 1, 0",
 postinit = "state_messagestackpush('Collect all keys and go to the exit')",
@@ -22,7 +22,7 @@ attributes = {
 }
 
 level{
-name     = "Level 2/31",
+name     = "Level 2/32",
 password = "moon",
 lookAt   = "11, 30, 20,     11, 0, 10,      0, 1, 0",
 postinit = 'state_messagestackpush("Oh, it\'s just a merry-go-round")',
@@ -45,7 +45,7 @@ attributes = {
 }
 
 level{
-name     = "Level 3/31",
+name     = "Level 3/32",
 password = "go",
 lookAt   = "17, 40, 20,     17, 0, 9,      0, 1, 0",
 postinit = "state_messagestackpush('Those counters are your friends')",
@@ -71,7 +71,7 @@ lines    = {
 }
 
 level{
-name     = "Level 4/31",
+name     = "Level 4/32",
 password = "bus",
 lookAt   = "14, 45, 20,     14, 0, 11,      0, 1, 0",
 postinit = "state_messagestackpush('Solve the right combination')",
@@ -108,7 +108,7 @@ attributes = {
 }
 
 level{
-name     = "Level 5/31",
+name     = "Level 5/32",
 password = "heart",
 lookAt   = "16, 45, 20,     16, 0, 15,      0, 1, 0",
 postinit = 'state_messagestackpush("Busy Valentine\'s Day")',
@@ -135,7 +135,7 @@ attributes = {
 }
 
 level{
-name     = "Level 6/31",
+name     = "Level 6/32",
 password = "box",
 lookAt   = "11, 40, 20,     11, 0, 13,      0, 1, 0",
 postinit = 'state_messagestackpush("Piece of cake, but eat it fast")',
@@ -161,7 +161,7 @@ attributes = {
 }
 
 level{
-name     = "Level 7/31",
+name     = "Level 7/32",
 password = "wind",
 lookAt   = "14, 35, 20,     14, 0, 11,      0, 1, 0",
 lines    = {
@@ -182,7 +182,7 @@ lines    = {
 }
 
 level{
-name     = "Level 8/31",
+name     = "Level 8/32",
 password = "shuttle",
 lookAt   = "14, 35, 20,     14, 0, 12,      0, 1, 0",
 lines    = {
@@ -207,7 +207,7 @@ attributes = {
 }
 
 level{
-name     = "Level 9/31",
+name     = "Level 9/32",
 password = "pike",
 lookAt   = "9, 30, 20,     9, 0, 10,      0, 1, 0",
 postinit = 'state_messagestackpush("Introducing steelbomb. Beware it!")',
@@ -230,7 +230,7 @@ attributes = {
 }
 
 level{
-name     = "Level 10/31",
+name     = "Level 10/32",
 password = "ram",
 lookAt   = "19, 60, 20,     19, 0, 19,      0, 1, 0",
 lines    = {
@@ -259,7 +259,7 @@ attributes = {
 }
 
 level{
-name     = "Level 11/31",
+name     = "Level 11/32",
 password = "book",
 lookAt   = "9, 30, 20,     9, 0, 10,      0, 1, 0",
 postinit = "state_messagestackpush('Push all four red sides of the toggle')",
@@ -284,7 +284,7 @@ attributes = {
 }
 
 level{
-name     = "Level 12/31",
+name     = "Level 12/32",
 password = "hurry",
 lookAt   = "14, 35, 20,     14, 0, 13,      0, 1, 0",
 postinit = "state_messagestackpush('Be quick')",
@@ -313,7 +313,7 @@ attributes = {
 }
 
 level{
-name     = "Level 13/31",
+name     = "Level 13/32",
 password = "vostok",
 lookAt   = "18, 40, 10,     18, 0, 8,      0, 1, 0",
 postinit = 'state_messagestackpush("Look mom, it\'s an airlock!")',
@@ -333,7 +333,7 @@ attributes = {
 }
 
 level{
-name     = "Level 14/31",
+name     = "Level 14/32",
 password = "tiger",
 lookAt   = "16, 40, 20,     16, 0, 10,      0, 1, 0",
 lines    = {
@@ -365,7 +365,7 @@ attributes = {
 }
 
 level{
-name     = "Level 15/31",
+name     = "Level 15/32",
 password = "crater",
 lookAt   = "14, 35, 20,     14, 0, 10,      0, 1, 0",
 lines    = {
@@ -386,7 +386,7 @@ attributes = {
 }
 
 level{
-name     = "Level 16/31",
+name     = "Level 16/32",
 password = "lake",
 lookAt   = "11, 30, 20,     11, 0, 8,      0, 1, 0",
 lines    = {
@@ -403,7 +403,7 @@ lines    = {
 }
 
 level{
-name     = "Level 17/31",
+name     = "Level 17/32",
 password = "snow",
 lookAt   = "12, 35, 20,     12, 0, 12,      0, 1, 0",
 lines    = {
@@ -427,7 +427,7 @@ attributes = {
 }
 
 level{
-name     = "Level 18/31",
+name     = "Level 18/32",
 password = "hydrogen",
 lookAt   = "12, 35, 20,     12, 0, 11,      0, 1, 0",
 lines    = {
@@ -450,7 +450,7 @@ attributes = {
 }
 
 level{
-name     = "Level 19/31",
+name     = "Level 19/32",
 password = "photon",
 lookAt   = "17, 45, 20,     17, 0, 13,      0, 1, 0",
 lines    = {
@@ -476,7 +476,7 @@ attributes = {
 }
 
 level{
-name     = "Level 20/31",
+name     = "Level 20/32",
 password = "chess",
 lookAt   = "19, 50, 20,     19, 0, 17,      0, 1, 0",
 lines    = {
@@ -510,7 +510,7 @@ lines    = {
 }
 
 level{
-name     = "Level 21/31",
+name     = "Level 21/32",
 password = "count",
 lookAt   = "15, 40, 20,     15, 0, 12,      0, 1, 0",
 lines    = {
@@ -534,7 +534,7 @@ attributes = {
 }
 
 level{
-name     = "Level 22/31",
+name     = "Level 22/32",
 password = "energy",
 lookAt   = "19, 45, 20,     19, 0, 14,      0, 1, 0",
 lines    = {
@@ -561,7 +561,7 @@ attributes = {
 }
 
 level{
-name     = "Level 23/31",
+name     = "Level 23/32",
 password = "fish",
 lookAt   = "11, 40, 20,     11, 0, 10,      0, 1, 0",
 lines    = {
@@ -586,7 +586,7 @@ attributes = {
 }
 
 level{
-name     = "Level 24/31",
+name     = "Level 24/32",
 password = "route",
 lookAt   = "18, 45, 20,     18, 0, 14,      0, 1, 0",
 postinit = "state_messagestackpush('Introducing remote control')",
@@ -614,7 +614,7 @@ attributes = {
 }
 
 level{
-name     = "Level 25/31",
+name     = "Level 25/32",
 password = "kiwi",
 lookAt   = "18, 50, 40,     18, 0, 16,      0, 1, 0",
 lines    = {
@@ -639,7 +639,7 @@ lines    = {
 }
 
 level{
-name     = "Level 26/31",
+name     = "Level 26/32",
 password = "paper",
 lookAt   = "12, 40, 20,     12, 0, 15,      0, 1, 0",
 postinit = "state_messagestackpush('Climbing the ladders')",
@@ -671,7 +671,7 @@ attributes = {
 }
 
 level{
-name     = "Level 27/31",
+name     = "Level 27/32",
 password = "circus",
 lookAt   = "19, 70, 30,     19, 0, 23,      0, 1, 0",
 lines    = {
@@ -719,7 +719,7 @@ attributes = {
 }
 
 level{
-name     = "Level 28/31",
+name     = "Level 28/32",
 password = "ocean",
 lookAt   = "17, 50, 20,     17, 0, 18,      0, 1, 0",
 postinit = 'state_messagestackpush("Oh, all those ladders!")',
@@ -749,7 +749,7 @@ attributes = {
 }
 
 level{
-name     = "Level 29/31",
+name     = "Level 29/32",
 password = "butterfly",
 lookAt   = "18, 45, 20,     18, 0, 16,      0, 1, 0",
 lines    = {
@@ -782,10 +782,10 @@ attributes = {
 }
 
 level{
-name     = "Level 30/31",
+name     = "Level 30/32",
 password = "steam",
 lookAt   = "50, 100, 20,     50, 0, 15,      0, 1, 0",
-postinit = "state_messagestackpush('Second to last challenge of this mission!')",
+postinit = "state_messagestackpush('Third to last challenge of this mission!')",
 lines    = {
 --0    1    2    3    4    5    6    7    8    9   10    11   12   13  14    15   16   17   18   19   20   21   22   23   24   25   26   27   28   29   30   31   32   33   34   35   36   37   38   39   40   41   42   43   44   45   46   47   48   49   50
 '---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- XX-- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----', -- 0
@@ -827,7 +827,7 @@ attributes = {
 }
 
 level{
-name     = "Level 31/31",
+name     = "Level 31/32",
 password = "valve",
 lookAt   = "12, 35, 20,     12, 0, 13,      0, 1, 0",
 postinit = "state_messagestackpush('Introducing pushers')",
@@ -848,5 +848,20 @@ lines    = {
 },
 attributes = {
   "1"
+}
+}
+
+level{
+name     = "Level 32/32",
+password = "nautilus",
+lookAt   = "14, 40, 20,     14, 0, 6,      0, 1, 0",
+postinit = "state_messagestackpush('Introducing automatons')",
+lines    = {
+'XX-- XX-- XX-- XX-- XX-- XX-- XX-- XX-- XX-- XX-- XX-- XX-- XX--',
+'XX-- &&-- ---- AU-- ---- ---- ---- ---- ---- AU-- ---- $$-- XX--',
+'XX-- T.-- XX-- XX-- XX-- XX-- XX-- XX-- XX-- XX-- XX-- ---- XX--',
+'---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----',
+'---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----',
+'---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- @@--'
 }
 }
