@@ -34,7 +34,7 @@ function halloffame.initial.init(arg)
   halloffame.bw = 512
   halloffame.bh = 256
   halloffame.bgid = texture_nametoid("bg" .. tostring(halloffame.bw) .. "x" .. tostring(halloffame.bh) .. ".png")
-  halloffame.helptext = "Players Who Passed Mission At One Go";
+  halloffame.helptext = "Fastest Players Who Have Passed Mission At One Go";
   halloffame.underline = string.rep("\127", #halloffame.helptext)
   halloffame.statistics = halloffame_getstatistics()
   table.sort(halloffame.statistics, function (a, b)

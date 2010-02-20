@@ -23,7 +23,7 @@ missionpassedat1go.items = {"|", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J
 function missionpassedat1go.initial.init(arg)
   missionpassedat1go.text  = "Mission \"" .. arg .. "\" Passed At 1 Go!"
   missionpassedat1go.text2 = "Enter Your Name For The Hall Of Fame:"
-  missionpassedat1go.underline = string.rep("\127", #missionpassedat1go.text)
+  missionpassedat1go.underline = string.rep("\127", #missionpassedat1go.text2)
   missionpassedat1go.bw = 512
   missionpassedat1go.bh = 256
   missionpassedat1go.bgid = texture_nametoid("bg" .. tostring(missionpassedat1go.bw) .. "x" .. tostring(missionpassedat1go.bh) .. ".png")

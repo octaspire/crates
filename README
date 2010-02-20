@@ -281,7 +281,8 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |   |   |-- turnstilew.lua              => Lets player pass only to west           (w)
 |   |   `-- turnstilew1.lua             => Lets player pass only one step to west  (w1)
 |   |-- halloffame                   => Directory containing the Hall of Fame
-|   |   `-- default                     => Hall of Fame for the default mission
+|   |   |-- default                     => Hall of Fame for the default mission
+|   |   `-- tutorial                    => Hall of Fame for the tutorial mission
 |   |-- images                       => Directory containing images for icons
 |   |   |-- crateslogo16x16x32.ico
 |   |   |-- crateslogo16x16x4.ico
@@ -297,7 +298,8 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |   |   |-- plate.lua
 |   |   `-- player.lua
 |   |-- missions                     => New missions can be dropped here
-|   |   `-- default.lua                 => The default mission
+|   |   |-- default.lua                 => The default mission
+|   |   `-- tutorial.lua                => The tutorial mission
 |   |-- musics                       => Musics for the game, if any
 |   |   `-- CambodianOdyssey.ogg        => Song from incompetech.com (downsampled and converted to Ogg)
 |   |-- sounds                       => Sound effects for the game
@@ -490,4 +492,4 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
     |-- check_ovector.c
     `-- test.sh                      => Compiles and runs unit tests
 
-24 directories, 236 files
+24 directories, 238 files

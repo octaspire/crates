@@ -20,7 +20,8 @@ missionpassed.initial = {}
 
 function missionpassed.initial.init(arg)
   missionpassed.text = "Mission \"" .. arg .. "\" Passed!"
-  missionpassed.underline = string.rep("\127", #missionpassed.text)
+  missionpassed.subtext = "Now try to pass it in one go to get your name into the Hall Of Fame"
+  missionpassed.underline = string.rep("\127", #missionpassed.subtext)
   missionpassed.bw = 512
   missionpassed.bh = 256
   missionpassed.bgid = texture_nametoid("bg" .. tostring(mission.bw) .. "x" .. tostring(mission.bh) .. ".png")
@@ -45,6 +46,8 @@ function missionpassed.initial.render()
   local dh = 16
   local y = h - dh
   text_printortho(x, y,  missionpassed.text, 0)
+  y = y - dh
+  text_printortho(x, y,  missionpassed.subtext, 0)
   y = y - dh
   text_printortho(x, y,  missionpassed.underline, 0)
   opengl_color3(1, 1, 1)

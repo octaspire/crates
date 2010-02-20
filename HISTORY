@@ -1,3 +1,11 @@
+* version 0.6.0 (2010-02-20)
+-----------------------------
+  + Added tutorial mission that has 21 simple levels with some instructions
+  + Added Hall of Fame entry for the tutorial mission
+  + Modified some texts in couple of game states (made them longer again)
+  + Updated README
+  + Updated HISTORY and version numbers in CMakeLists.txt, INSTALL and etc/crates.nsi (and src/oconfig.h)
+
 * version 0.5.0 (2010-02-18)
 -----------------------------
   + Added new game entity (or crate): automaton.lua that can be programmed to perform multiple different tasks
