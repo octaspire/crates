@@ -1,3 +1,10 @@
+* version 0.6.1 (2010-02-21)
+-----------------------------
+  + Added three new levels to the tutorial mission: 2 more for automatons and 1 for triggers
+  + Level names in the tutorial mission now contain also the total number of levels (lessons) in the tutorial
+  + Updated Hall of Fame for the tutorial mission (time needed updating because of the three levels added)
+  + Updated HISTORY and version numbers in CMakeLists.txt, INSTALL and etc/crates.nsi (and src/oconfig.h)
+
 * version 0.6.0 (2010-02-20)
 -----------------------------
   + Added tutorial mission that has 21 simple levels with some instructions

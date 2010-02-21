@@ -1,5 +1,5 @@
 level{
-name     = "Lesson 1: Introducing Player and Exit",
+name     = "Lesson 1/24: Introducing Player and Exit. R / 10 in gamepad restart levels",
 password = "deep",
 lookAt   = "9, 30, 20,     9, 0, 10,      0, 1, 0",
 postinit = "state_messagestackpush('Go to the exit without losing player into space')",
@@ -19,7 +19,7 @@ lines    = {
 }
 
 level{
-name     = "Lesson 2: Introducing Key",
+name     = "Lesson 2/24: Introducing Key",
 password = "concord",
 lookAt   = "9, 30, 20,     9, 0, 10,      0, 1, 0",
 postinit = "state_messagestackpush('Pick up the key before going to the exit')",
@@ -39,7 +39,7 @@ lines    = {
 }
 
 level{
-name     = "Lesson 3: Introducing Blocks and Keys",
+name     = "Lesson 3/24: Introducing Blocks and Keys",
 password = "brass",
 lookAt   = "9, 30, 20,     9, 0, 10,      0, 1, 0",
 postinit = "state_messagestackpush('Pick up ALL the keys before going to the exit. Blocks stop player')",
@@ -59,7 +59,7 @@ lines    = {
 }
 
 level{
-name     = "Lesson 4: Introducing Blocks and Keys",
+name     = "Lesson 4/24: Introducing Blocks and Keys",
 password = "gear",
 lookAt   = "9, 30, 20,     9, 0, 10,      0, 1, 0",
 postinit = "state_messagestackpush('Pick up ALL the keys before going to the exit. Blocks stop player')",
@@ -79,7 +79,7 @@ lines    = {
 }
 
 level{
-name     = "Lesson 5: Introducing Slopes",
+name     = "Lesson 5/24: Introducing Slopes",
 password = "aglow",
 lookAt   = "19, 30, 20,     19, 0, 10,      0, 1, 0",
 postinit = "state_messagestackpush('Slopes make player turn or stop her')",
@@ -99,7 +99,7 @@ lines    = {
 }
 
 level{
-name     = "Lesson 6: Introducing Slopes",
+name     = "Lesson 6/24: Introducing Slopes",
 password = "dust",
 lookAt   = "19, 30, 20,     19, 0, 10,      0, 1, 0",
 postinit = "state_messagestackpush('Slopes make player turn or stop her')",
@@ -119,7 +119,7 @@ lines    = {
 }
 
 level{
-name     = "Lesson 7: Introducing Slopes",
+name     = "Lesson 7/24: Introducing Slopes",
 password = "assert",
 lookAt   = "19, 30, 20,     19, 0, 10,      0, 1, 0",
 postinit = "state_messagestackpush('Slopes make player turn or stop her')",
@@ -139,7 +139,7 @@ lines    = {
 }
 
 level{
-name     = "Lesson 8: Introducing Slopes",
+name     = "Lesson 8/24: Introducing Slopes",
 password = "radiate",
 lookAt   = "11, 30, 20,     11, 0, 10,      0, 1, 0",
 postinit = "state_messagestackpush('Slopes make player turn or stop her')",
@@ -159,7 +159,7 @@ lines    = {
 }
 
 level{
-name     = "Lesson 9: Introducing Turnstiles",
+name     = "Lesson 9/24: Introducing Turnstiles",
 password = "adventure",
 lookAt   = "9, 30, 20,     9, 0, 10,      0, 1, 0",
 postinit = "state_messagestackpush('Turnstiles will let the player pass only in the direction of the arrow')",
@@ -179,7 +179,7 @@ lines    = {
 }
 
 level{
-name     = "Lesson 10: One Step Turnstiles",
+name     = "Lesson 10/24: One Step Turnstiles",
 password = "coy",
 lookAt   = "9, 30, 20,     9, 0, 10,      0, 1, 0",
 postinit = "state_messagestackpush('1 Step Turnstiles are like turnstiles, but will stop player after it has passed')",
@@ -199,7 +199,7 @@ lines    = {
 }
 
 level{
-name     = "Lesson 11: Introducing Counters",
+name     = "Lesson 11/24: Introducing Counters",
 password = "buzzer",
 lookAt   = "9, 30, 20,     9, 0, 10,      0, 1, 0",
 postinit = "state_messagestackpush('Counter stops player \"count\" times. After that it will vanish')",
@@ -223,9 +223,9 @@ attributes = {
 }
 
 level{
-name     = "Lesson 12: Introducing Inverse Counters",
+name     = "Lesson 12/24: Introducing Inverse Counters",
 password = "shadow",
-lookAt   = "9, 30, 20,     9, 0, 10,      0, 1, 0",
+lookAt   = "8, 30, 20,     8, 0, 10,      0, 1, 0",
 postinit = "state_messagestackpush('Inversecounter lets player pass \"count\" times. After that it will stop player')",
 lines    = {
 '---- ---- ---- ---- ---- XX-- ---- ---- ---- ---- ----',
@@ -247,9 +247,9 @@ attributes = {
 }
 
 level{
-name     = "Lesson 13: Introducing Bombs",
+name     = "Lesson 13/24: Introducing Bombs",
 password = "prodigy",
-lookAt   = "9, 30, 20,     9, 0, 10,      0, 1, 0",
+lookAt   = "8, 30, 20,     8, 0, 10,      0, 1, 0",
 postinit = "state_messagestackpush('Bomb stops player once and starts a countdown. Vanishes after the countdown')",
 lines    = {
 '---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----',
@@ -271,7 +271,7 @@ attributes = {
 }
 
 level{
-name     = "Lesson 14: Introducing Steelbombs",
+name     = "Lesson 14/24: Introducing Steelbombs",
 password = "invariable",
 lookAt   = "9, 40, 20,     9, 0, 10,      0, 1, 0",
 postinit = "state_messagestackpush('Steelbomb can withstand unlimited number of collisions and is DANGEROUS')",
@@ -296,7 +296,7 @@ attributes = {
 }
 
 level{
-name     = "Lesson 15: Introducing Automatic steelbombs",
+name     = "Lesson 15/24: Introducing Automatic steelbombs",
 password = "inventor",
 lookAt   = "9, 30, 20,     9, 0, 10,      0, 1, 0",
 postinit = "state_messagestackpush('Automatic steelbomb starts the countdown automatically')",
@@ -319,7 +319,7 @@ attributes = {
 }
 
 level{
-name     = "Lesson 16: Introducing Pullers",
+name     = "Lesson 16/24: Introducing Pullers",
 password = "link",
 lookAt   = "9, 30, 20,     9, 0, 10,      0, 1, 0",
 postinit = "state_messagestackpush('Player can pull these in the direction(s) marked with the stripe')",
@@ -342,7 +342,7 @@ attributes = {
 }
 
 level{
-name     = "Lesson 17: Introducing Pushers",
+name     = "Lesson 17/24: Introducing Pushers",
 password = "crux",
 lookAt   = "9, 35, 20,     9, 0, 10,      0, 1, 0",
 postinit = "state_messagestackpush('Player and pushers can push pushers in the direction(s) pointed by the arrows')",
@@ -362,7 +362,7 @@ lines    = {
 }
 
 level{
-name     = "Lesson 18: Introducing Teleports",
+name     = "Lesson 18/24: Introducing Teleports",
 password = "introversion",
 lookAt   = "9, 35, 20,     9, 0, 10,      0, 1, 0",
 postinit = "state_messagestackpush('Teleports will move player instantly to some other point in space')",
@@ -386,7 +386,7 @@ attributes = {
 }
 
 level{
-name     = "Lesson 19: Introducing Remote control",
+name     = "Lesson 19/24: Introducing Remote control",
 password = "smile",
 lookAt   = "9, 35, 20,     9, 0, 10,      0, 1, 0",
 postinit = "state_messagestackpush('Move block 3 steps left. Exit by pressing ACCEPT (Return/1 in gamepad) and \129')",
@@ -409,8 +409,28 @@ attributes = {
 }
 
 level{
-name     = "Lesson 20: Introducing some commands of Automatons",
+name     = "Lesson 20/24: Introducing Automatons: \129 \131 selects \128 adds new \130 removes commands",
 password = "monkey",
+lookAt   = "9, 35, 20,     9, 0, 10,      0, 1, 0",
+postinit = "state_messagestackpush('Write program: \129. Exit by pressing ACCEPT (Return/1 in gamepad) and \128')",
+lines    = {
+'---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----',
+'---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----',
+'---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----',
+'---- ---- ---- ---- ---- XX-- ---- ---- ---- ---- ---- ----',
+'---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----',
+'---- &&-- ---- AU01 ---- ---- XX-- ---- ---- ---- ---- ----',
+'---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----',
+'---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----',
+'---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----',
+'---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----',
+'---- ---- ---- ---- @@-- ---- ---- ---- ---- ---- ---- ----'
+}
+}
+
+level{
+name     = "Lesson 21/24: Introducing Automatons: \129 \131 selects \128 adds new \130 removes commands",
+password = "island",
 lookAt   = "9, 35, 20,     9, 0, 10,      0, 1, 0",
 postinit = "state_messagestackpush('Write program: \129 \129 \128 \128. Exit by pressing ACCEPT (Return/1 in gamepad) and \128')",
 lines    = {
@@ -429,8 +449,28 @@ lines    = {
 }
 
 level{
-name     = "Lesson 21: Introducing toggles",
-password = "island",
+name     = "Lesson 22/24: Introducing Automatons: \129 \131 selects \128 adds new \130 removes commands",
+password = "heap",
+lookAt   = "9, 35, 20,     9, 0, 10,      0, 1, 0",
+postinit = "state_messagestackpush('Write program: \133. Exit by pressing ACCEPT (Return/1 in gamepad) and \128')",
+lines    = {
+'---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----',
+'---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----',
+'---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----',
+'---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----',
+'---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----',
+'@@-- ---- ---- &&-- ---- ---- AU01 ---- ---- ---- $$-- XX--',
+'---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----',
+'---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----',
+'---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----',
+'---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----',
+'---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----'
+}
+}
+
+level{
+name     = "Lesson 23/24: Introducing toggles",
+password = "ozymandias",
 lookAt   = "9, 35, 20,     9, 0, 10,      0, 1, 0",
 postinit = "state_messagestackpush('Press ALL 4 red sides of the toggle so that those turn green. Then exit')",
 lines    = {
@@ -445,5 +485,30 @@ lines    = {
 '---- ---- ---- ---- XX-- ---- ---- ---- ---- ---- ---- ----',
 '---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----',
 '---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----'
+}
+}
+
+level{
+name     = "Lesson 24/24: Introducing invisible triggers",
+password = "actual",
+lookAt   = "9, 35, 20,     9, 0, 10,      0, 1, 0",
+postinit = "state_messagestackpush('Trigger triggers a tracking shot, panning or tilting of the camera')",
+lines    = {
+'---- XX-- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----',
+'---- ---- ---- ---- ---- ---- ---- ---- !!02 ---- ---- XX--',
+'---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----',
+'---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----',
+'---- !!01 ---- ---- ---- ---- ---- ---- ---- ---- ---- ----',
+'---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----',
+'---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----',
+'---- ---- ---- ---- ---- ---- ---- ---- ---- ---- !!03 ----',
+'---- ---- ---- ---- @@-- ---- ---- ---- ---- ---- ---- ----',
+'---- &&-- ---- ---- ---- ---- ---- ---- ---- ---- XX-- ----',
+'---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----'
+},
+attributes = {
+  "13, 40, 20,    13, 0, 10,     0, 1, 0",
+  "13, 30, 25,    13, 5, 10,      0, 1, 0",
+  "13, 25, 20,    13, 0, 10,      0, 1, 0"
 }
 }
