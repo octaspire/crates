@@ -1,3 +1,8 @@
+* version 0.6.2 (2010-02-21)
+-----------------------------
+  + Modified crates NSIS installer script for windows because of the added tutorial mission and music file
+  + Updated HISTORY and version numbers in CMakeLists.txt, INSTALL and etc/crates.nsi (and src/oconfig.h)
+
 * version 0.6.1 (2010-02-21)
 -----------------------------
   + Added three new levels to the tutorial mission: 2 more for automatons and 1 for triggers

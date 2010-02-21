@@ -22,7 +22,7 @@
   ;Name and file
   Name "${prodname}"
   Caption "${prodname}"
-  OutFile "crates-0.6.1-setup.exe"
+  OutFile "crates-0.6.2-setup.exe"
 
   CRCCheck on
   SetCompressor /SOLID lzma
@@ -101,7 +101,7 @@ Section "Crates game files" SecDummy
   File "..\resources\entities\*.lua"
 
   SetOutPath $INSTDIR\resources\halloffame
-  File "..\resources\halloffame\default"
+  File "..\resources\halloffame\*"
 
   SetOutPath $INSTDIR\resources\images
   File "..\resources\images\*.ico"
@@ -110,10 +110,13 @@ Section "Crates game files" SecDummy
   File "..\resources\meshes\*.lua"
 
   SetOutPath $INSTDIR\resources\missions
-  File "..\resources\missions\default.lua"
+  File "..\resources\missions\*.lua"
 
   SetOutPath $INSTDIR\resources\sounds
   File "..\resources\sounds\*.wav"
+
+  SetOutPath $INSTDIR\resources\musics
+  File "..\resources\musics\*.ogg"
 
   SetOutPath $INSTDIR\resources\states
   File "..\resources\states\*.lua"
@@ -183,6 +186,7 @@ Section "Uninstall"
   Delete "$INSTDIR\resources\meshes\*.*"
   Delete "$INSTDIR\resources\missions\*.*"
   Delete "$INSTDIR\resources\sounds\*.*"
+  Delete "$INSTDIR\resources\musics\*.*"
   Delete "$INSTDIR\resources\states\*.*"
   Delete "$INSTDIR\resources\textures\cartoon\*.*"
   Delete "$INSTDIR\resources\textures\waymark\*.*"
@@ -194,6 +198,7 @@ Section "Uninstall"
   RMDir "$INSTDIR\resources\meshes"
   RMDir "$INSTDIR\resources\missions"
   RMDir "$INSTDIR\resources\sounds"
+  RMDir "$INSTDIR\resources\musics"
   RMDir "$INSTDIR\resources\states"
   RMDir "$INSTDIR\resources\textures\cartoon"
   RMDir "$INSTDIR\resources\textures\waymark"
