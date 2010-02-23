@@ -26,7 +26,7 @@ on some GNU/Linux-systems.
 config.music_volume                            = 1     -- [0..1]
 config.sound_volume                            = 1     -- [0..1]
 config.sound_stereo                            = false
-config.sound_chunksize                         = 256
+config.sound_chunksize                         = 512
 config.controllers                             = true
 config.controller_nth_to_use                   = 1
 config.controller_ok                           = 1

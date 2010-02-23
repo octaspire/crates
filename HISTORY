@@ -1,3 +1,11 @@
+* version 0.6.3 (2010-02-23)
+-----------------------------
+  + Made the default size of audio buffer larger in the configuration file config.lua to reduce the
+    chance of skipping and crackle caused by it on some system(s). The size of the audio buffer has
+    to be compromise because too small size might cause skips (crackle and unpleasant noises) and
+    too large buffer can cause latency (delay)
+  + Updated HISTORY and version numbers in CMakeLists.txt, INSTALL and etc/crates.nsi (and src/oconfig.h)
+
 * version 0.6.2 (2010-02-21)
 -----------------------------
   + Modified crates NSIS installer script for windows because of the added tutorial mission and music file
