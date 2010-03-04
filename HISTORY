@@ -1,3 +1,9 @@
+* version 0.6.4 (2010-03-05)
+-----------------------------
+  + Added text pagination to game states mission.lua and halloffame.lua
+  + Modified font textures by adding boldface versions of the automaton symbols (codes 128, 129, 130, 131, 132 and 133)
+  + Updated HISTORY and version numbers in CMakeLists.txt, INSTALL and etc/crates.nsi (and src/oconfig.h)
+
 * version 0.6.3 (2010-02-23)
 -----------------------------
   + Made the default size of audio buffer larger in the configuration file config.lua to reduce the

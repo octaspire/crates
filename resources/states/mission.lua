@@ -18,6 +18,25 @@
 mission = {}
 mission.initial = {}
 
+function mission.nextpage()
+  if mission.currentpage < mission.npages then
+    mission.currentpage = mission.currentpage + 1
+    return true
+  end
+  sound_play(mission.backsound)
+  return false
+end
+
+function mission.prevpage()
+  if mission.currentpage > 1 then
+    mission.currentpage = mission.currentpage - 1
+    return true
+  end
+  sound_play(mission.backsound)
+  return false
+end
+
+-------------------------------------------------------------------------------
 function mission.initial.init(arg)
   mission.names = {}
   mission.sindex = 1
@@ -32,11 +51,16 @@ function mission.initial.init(arg)
   local dsep = dir_getdirectoryseparator()
   mission.helptext = "New Missions Can Be Dropped Into \"resources" .. dsep .. "missions" .. dsep .. "\"";
   mission.underline = string.rep("\127", #mission.helptext)
+  mission.pagesize = 25
+  mission.currentpage = 1
 
   state_seteventable(true)
   state_setrenderable(true)
 
   mission.names = game_getmissionnames()
+  mission.npages = math.ceil(#mission.names / mission.pagesize)
+  mission.pagestart = mission.pagesize * (mission.currentpage-1)
+  mission.pageend   = mission.pagestart + mission.pagesize
   music_playrandom()
 end
 
@@ -52,18 +76,32 @@ function mission.initial.event(evt)
     mission_reset()
     game_changestate("menu", mission.names[mission.sindex])
   elseif evt == "down" then
-    sound_play(mission.movesound)
     if mission.sindex < #mission.names then
+      sound_play(mission.movesound)
       mission.sindex = mission.sindex + 1
+      if mission.sindex > mission.pageend then mission.nextpage() end
     else
       mission.sindex = 1
+      mission.currentpage = 1
     end
   elseif evt == "up"   then
-    sound_play(mission.movesound)
     if mission.sindex > 1 then
+      sound_play(mission.movesound)
       mission.sindex = mission.sindex - 1
+      if mission.sindex < mission.pagestart then mission.prevpage() end
     else
       mission.sindex = #mission.names
+      mission.currentpage = mission.npages
+    end
+  elseif evt == "right" then
+    if mission.nextpage() then
+      mission.sindex = mission.sindex + mission.pagesize
+      if (mission.sindex > #mission.names) then mission.sindex = #mission.names end
+    end
+  elseif evt == "left"  then
+    if mission.prevpage() then
+      mission.sindex = mission.sindex - mission.pagesize
+      if (mission.sindex < 1) then mission.sindex = 1 end
     end
   end
 end
@@ -76,7 +114,17 @@ function mission.initial.render()
   local x = 10
   local dh = 16
   local y = h - dh
-  text_printortho(x, y, "Select Mission", 1)
+  if (mission.npages > 1) then
+    if     mission.currentpage <= 1 then
+      text_printortho(x, y, "Select Mission (page "  .. mission.currentpage .. "/" .. mission.npages .. "\128)" , 1)
+    elseif mission.currentpage >= mission.npages then
+      text_printortho(x, y, "Select Mission (\130page "  .. mission.currentpage .. "/" .. mission.npages .. ")", 1)
+    else
+      text_printortho(x, y, "Select Mission (\130page "  .. mission.currentpage .. "/" .. mission.npages .. "\128)", 1)
+    end
+  else
+    text_printortho(x, y, "Select Mission" , 1)
+  end
   y = y - dh
   text_printortho(x, y, mission.helptext, 0)
   y = y - dh
@@ -84,6 +132,8 @@ function mission.initial.render()
 
   y = y - 2*dh
   local i = 1
+  mission.pagestart = 1 + (mission.pagesize * (mission.currentpage-1))
+  mission.pageend   = mission.pagestart + (mission.pagesize-1)
   for k, v in ipairs(mission.names) do
     if i == mission.sindex then
       opengl_color3(mission.cr, 0, 0)
@@ -92,8 +142,10 @@ function mission.initial.render()
     else
       opengl_color3(1, 1, 1)
     end
-    text_printortho(x, y, v, 0)
-    y = y - dh
+    if i >= mission.pagestart and i <= mission.pageend then
+      text_printortho(x, y, v, 0)
+      y = y - dh
+    end
     i = i + 1
   end
   opengl_color3(1, 1, 1)

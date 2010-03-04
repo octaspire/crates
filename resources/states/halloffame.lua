@@ -28,6 +28,25 @@ function halloffame.sec2human(sec)
   end
 end
 
+function halloffame.nextpage()
+  if halloffame.currentpage < halloffame.npages then
+    halloffame.currentpage = halloffame.currentpage + 1
+    return true
+  end
+  sound_play(halloffame.backsound)
+  return false
+end
+
+function halloffame.prevpage()
+  if halloffame.currentpage > 1 then
+    halloffame.currentpage = halloffame.currentpage - 1
+    return true
+  end
+  sound_play(halloffame.backsound)
+  return false
+end
+
+-------------------------------------------------------------------------------
 function halloffame.initial.init(arg)
   halloffame.statistics = {}
   if arg ~= nil then halloffame.arg = tostring(arg) else halloffame.arg = nil end
@@ -36,6 +55,8 @@ function halloffame.initial.init(arg)
   halloffame.bgid = texture_nametoid("bg" .. tostring(halloffame.bw) .. "x" .. tostring(halloffame.bh) .. ".png")
   halloffame.helptext = "Fastest Players Who Have Passed Mission At One Go";
   halloffame.underline = string.rep("\127", #halloffame.helptext)
+  halloffame.pagesize = 25
+  halloffame.currentpage = 1
   halloffame.statistics = halloffame_getstatistics()
   table.sort(halloffame.statistics, function (a, b)
     return a.seconds < b.seconds
@@ -54,16 +75,29 @@ function halloffame.initial.init(arg)
   end
   state_seteventable(true)
   state_setrenderable(true)
+
+  halloffame.npages = math.ceil(#halloffame.statistics / halloffame.pagesize)
+  halloffame.pagestart = halloffame.pagesize * (halloffame.currentpage-1)
+  halloffame.pageend   = halloffame.pagestart + halloffame.pagesize
+
+  halloffame.backsound = sound_nametoid("back.wav")
+  halloffame.movesound = sound_nametoid("tick.wav")
 end
 
 function halloffame.initial.update(tpf)
 end
 
 function halloffame.initial.event(evt)
-  if halloffame.arg ~= nil and halloffame.arg ~= "" then
-    game_changestate("menu", halloffame.arg)
-  else
-    game_changestate("mission", "")
+  if evt == "exit" or evt == "ok" then
+    if halloffame.arg ~= nil and halloffame.arg ~= "" then
+      game_changestate("menu", halloffame.arg)
+    else
+      game_changestate("mission", "")
+    end
+  elseif evt == "right" or evt == "down" then
+    halloffame.nextpage()
+  elseif evt == "left"  or evt == "up"   then
+    halloffame.prevpage()
   end
 end
 
@@ -75,7 +109,17 @@ function halloffame.initial.render()
   local x = 10
   local dh = 16
   local y = h - dh
-  text_printortho(x, y, "Hall Of Fame", 1)
+  if (halloffame.npages > 1) then
+    if     halloffame.currentpage <= 1 then
+      text_printortho(x, y, "Hall Of Fame (page "  .. halloffame.currentpage .. "/" .. halloffame.npages .. "\128)" , 1)
+    elseif halloffame.currentpage >= halloffame.npages then
+      text_printortho(x, y, "Hall Of Fame (\130page "  .. halloffame.currentpage .. "/" .. halloffame.npages .. ")", 1)
+    else
+      text_printortho(x, y, "Hall Of Fame (\130page "  .. halloffame.currentpage .. "/" .. halloffame.npages .. "\128)", 1)
+    end
+  else
+    text_printortho(x, y, "Hall Of Fame" , 1)
+  end
   y = y - dh
   text_printortho(x, y, halloffame.helptext, 0)
   y = y - dh
@@ -83,8 +127,14 @@ function halloffame.initial.render()
 
   y = y - 2*dh
   opengl_color3(1, 1, 1)
+  local i = 1
+  halloffame.pagestart = 1 + (halloffame.pagesize * (halloffame.currentpage-1))
+  halloffame.pageend   = halloffame.pagestart + (halloffame.pagesize-1)
   for k, v in ipairs(halloffame.statistics) do
-    text_printortho(x, y, halloffame.item[k], 0)
-    y = y - dh
+    if i >= halloffame.pagestart and i <= halloffame.pageend then
+      text_printortho(x, y, halloffame.item[k], 0)
+      y = y - dh
+    end
+    i = i + 1
   end
 end
