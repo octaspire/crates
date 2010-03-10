@@ -1,3 +1,9 @@
+* version 0.7.1 (2010-03-10)
+-----------------------------
+  + Added missing RMDir "$INSTDIR\resources" to the uninstaller section of the NSIS installer script for
+    windows (etc/crates.nsi) so that also the empty resources-directory is removed when uninstalling
+  + Updated HISTORY and version numbers in CMakeLists.txt, INSTALL and etc/crates.nsi (and src/oconfig.h)
+
 * version 0.7.0 (2010-03-10)
 -----------------------------
   + Added three new game entities (or crates): activeenemy.lua, ambushenemy.lua, passiveenemy.lua and switch.lua

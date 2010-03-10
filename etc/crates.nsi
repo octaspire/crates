@@ -22,7 +22,7 @@
   ;Name and file
   Name "${prodname}"
   Caption "${prodname}"
-  OutFile "crates-0.7.0-setup.exe"
+  OutFile "crates-0.7.1-setup.exe"
 
   CRCCheck on
   SetCompressor /SOLID lzma
@@ -203,6 +203,7 @@ Section "Uninstall"
   RMDir "$INSTDIR\resources\textures\cartoon"
   RMDir "$INSTDIR\resources\textures\waymark"
   RMDir "$INSTDIR\resources\textures"
+  RMDir "$INSTDIR\resources"
 
   Delete "$INSTDIR\Uninstall.exe"
 
