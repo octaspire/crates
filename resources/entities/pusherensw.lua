@@ -21,6 +21,13 @@ function pusherensw.register()
   game_entityregistersymbolforname("P+", "pusherensw")
 end
 
+function pusherensw.iswalkable(x, y, z)
+  local oid = level_getentityidat(x, y, z)
+  if oid < 0 then return true end
+  if entity_isname(oid, "switch") then return true end
+  return false
+end
+
 -------------------------------------------------------------------------------
 pusherensw.initial = {}
 
@@ -47,7 +54,7 @@ function pusherensw.initial.collision(id, oid)
         entity_setvelocity(oid, 0, 0, 0)
         z = z - 2
         entity_setlocation(oid, x, y, z)
-        if (level_getentityidat(x, y, z + 4) == -1) then
+        if pusherensw.iswalkable(x, y, z + 4) then
           entity_setstate(id, "actives")
           entity_setvelocity(id, vx, vy, vz)
           entity_setmovable(id, true)
@@ -61,7 +68,7 @@ function pusherensw.initial.collision(id, oid)
         entity_setvelocity(oid, 0, 0, 0)
         z = z + 2
         entity_setlocation(oid, x, y, z)
-        if (level_getentityidat(x, y, z - 4) == -1) then
+        if pusherensw.iswalkable(x, y, z - 4) then
           entity_setstate(id, "activen")
           entity_setvelocity(id, vx, vy, vz)
           entity_setmovable(id, true)
@@ -75,7 +82,7 @@ function pusherensw.initial.collision(id, oid)
         entity_setvelocity(oid, 0, 0, 0)
         x = x + 2
         entity_setlocation(oid, x, y, z)
-        if (level_getentityidat(x - 4, y, z) == -1) then
+        if pusherensw.iswalkable(x - 4, y, z) then
           entity_setstate(id, "activew")
           entity_setvelocity(id, vx, vy, vz)
           entity_setmovable(id, true)
@@ -89,7 +96,7 @@ function pusherensw.initial.collision(id, oid)
         entity_setvelocity(oid, 0, 0, 0)
         x = x - 2
         entity_setlocation(oid, x, y, z)
-        if (level_getentityidat(x + 4, y, z) == -1) then
+        if pusherensw.iswalkable(x + 4, y, z) then
           entity_setstate(id, "activee")
           entity_setvelocity(id, vx, vy, vz)
           entity_setmovable(id, true)

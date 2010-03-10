@@ -1,0 +1,5 @@
+opengl_normal3(0.0, 1.0, 0.0)
+opengl_texcoord2(0, 0.0) opengl_vertex3(-1.0,   -1.0,  -1.0)
+opengl_texcoord2(0, 1.0) opengl_vertex3(-1.0,   -1.0,   1.0)
+opengl_texcoord2(1, 1.0) opengl_vertex3( 1.0,   -1.0,   1.0)
+opengl_texcoord2(1, 0.0) opengl_vertex3( 1.0,   -1.0,  -1.0)

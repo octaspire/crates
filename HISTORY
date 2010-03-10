@@ -1,3 +1,18 @@
+* version 0.7.0 (2010-03-10)
+-----------------------------
+  + Added three new game entities (or crates): activeenemy.lua, ambushenemy.lua, passiveenemy.lua and switch.lua
+  + Added new mesh resources/meshes/bottom.lua for the switch
+  + Added eight new textures for the new game entities: four textures to waymark-skin and four to cartoon-skin
+  + Added entries for the three new game entities to the in-game manuals for both skins
+  + Added one new page to the in-game manuals for both skins and updated old pages
+  + Modified README: updated the source directory tree information in it and added symbols for the new game entities
+  + Added new function pusherensw.iswalkable and use it instead of level_getentityidat in pusher's collision handler
+  + Added seven new levels to the tutorial mission: 3 more for enemies and 4 for switches.
+  + Updated the level names in the tutorial mission because of the new levels that were added
+  + Updated Hall of Fame for the tutorial mission (time needed updating because of the seven levels added)
+  + Modified function entity_iswalkable in game.lua because of the new game entity switch
+  + Updated HISTORY and version numbers in CMakeLists.txt, INSTALL and etc/crates.nsi (and src/oconfig.h)
+
 * version 0.6.4 (2010-03-05)
 -----------------------------
   + Added text pagination to game states mission.lua and halloffame.lua

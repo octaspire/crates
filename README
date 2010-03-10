@@ -161,6 +161,8 @@ The  listing  below contains some symbols for the different kinds
 of crates. These are used when building missions and  levels  for
 the game.
 
+  activeenemy        AE
+  ambushenemy        ME
   automaticsteelbomb AB
   automaton          AU
   block              XX
@@ -169,6 +171,7 @@ the game.
   exit               @@
   inversecounter     !#
   key                $$
+  passiveenemy       PE
   player             &&
   pullere            >>
   pulleren           >^
@@ -187,6 +190,7 @@ the game.
   slopewn            _|
   slopews            "|
   steelbomb          SB
+  switch             SW
   teleport           TP
   toggle             []
   trigger            !!
@@ -243,6 +247,8 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |-- resources                     => All the resources of the game
 |   |-- config.lua                   => Configuration file for crates
 |   |-- entities                     => All the game objects (or crates)
+|   |   |-- activeenemy.lua             => Starts hunting the player automatically and actively
+|   |   |-- ambushenemy.lua             => Sits and waits for the player to approach within striking distance
 |   |   |-- automaticsteelbomb.lua      => Steelbomb that starts countdown automatically
 |   |   |-- automaton.lua               => can be programmed to perform multiple different tasks
 |   |   |-- block.lua                   => Stops player
@@ -251,6 +257,7 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |   |   |-- exit.lua                    => Moves player to the next level or restarts current one
 |   |   |-- inversecounter.lua          => Lets player pass "count" times
 |   |   |-- key.lua                     => All keys must be picked up
+|   |   |-- passiveenemy.lua            => Will only scout some predefined path and won't change this route
 |   |   |-- player.lua                  => Player is moved with keyboard or gamepad
 |   |   |-- pullere.lua                 => Can be pulled to east            (e)
 |   |   |-- pulleren.lua                => Can be pulled to east and north  (en)
@@ -269,6 +276,7 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |   |   |-- slopewn.lua                 => Turns player between west <-> north or stops it
 |   |   |-- slopews.lua                 => Turns player between west <-> south or stops it
 |   |   |-- steelbomb.lua               => Can withstand unlimited number of collisions and is dangerous
+|   |   |-- switch.lua                  => Deactivates its target for some predefined time when depressed
 |   |   |-- teleport.lua                => Moves player instantly to some other point in space
 |   |   |-- toggle.lua                  => All toggles must be toggled (4 red sides to green)
 |   |   |-- trigger.lua                 => Is invisible and will trigger a tracking shot
@@ -294,6 +302,7 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |   |   |-- crateslogo48x48x4.ico
 |   |   `-- crateslogo48x48x8.ico
 |   |-- meshes                       => Directory containing the 3D models
+|   |   |-- bottom.lua
 |   |   |-- cube.lua
 |   |   |-- plate.lua
 |   |   `-- player.lua
@@ -321,6 +330,8 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |   |   `-- password.lua                => State where level passwords can be entered
 |   `-- textures                     => Textures for the game (subdirectories contain skins)
 |       |-- cartoon                     => Textures for the "cartoon"-skin (or theme)
+|       |   |-- activeenemy.png            => Texture for activeenemy
+|       |   |-- ambushenemy.png            => Texture for ambushenemy
 |       |   |-- automaton.png              => Texture for automaton
 |       |   |-- bg512x256.png              => Background image for menus
 |       |   |-- block.png                  => Texture for block
@@ -334,6 +345,8 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |       |   |-- manual1.png                => Contains the manual (in-game) page 1
 |       |   |-- manual2.png                => Contains the manual (in-game) page 2
 |       |   |-- manual3.png                => Contains the manual (in-game) page 3
+|       |   |-- manual4.png                => Contains the manual (in-game) page 4
+|       |   |-- passiveenemy.png           => Texture for passiveenemy
 |       |   |-- player.png                 => Texture for player
 |       |   |-- pullere.png                => Texture for east puller            (e)
 |       |   |-- pulleren.png               => Texture for east and north puller  (en)
@@ -352,6 +365,7 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |       |   |-- slopewn.png                => Texture for west and north slope   (wn)
 |       |   |-- slopews.png                => Texture for west and south slope   (ws)
 |       |   |-- steelbomb.png              => Texture for steelbomb
+|       |   |-- switch.png                 => Texture for switch
 |       |   |-- teleport.png               => Texture for teleport
 |       |   |-- toggle.png                 => Texture for toggle
 |       |   |-- turnstilee.png             => Texture for east turnstile                  (e)
@@ -363,6 +377,8 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |       |   |-- turnstilew.png             => Texture for east and west turnstile         (ew)
 |       |   `-- turnstilew1.png            => Texture for east and west 1 step turnstile  (ew1)
 |       `-- waymark                     => Textures for the "Waymark"-skin (or theme)
+|           |-- activeenemy.png
+|           |-- ambushenemy.png
 |           |-- automaton.png
 |           |-- bg512x256.png
 |           |-- block.png
@@ -376,6 +392,8 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |           |-- manual1.png
 |           |-- manual2.png
 |           |-- manual3.png
+|           |-- manual4.png
+|           |-- passiveenemy.png
 |           |-- player.png
 |           |-- pullere.png
 |           |-- pulleren.png
@@ -394,6 +412,7 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 |           |-- slopewn.png
 |           |-- slopews.png
 |           |-- steelbomb.png
+|           |-- switch.png
 |           |-- teleport.png
 |           |-- toggle.png
 |           |-- turnstilee.png
@@ -492,4 +511,4 @@ PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
     |-- check_ovector.c
     `-- test.sh                      => Compiles and runs unit tests
 
-24 directories, 238 files
+24 directories, 253 files

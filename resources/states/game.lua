@@ -186,7 +186,8 @@ function entity_iswalkable(id)
   if (id < 0) then return true end
 
   local name = entity_getname(id)
-  if name == "key" then return true end
+  if name == "key"    then return true end
+  if name == "switch" then return true end
   if ((name == "inversecounter") and (entity_getstate(id) ~= "final")) then return true end
   return false
 end

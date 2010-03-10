@@ -19,6 +19,7 @@ manual = {}
 manual.initial = {}
 manual.page2 = {}
 manual.page3 = {}
+manual.page4 = {}
 
 function manual.initial.init(arg)
   manual.arg = tostring(arg)
@@ -31,10 +32,10 @@ function manual.initial.init(arg)
   else
     manual.y = 0
   end
-  --manual.bgid = texture_nametoid("manual" .. tostring(manual.bw) .. "x" .. tostring(manual.bh) .. ".png")
   manual.bgid1 = texture_nametoid("manual1.png")
   manual.bgid2 = texture_nametoid("manual2.png")
   manual.bgid3 = texture_nametoid("manual3.png")
+  manual.bgid4 = texture_nametoid("manual4.png")
   if exit.errorsound == nil then exit.errorsound = sound_nametoid("back.wav") end
   state_seteventable(true)
   state_setrenderable(true)
@@ -96,7 +97,7 @@ function manual.page3.event(evt)
   end
 
   if evt == "down"  or evt == "right" then
-    sound_play(exit.errorsound)
+    state_setstate("page4")
   elseif evt == "up" or evt == "left" then
     state_setstate("page2")
   end
@@ -105,5 +106,28 @@ end
 function manual.page3.render()
   opengl_color3(1, 1, 1)
   background_renderwithsizes(manual.bgid3, manual.x, manual.y, manual.bw, manual.bh)
+  opengl_color3(1, 1, 0)
+end
+
+-------------------------------------------------------------------------------
+function manual.page4.update(tpf)
+end
+
+function manual.page4.event(evt)
+  if     evt == "exit" then
+    sound_play(mission.backsound)
+    game_changestate("menu", manual.arg)
+  end
+
+  if evt == "down"  or evt == "right" then
+    sound_play(exit.errorsound)
+  elseif evt == "up" or evt == "left" then
+    state_setstate("page3")
+  end
+end
+
+function manual.page4.render()
+  opengl_color3(1, 1, 1)
+  background_renderwithsizes(manual.bgid4, manual.x, manual.y, manual.bw, manual.bh)
   opengl_color3(1, 1, 0)
 end
