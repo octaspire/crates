@@ -18,15 +18,16 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 CONTENTS
 ---------
 
-1. INTRODUCTION
-2. SYSTEM REQUIREMENTS
-3. CONTROLS
-4. FURTHER INFORMATION
-5. CREDITS
-6. SOME CRATE SYMBOLS
-7. NOTES
-8. BUGS
-9. SOURCE DIRECTORY TREE
+1.  INTRODUCTION
+2.  SYSTEM REQUIREMENTS
+3.  CONTROLS
+4.  CONFIGURATION OPTIONS
+5.  FURTHER INFORMATION
+6.  CREDITS
+7.  SOME CRATE SYMBOLS
+8.  NOTES
+9.  BUGS
+10. SOURCE DIRECTORY TREE
 
 
 1. INTRODUCTION
@@ -120,7 +121,16 @@ changed in the configuration file.
   Arrows            Move            D-pad (also sticks)
 
 
-4. FURTHER INFORMATION
+4. CONFIGURATION OPTIONS
+------------------------
+
+Many game options, like toggling between fullscreen and windowed
+mode, changing display resolution or window size, turning sound
+effects and music on or off, and so so, can be changed by
+modifying file 'resources/config.lua'.
+
+
+5. FURTHER INFORMATION
 -----------------------
 
 The man-directory contains one or more manuals that can be useful
@@ -130,7 +140,7 @@ might find there  new missions, extensions and other  new content
 for crates also.
 
 
-5. CREDITS
+6. CREDITS
 -----------
 
 Crates is written in the programming languages C and Lua. It uses
@@ -154,7 +164,7 @@ downsampling it and converting it to Ogg Vorbis file format using
 Audacity.
 
 
-6. SOME CRATE SYMBOLS
+7. SOME CRATE SYMBOLS
 ----------------------
 
 The  listing  below contains some symbols for the different kinds
@@ -204,14 +214,14 @@ the game.
   turnstilew1        1<
 
 
-7. NOTES
+8. NOTES
 ---------
 
-Crates uses major.minor.build version numbering scheme as defined
-in http://docs.rubygems.org/read/chapter/7
+Crates uses Semantic Versioning 2.0.0 version numbering scheme
+starting from version 0.7.2.
 
 
-8. BUGS
+9. BUGS
 --------
 
 If   you   find  a  bug,   please   see   the   crates   homepage
@@ -229,7 +239,7 @@ this  case  removing libsdl1.2debian-alsa and installing SDL with
 PulseAudio options (libsdl1.2debian-pulseaudio) instead helped.
 
 
-9. SOURCE DIRECTORY TREE
+10. SOURCE DIRECTORY TREE
 -------------------------
 
 .

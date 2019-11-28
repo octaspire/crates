@@ -17,7 +17,7 @@
 #
 set (CRATES_VERSION_MAJOR 0)
 set (CRATES_VERSION_MINOR 7)
-set (CRATES_VERSION_PATCH 1)
+set (CRATES_VERSION_PATCH 2)
 set (CRATES_VERSION ${CRATES_VERSION_MAJOR}.${CRATES_VERSION_MINOR}.${CRATES_VERSION_PATCH})
 set (CRATES_VERSION_STRING \"crates-${CRATES_VERSION}\")
 
@@ -91,7 +91,7 @@ elseif ("${CMAKE_SYSTEM_NAME}" STREQUAL "FreeBSD")
   add_executable(crates ${COMMONFILES} src/posix/odir.c  src/posix/otimer.c  src/posix/freebsd/oexedirname.c)
 endif ("${CMAKE_SYSTEM_NAME}" MATCHES "Linux")
 
-target_link_libraries(crates ${SDL_LIBRARY} ${SDLMIXER_LIBRARY} ${OPENGL_LIBRARY} ${PNG_LIBRARY} ${ZLIB_LIBRARY} ${LUA_LIBRARY})
+target_link_libraries(crates ${SDL_LIBRARY} ${SDLMIXER_LIBRARY} ${OPENGL_LIBRARY} ${PNG_LIBRARY} ${ZLIB_LIBRARY} ${LUA_LIBRARY} m)
 
 # Test that program starts and gives the correct version information.
 # TODO: Tests in the test-directory should be run here also.

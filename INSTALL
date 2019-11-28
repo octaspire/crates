@@ -36,12 +36,12 @@ build crates.  Note  that  in-source  builds are not allowed. For
 example,  to extract,  build and run the game you could issue the
 following commands:
 
-  tar -xzf crates-0.7.1.tar.gz
-  mkdir crates-0.7.1-build
-  cd crates-0.7.1-build
-  cmake ../crates-0.7.1
+  tar -xzf crates-0.7.2.tar.gz
+  mkdir crates-0.7.2-build
+  cd crates-0.7.2-build
+  cmake ../crates-0.7.2
   make
-  ../crates-0.7.1/crates
+  ../crates-0.7.2/crates
 
 If you want to run the unit tests in  tests-directory,  you  will
 also  need  to  install check, a unit testing framework for C, if
