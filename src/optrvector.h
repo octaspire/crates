@@ -35,6 +35,7 @@ typedef struct {
 OPtrVector *optrvector_new                 (const size_t initialsize, OPtrVectorElementCallback elementreleasefunc);
 void        optrvector_release             (OPtrVector *ptrvector);
 void        optrvector_insertat            (OPtrVector *ptrvector, void* element, const size_t index);
+void        optrvector_pushfront           (OPtrVector *ptrvector, void* element);
 void        optrvector_pushback            (OPtrVector *ptrvector, void* element);
 void       *optrvector_popback             (OPtrVector *ptrvector);
 void       *optrvector_peekback            (OPtrVector *ptrvector);

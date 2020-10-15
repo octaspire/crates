@@ -76,10 +76,31 @@ oint32 ostate_addentity(OState *state, const ochar *name, const ochar *initattri
 {
   /* TODO adding throung tobeadded */
   OEntity *entity = 0;
-  oint32 index = optrvector_length(state->entities);
+  const oboolean isplayer = !strcmp(name, "player");
+
+  if (optrvector_length(state->entities) == 0)
+  {
+    if (!isplayer)
+    {
+      optrvector_pushback(state->entities, 0); // Leave space for player.
+    }
+  }
+
+  const size_t len = optrvector_length(state->entities);
+  const oint32 index = isplayer ? 0 : len;
+
   entity = oentity_new(name, initattributes, index, state->scriptmanager);
   ovector3_set(entity->location, x, y, z);
-  optrvector_pushback(state->entities, entity);
+
+  if (isplayer)
+  {
+    optrvector_insertat(state->entities, entity, 0);
+  }
+  else
+  {
+    optrvector_pushback(state->entities, entity);
+  }
+
   oentity_callluainit(entity);
   return index;
 }

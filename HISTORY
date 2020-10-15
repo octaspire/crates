@@ -1,3 +1,9 @@
+* version 0.7.3 (2020-10-15)
+-----------------------------
+  + Changed ostate to store player on index 0 to fix some depth issues
+  + Added new function optrvector_pushfront
+  + Updated HISTORY and version numbers in CMakeLists.txt, INSTALL and etc/crates.nsi (and src/oconfig.h)
+
 * version 0.7.2 (2019-11-28)
 -----------------------------
   + Fixed linking with the math library in CMakeLists.txt

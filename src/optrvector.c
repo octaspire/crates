@@ -78,6 +78,15 @@ void optrvector_insertat(OPtrVector *ptrvector, void* element, const size_t inde
   ptrvector->numelements++;
 }
 
+INLINE void optrvector_pushfront(OPtrVector *ptrvector, void* element)
+{
+    optrvector_pushback(ptrvector, 0);
+    const size_t elemsize = sizeof(void*);
+    void* start = ptrvector->elements;
+    memmove(start + elemsize, start, ptrvector->numelements * elemsize);
+    optrvector_insertat(ptrvector, element, 0);
+}
+
 INLINE void optrvector_pushback(OPtrVector *ptrvector, void* element)
 {
   optrvector_insertat(ptrvector, element, ptrvector->numelements);
