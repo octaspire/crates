@@ -37,23 +37,34 @@ function player.initial.init(id, attr)
   player.speed = 10
   player.followerid = nil
   player.followerrelease = nil
+  player.pendingevt = nil
   entity_setrenderable(id, true)
   entity_setmovable(id, true)
   entity_setcollidable(id, true)
   entity_seteventable(id, true)
+  entity_setupdatable(id, true)
   entity_setmesh(id, "player.lua")
   entity_settexture(id, "player.png")
   attribute_set(id, "typeof", "moving")
 end
 
 function player.initial.update(id, tpf)
+  if player.pendingevt then
+    if entity_isstopped(id) then
+      player.initial.event(id, player.pendingevt)
+      player.pendingevt = nil
+    end
+  end
 end
 
 function player.initial.collision(id, oid)
 end
 
 function player.initial.event(id, evt)
-  if not entity_isstopped(id) then return end
+  if not entity_isstopped(id) then
+    player.pendingevt = evt
+    return
+  end
   if evt == "up"        then
     player.north()
   elseif evt == "down"  then
